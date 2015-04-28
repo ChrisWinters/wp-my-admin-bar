@@ -78,6 +78,10 @@ A) Yes.
 :: Change Log
 --------
 Release
+= 1.0.2 =
+- Added in PHP Version Compare
+- Modified compare statements
+
 = 1.0.0 =
 - Restructured the classes, used some old stuff, built some new stuff: In short, made it less stupid.
 - Moved the project to Github: https://github.com/tribalNerd/wp-my-admin-bar

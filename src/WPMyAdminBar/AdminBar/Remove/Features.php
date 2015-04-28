@@ -93,7 +93,7 @@ class Features extends Settings implements Interfacer
         // @see src/WPMyAdminBar/AdminBar/Menus/Settings.php
         foreach ( (array) $this->SETTING_REMOVE_FEATURES as $item ) {
             // Silent missing settings, continue if setting is NOT missing
-            if ( !empty( static::security( $this->OPTION_ARRAY[ $item ] ) ) ) { continue; }
+            if ( true === static::security( $this->OPTION_ARRAY[ $item ] ) ) { continue; }
 
             // Require show to be set, to continue
             if ( $this->OPTION_ARRAY[ $item ] == "show" ) { continue; }

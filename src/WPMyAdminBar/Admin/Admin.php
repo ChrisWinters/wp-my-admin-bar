@@ -55,8 +55,8 @@ class Admin extends Settings
         if ( static::PAGE_SLUG !== filter_input( INPUT_GET, 'page' ) ) { return; }
 
         // Filter Settings & Reset Post Items
-        $settings = ( !empty( filter_input( INPUT_POST, 'settings' ) ) ) ? 'yes' : 'no';
-        $reset = ( !empty( filter_input( INPUT_POST, 'reset' ) ) ) ? 'yes' : 'no';
+        $settings = ( true === ( filter_input( INPUT_POST, 'settings' ) ) ) ? 'yes' : 'no';
+        $reset = ( true === ( filter_input( INPUT_POST, 'reset' ) ) ) ? 'yes' : 'no';
 
         // Update/Reset The Option
         if ( $settings == 'yes' && check_admin_referer( 'mymab_action', 'mymab_nonce' ) ) {
