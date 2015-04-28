@@ -1,6 +1,6 @@
 Wp My Admin Bar
 =========================
-The 'Wp My Admin Bar' Plugin expands on the default Wordpress Admin Bar, adding 3 new custom menus, the ability to show / hide every feature on the Admin Bar, and even the Admin Bar itself.
+The Wp My Admin Bar Plugin expands on the default Wordpress Admin Bar, adding 3 new custom menus, the ability to show / hide every feature on the Admin Bar, and even the Admin Bar itself.
 
 *Licensed under the GNU General Public license: See the LICENSE file included with this package.
 
