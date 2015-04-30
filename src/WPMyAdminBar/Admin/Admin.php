@@ -219,4 +219,123 @@ class Admin extends Settings
             echo '<a href="?page='. static::PAGE_SLUG .'&tab='. $tab .'" class="nav-tab'. $class .'">'. __( $name, 'WPMyAdminBar' ) .'</a>';
         }
     }
+
+
+    /**
+     * Display Notices/Messages within the Plugin Admin
+     * 
+     * @return string
+     */
+    final public static function pluginNotice()
+    {
+        // Required - Plugin Admin
+        if ( filter_input( INPUT_GET, 'page' ) != WPMAB_PAGE_NAME ) { return; }
+        if ( null === filter_input( INPUT_POST, 'settings' ) ) { return; }
+
+        // Get tab=$tab
+        $get_tab = filter_input( INPUT_GET, 'tab', FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH );
+
+        // Build tab for admin url, if set
+        $tab = isset( $get_tab ) ? '&tab='. $get_tab : '';
+
+        // Message to display
+        $message = sprintf( __( 'Notice: The WP My Admin Bar settings have been updated. -- <a href="?page=%d">Resfresh To View Changes!</a>', 'WPMyAdminBar' ), WPMAB_PAGE_NAME . $tab );
+
+        // Return message
+        echo '<div class="updated" id="message" onclick="this.parentNode.removeChild(this)"><p><strong><em>'. $message .'</a></em></strong></p></div>';
+
+        // Remove Notice Action
+        remove_action( 'admin_notices', array( __CLASS__, 'pluginNotice' ) );
+    }
+
+
+    /**
+     * Network Update Notice
+     * 
+     * @return void
+     */
+    final public function networkNotice()
+    {
+        // Multisite Only
+        if ( function_exists('is_multisite') && is_multisite() )
+        {
+            // Network Admin Required
+            if ( !is_network_admin() ) { return; }
+
+            // Required - Sites Admin
+            if ( filter_input( INPUT_GET, 'action' ) != 'add-site' ) { return; }
+            if ( null === filter_input( INPUT_GET, 'id' ) ) { return; }
+            if ( null === filter_input( INPUT_GET, 'update' ) ) { return; }
+
+            // Message to display
+            $message = __( 'Notice: The WP My Admin Bar settings have been duplicated to the new website for you.', 'WPMyAdminBar' );
+
+            // Return Notice
+            echo '<div class="updated" id="message" onclick="this.parentNode.removeChild(this)"><p><em>'. __( $message, 'WPMyAdminBar' ) .'</em></p></div>';
+        }
+
+        // Remove Notice Action
+        remove_action( 'network_admin_notices', array( __CLASS__, 'networkNotice' ) );
+    }
+
+
+    /**
+     * Auto Update New Network Websites
+     * 
+     * @return void
+     */
+    final public static function updateNewSite()
+    {
+        if ( function_exists('is_multisite') && is_multisite() )
+        {
+            // Network Admin Required
+            if ( !is_network_admin() ) { return; }
+
+            // Required - Sites Admin
+            if ( filter_input( INPUT_GET, 'action' ) != 'add-site' ) { return; }
+            if ( null === filter_input( INPUT_GET, 'id' ) ) { return; }
+            if ( null === filter_input( INPUT_GET, 'update' ) ) { return; }
+            
+            // If option isn't set, then set it!
+            if ( ! get_option( "WPMyAdminBar" ) )
+            {
+                updateOption( $options_array );
+            }
+
+            // Show a notice within the Network Admin
+            add_action( 'network_admin_notices', array( &$this, 'networkNotice' ), 10, 0 );
+        }
+    }
+
+
+    /**
+     * Plugin Related Links in Plugin Admin
+     * 
+     * @param array $links The current array of links to attach to
+     * @param string $file Plugin file base path
+     * 
+     * @return array
+     */
+    final public function pluginLinks( $links, $file ) {
+        // Force display to proper plugin
+        if ( $file == WPMAB_PLUGIN_BASE ) {
+            // Wp-Admin Plugin Admin
+            if ( is_user_admin() ) {
+                $links[] = '<a href="options-general.php?page=my_admin_bar.php">'. __( 'Settings', 'WPMyAdminBar' ) .'</a>';
+            }
+
+            // Network Plugin Admin
+            if ( is_network_admin() ) {
+                $links[] = '<a href="settings.php?page=my_admin_bar.php">'. __( 'Settings', 'WPMyAdminBar' ) .'</a>';
+            }
+
+            // External Links
+            $links[] = '<a href="http://technerdia.com/projects/adminbar/faq.html">'. __( 'F.A.Q.', 'WPMyAdminBar' ) .'</a>';
+            $links[] = '<a href="http://technerdia.com/projects/adminbar/plugin.html">'. __( 'Support', 'WPMyAdminBar' ) .'</a>';
+            $links[] = '<a href="http://technerdia.com/feedback.html">'. __( 'Feedback', 'WPMyAdminBar' ) .'</a>';
+            $links[] = '<a href="http://technerdia.com/projects/contribute.html">'. __( 'Donations', 'WPMyAdminBar' ) .'</a>';
+        }
+
+        return $links;
+    }
 }
