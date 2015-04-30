@@ -6,7 +6,7 @@
  * @copyright Copyright (c) 2012-2015, Chris Winters
  * @link http://technerdia.com/projects/adminbar/plugin.html
  * @license http://www.gnu.org/licenses/gpl.html
- * @version 1.0.0
+ * @version 1.0.3
  */
 
 /**
@@ -15,13 +15,17 @@
 namespace WPMyAdminBar;
 
 // Required To Run
-if( count( get_included_files() ) == 1 ){ exit(); }
+if (count(get_included_files()) == 1){ exit(); }
 
 
 /**
  * Default Plugin Settings
  * 
- * @since 1.0.0
+ * @see src/WPMyAdminBar/Hooks.php
+ * @see src/WPMyAdminBar/Admin/Admin.php
+ * @see src/WPMyAdminBar/AdminBar/Menus/MyCache.php
+ * @see src/WPMyAdminBar/AdminBar/Menus/MySites.php
+ * @see src/WPMyAdminBar/AdminBar/Menus/MyTools.php
  */
 class Settings
 {

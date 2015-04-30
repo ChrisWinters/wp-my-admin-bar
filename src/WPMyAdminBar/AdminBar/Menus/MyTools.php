@@ -6,7 +6,7 @@
  * @copyright Copyright (c) 2012-2015, Chris Winters
  * @link http://technerdia.com/projects/adminbar/plugin.html
  * @license http://www.gnu.org/licenses/gpl.html
- * @version 1.0.0
+ * @version 1.0.3
  */
 
 /**
@@ -15,19 +15,17 @@
 namespace WPMyAdminBar\AdminBar\Menus;
 
 // Traits
-use \WPMyAdminBar\AdminBar\Common\Options;
+use \WPMyAdminBar\Options;
 use \WPMyAdminBar\AdminBar\Common\Blogname;
 
 // Required To Run
-if( count( get_included_files() ) == 1 ){ exit(); }
+if (count(get_included_files()) == 1){ exit(); }
 
 
 /**
  * My Tools Menu Display
  * 
  * @see src/WPMyAdminBar/WPMyAdminBar.php
- *
- * @since 1.0.0
  */
 class MyTools extends Settings implements Interfacer
 {
@@ -153,21 +151,21 @@ class MyTools extends Settings implements Interfacer
             $this->SETTING_TOOLS_MONITOR, 
             $this->SETTING_TOOLS_WEB, 
             $this->SETTING_TOOLS_WORDS
-        );
+      );
 
         // Parse url to domain.com
         $site_url = site_url();
-        $parsed_url = parse_url( $site_url );
+        $parsed_url = parse_url($site_url);
         $this->WEBSITE_URL = $parsed_url['host'];
 
         // URL to Validate CSS
-        $this->CSS_URL = ''. get_bloginfo( 'template_url' ) .'/style.css';
+        $this->CSS_URL = '' . get_bloginfo('template_url') . '/style.css';
 
         // URL to Validate Feed
-        $this->FEED_URL = get_bloginfo( 'rss2_url' );
+        $this->FEED_URL = get_bloginfo('rss2_url');
 
         // Start Menu Render
-        add_action( 'admin_bar_menu', array( &$this, 'renderMenu' ), 20, 0 );
+        add_action('admin_bar_menu', array(&$this, 'renderMenu'), 20, 0);
     }
 
 
@@ -179,26 +177,26 @@ class MyTools extends Settings implements Interfacer
     final public function renderMenu()
     {
         // Required to Display
-        if ( empty( $this->OPTION_ARRAY ) ) { return; }
+        if (empty($this->OPTION_ARRAY)) { return; }
 
         // Validate Menu Display
-        if ( static::security() === false ) { return; }
+        if (static::security() === false) { return; }
 
         global $wp_admin_bar;
 
         // Custom My Tools Menu
-        $this->menuTitle( __( 'My Tools', 'WPMyAdminBar' ), "toolsmenu", $wp_admin_bar );
+        $this->menuTitle(__('My Tools', 'WPMyAdminBar'), "toolsmenu", $wp_admin_bar);
 
         // Loop through Tool Groups
         // @see src/WPMyAdminBar/AdminBar/Menus/Settings.php
-        foreach ( (array) $this->SETTING_TOOL_GROUPS as $id => $name ) {	
-            $this->menuOption( $name, $id, "toolsmenu", $wp_admin_bar );
+        foreach ((array) $this->SETTING_TOOL_GROUPS as $id => $name) {	
+            $this->menuOption($name, $id, "toolsmenu", $wp_admin_bar);
         }
 
         // Loop through Cache Plugins
         // @see src/WPMyAdminBar/AdminBar/Menus/Settings.php
-        foreach ( (array) $this->TOOLS_LIST_ARRAY as $keys => $arrays ) {
-            $this->menuItem( $keys, $arrays['title'], $arrays['url'], $arrays['group'], $wp_admin_bar );
+        foreach ((array) $this->TOOLS_LIST_ARRAY as $keys => $arrays) {
+            $this->menuItem($keys, $arrays['title'], $arrays['url'], $arrays['group'], $wp_admin_bar);
         }
     }
 
@@ -208,13 +206,15 @@ class MyTools extends Settings implements Interfacer
      * 
      * @return void
      */
-    final public function menuTitle( $name, $id, $wp_admin_bar )
+    final public function menuTitle($name, $id, $wp_admin_bar)
     {
-        $wp_admin_bar->add_menu( array(
-            'title' 	=> $name,
-            'id' 	=> $id,
-            'href' 	=> FALSE )
-        );
+        $wp_admin_bar->add_menu(
+            array(
+                'title'     => $name,
+                'id'        => $id,
+                'href'      => FALSE
+        )
+      );
     }
 
 
@@ -223,20 +223,24 @@ class MyTools extends Settings implements Interfacer
      * 
      * @return void
      */
-    final public function menuOption( $name, $id, $root_menu, $wp_admin_bar )
+    final public function menuOption($name, $id, $root_menu, $wp_admin_bar)
     {
-        $wp_admin_bar->add_group( array(
-            'parent'    => $root_menu,
-            'id'        => 'my_tool_list',
-            'meta'      => array( 'class' => 'ab-sub-secondary' ) )
-        );
+        $wp_admin_bar->add_group(
+            array(
+                'parent'    => $root_menu,
+                'id'        => 'my_tool_list',
+                'meta'      => array('class' => 'ab-sub-secondary')
+            )
+      );
 
-        $wp_admin_bar->add_menu( array(
-            'title'     => $name,
-            'id' 	=> $id,
-            'parent'    => 'my_tool_list',
-            'href' 	=> FALSE )
-        );
+        $wp_admin_bar->add_menu(
+            array(
+                'title'     => $name,
+                'id'        => $id,
+                'parent'    => 'my_tool_list',
+                'href'      => FALSE
+            )
+      );
     }
 
 
@@ -245,19 +249,21 @@ class MyTools extends Settings implements Interfacer
      * 
      * @return void
      */
-    final public function menuItem( $id, $name, $link, $root_menu, $wp_admin_bar )
+    final public function menuItem($id, $name, $link, $root_menu, $wp_admin_bar)
     {
         // Strip/Replace {$var} within Tools links
-        $url = $this->rebuildLinks( $link );
+        $url = $this->rebuildLinks($link);
 
         // Add the menu
-        $wp_admin_bar->add_menu( array(
-            'id' 	=> 'tools'. $id,
-            'title' 	=> '&bull; '. $name .' &raquo;',
-            'href' 	=> $url,
-            'parent'    => $root_menu,
-            'meta'      => array( 'target' => '_blank' ) )
-        );
+        $wp_admin_bar->add_menu(
+            array(
+                'id'        => 'tools' . $id,
+                'title'     => '&bull; ' . $name . ' &raquo;',
+                'href'      => $url,
+                'parent'    => $root_menu,
+                'meta'      => array('target' => '_blank')
+            )
+      );
     }
     
 
@@ -270,7 +276,7 @@ class MyTools extends Settings implements Interfacer
      * 
      * @return string $link Filtered link
      */
-    final public function rebuildLinks( $link )
+    final public function rebuildLinks($link)
     {
         // Localize Vars
         $website = $this->WEBSITE_URL;
@@ -278,21 +284,21 @@ class MyTools extends Settings implements Interfacer
         $feed_url = $this->FEED_URL;
 
         // Require
-        if ( empty( $website ) && empty( $css_url ) && empty( $feed_url ) ) { return; }
+        if (empty($website) && empty($css_url) && empty($feed_url)) { return; }
 
         // Match all {$var}
         $matches = array();
-        preg_match_all( '~\{\$(.*?)\}~si', $link, $matches );
+        preg_match_all('~\{\$(.*?)\}~si', $link, $matches);
 
         // If first array value found
-        if ( isset( $matches[0][0] ) ) {
+        if (isset($matches[0][0])) {
             // Assign vars to values
-            $item = compact( $matches[1][0] );
+            $item = compact($matches[1][0]);
 
             // Loop through the items
-            foreach ( $item as $var => $value ) {
+            foreach ($item as $var => $value) {
                 // Replace {$var} from the $item key, with the $value directly
-                $link = str_replace( '{$'.$var.'}', $value, $link );
+                $link = str_replace('{$' .$var. '}', $value, $link);
             }
         }
         
@@ -316,7 +322,7 @@ class MyTools extends Settings implements Interfacer
         $option = static::$SECURITY_OPTION;
 
         // Init Class
-        $askSecurity = new \WPMyAdminBar\AdminBar\Common\Security( $slug, $option );
+        $askSecurity = new \WPMyAdminBar\AdminBar\Common\Security($slug, $option);
         return $askSecurity->getReponse();
     }
     
@@ -324,12 +330,12 @@ class MyTools extends Settings implements Interfacer
     /**
      * Start instance object within class
      *
-     * @return src/WPMyAdminBar/AdminBar/Menus/MyTools.php
+     * @return object
      */
     final public static function start()
     {
         // Create the object
-        if ( null === self::$INSTANCE ) {
+        if (null === self::$INSTANCE) {
             self::$INSTANCE = new self;
         }
 

@@ -2,9 +2,8 @@
 
 The Wp My Admin Bar Plugin expands on the default Wordpress Admin Bar, adding 3 new custom menus, the ability to show / hide every feature on the Admin Bar, and even the Admin Bar itself.
 
+-- Current Plugin Version: 1.0.3
 -- Requires PHP Version 5.4+ or higher!
-
-Project is now on [Github](https://github.com/tribalNerd/wp-my-admin-bar)
 
 ## Overview
 
@@ -20,7 +19,8 @@ Works on both Standalone Wordpress Installs and Multisite Networks.
 * My Cache: Allows for quick access to selected Cache Plugins.
 * My Tools: Web tools for WP Developers and Bloggers.
 
-* Other Features Include:
+Other Features Include:
+* Mobile / Portable Device Friendly
 * Remove the Wordpress Logo from the Admin Bar.
 * Remove the Howdy Dropdown, disable the dropdown, or remove features within the dropdown.
 * Disable the dropdown on the Howdy menu.
@@ -44,7 +44,7 @@ From the Wordpress Plugin Admin, search for: WP My Admin Bar
 * Access the Settings Menu > My Admin Bar menu link to setup the Admin Bar.
 
 
-:: Frequently Asked Questions:
+### Frequently Asked Questions:
 --------
 
 = Q) Which Wordpress Setups does the WP My Admin Bar work with? =
@@ -88,14 +88,18 @@ A) No, not until you update the Network Admin Settings directly.
 A) Yes.
 
 
-:: Change Log
+### Change Log
 --------
-Release
+
 = 1.0.3 =
 - Moved the activation, deactivation, uninstall hooks to wp-my-admin-bar.php
 - Moved all option get/set methods to \WPMyAdminBar\Options
 - Adjusted Admin, Hooks, MyCache, MySites, & My Tools to new Options location & methods
 - Set a Network message in \WPMyAdminBar\Admin\Templates\content.php
+- Moved Site & Network notices and plugin links from AdminBar.php to Admin.php
+- Created new updateNewSite() method in \WPMyAdminBar\Admin\Templates\Admin
+- Modified method name get_option to getOption, adjusted in radios.php template
+- Improved the PSR1-4 Standards within everything
 
 = 1.0.2 =
 - Added in PHP Version Compare

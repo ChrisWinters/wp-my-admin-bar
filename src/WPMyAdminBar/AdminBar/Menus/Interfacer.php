@@ -6,7 +6,7 @@
  * @copyright Copyright (c) 2012-2015, Chris Winters
  * @link http://technerdia.com/projects/adminbar/plugin.html
  * @license http://www.gnu.org/licenses/gpl.html
- * @version 1.0.0
+ * @version 1.0.3
  */
 
 /**
@@ -15,7 +15,7 @@
 namespace WPMyAdminBar\AdminBar\Menus;
 
 // Required To Run
-if( count( get_included_files() ) == 1 ){ exit(); }
+if (count(get_included_files()) == 1){ exit(); }
 
 
 /**
@@ -24,8 +24,6 @@ if( count( get_included_files() ) == 1 ){ exit(); }
  * @see src/WPMyAdminBar/AdminBar/Menus/MyCache.php
  * @see src/WPMyAdminBar/AdminBar/Menus/MySites.php
  * @see src/WPMyAdminBar/AdminBar/Menus/MyTools.php
- *
- * @since 1.0.0
  */
 interface Interfacer
 {
@@ -42,7 +40,7 @@ interface Interfacer
      * 
      * @return void
      */
-    public function menuTitle( $name, $id, $wp_admin_bar );
+    public function menuTitle($name, $id, $wp_admin_bar);
 
 
     /**
@@ -50,7 +48,7 @@ interface Interfacer
      * 
      * @return void
      */
-    public function menuItem( $id, $name, $link, $root_menu, $wp_admin_bar );
+    public function menuItem($id, $name, $link, $root_menu, $wp_admin_bar);
 
 
     /**

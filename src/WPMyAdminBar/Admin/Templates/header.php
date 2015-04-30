@@ -6,9 +6,9 @@
  * @copyright Copyright (c) 2012-2015, Chris Winters
  * @link http://technerdia.com/projects/adminbar/plugin.html
  * @license http://www.gnu.org/licenses/gpl.html
- * @version 1.0.0
+ * @version 1.0.3
  */
-if( count( get_included_files() ) == 1 ){ exit(); }
+if (count(get_included_files()) == 1){ exit(); }
 
 /**
  * Admin Area Header Template
@@ -17,7 +17,7 @@ if( count( get_included_files() ) == 1 ){ exit(); }
  */
 ?>
 <div class="wrap">
-<div id="icon-themes" class="icon32"><br /></div><h2><?php _e( WPMAB_PLUGIN_NAME, 'WPMyAdminBar' );?></h2>
+<div id="icon-themes" class="icon32"><br /></div><h2><?php _e(WPMAB_PLUGIN_NAME, 'WPMyAdminBar');?></h2>
 <div id="icon-edit-pages" class="icon32"><br /></div>
 <h2 class="nav-tab-wrapper"><?php echo static::tabs();?></h2><br />
 <div id="poststuff">

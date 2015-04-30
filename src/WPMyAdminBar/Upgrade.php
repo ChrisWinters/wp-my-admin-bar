@@ -6,30 +6,35 @@
  * @copyright Copyright (c) 2012-2015, Chris Winters
  * @link http://technerdia.com/projects/adminbar/plugin.html
  * @license http://www.gnu.org/licenses/gpl.html
- * @version 1.0.0
+ * @version 1.0.3
  */
-if( count( get_included_files() ) == 1 ){ exit(); }
+
+/**
+ * Declared Namespace
+ */
+namespace WPMyAdminBar;
+
+// Required To Run
+if (count(get_included_files()) == 1){ exit(); }
 
 /**
  * Upgrade the WP My Admin Bar
  *
- * @since 1.0.0
+ * @see src/WPMyAdminBar/Hooks.php
  */
 class Upgrade
 {
     final public static function start()
     {
-        if ( get_option( 'wp_myadminbar' ) )
-        {
-            $wp_myadminbar = unserialize( get_option( 'wp_myadminbar' ) );
+        if (get_option('wp_myadminbar')) {
+            $wp_myadminbar = unserialize(get_option('wp_myadminbar'));
             $old_my_sites = $wp_myadminbar['my_sites'];
             $old_my_cache = $wp_myadminbar['my_cache'];
             $old_my_tools = $wp_myadminbar['my_tools'];
         }
 
-        if ( get_option( 'wp_mycache' ) )
-        {
-            $wp_mycache = unserialize( get_option( 'wp_mycache' ) );
+        if (get_option('wp_mycache')) {
+            $wp_mycache = unserialize(get_option('wp_mycache'));
             
             $old_dbcache = $wp_mycache['dbcache'];
             $old_widget = $wp_mycache['widget'];
@@ -39,9 +44,8 @@ class Upgrade
 
         }
 
-        if ( get_option( 'wp_mycustom' ) )
-        {
-            $wp_mycache = unserialize( get_option( 'wp_mycustom' ) );
+        if (get_option('wp_mycustom')) {
+            $wp_mycache = unserialize(get_option('wp_mycustom'));
             
             $old_wplogo = $wp_mycache['wplogo'];
             $old_howdy = $wp_mycache['howdy'];
@@ -50,24 +54,23 @@ class Upgrade
 
         }
 
-        if ( get_option( 'WPMyAdminBar' ) )
-        {
-            $WPMyAdminBar = unserialize( get_option( 'WPMyAdminBar' ) );
+        if (get_option('WPMyAdminBar')) {
+            $WPMyAdminBar = unserialize(get_option('WPMyAdminBar'));
         }
 
         // Array Values
-        $my_sites = ( empty( $old_my_sites ) ) ? $WPMyAdminBar['my-sites'] : $old_my_sites;
-        $siteids = ( empty( $old_siteids ) ) ? $WPMyAdminBar['siteids'] : $old_siteids;
-        $my_cache = ( empty( $old_my_cache ) ) ? $WPMyAdminBar['my-cache'] : $old_my_cache;
-        $dbcache = ( empty( $old_dbcache ) ) ? $WPMyAdminBar['dbcache'] : $old_dbcache;
-        $super = ( empty( $old_super ) ) ? $WPMyAdminBar['super'] : $old_super;
-        $total = ( empty( $old_total ) ) ? $WPMyAdminBar['total'] : $old_total;
-        $widget = ( empty( $old_widget ) ) ? $WPMyAdminBar['widget'] : $old_widget;
-        $minify = ( empty( $old_minify ) ) ? $WPMyAdminBar['minify'] : $old_minify;
-        $my_tools = ( empty( $old_my_tools ) ) ? $WPMyAdminBar['my-tools'] : $old_my_tools;
-        $my_account = ( empty( $old_howdy ) ) ? $WPMyAdminBar['my-account'] : $old_howdy;
-        $wp_logo = ( empty( $old_wplogo ) ) ? $WPMyAdminBar['wp-logo'] : $old_wplogo;
-        $wpicon = ( empty( $old_wpicon ) ) ? $WPMyAdminBar['wpicon'] : $old_wpicon;
+        $my_sites = (empty( $old_my_sites)) ? $WPMyAdminBar['my-sites'] : $old_my_sites;
+        $siteids = (empty( $old_siteids)) ? $WPMyAdminBar['siteids'] : $old_siteids;
+        $my_cache = (empty( $old_my_cache)) ? $WPMyAdminBar['my-cache'] : $old_my_cache;
+        $dbcache = (empty( $old_dbcache)) ? $WPMyAdminBar['dbcache'] : $old_dbcache;
+        $super = (empty( $old_super)) ? $WPMyAdminBar['super'] : $old_super;
+        $total = (empty( $old_total)) ? $WPMyAdminBar['total'] : $old_total;
+        $widget = (empty( $old_widget)) ? $WPMyAdminBar['widget'] : $old_widget;
+        $minify = (empty( $old_minify)) ? $WPMyAdminBar['minify'] : $old_minify;
+        $my_tools = (empty( $old_my_tools)) ? $WPMyAdminBar['my-tools'] : $old_my_tools;
+        $my_account = (empty( $old_howdy)) ? $WPMyAdminBar['my-account'] : $old_howdy;
+        $wp_logo = (empty( $old_wplogo)) ? $WPMyAdminBar['wp-logo'] : $old_wplogo;
+        $wpicon = (empty( $old_wpicon)) ? $WPMyAdminBar['wpicon'] : $old_wpicon;
 
         // Option Array
         $options_array = array(
@@ -103,53 +106,52 @@ class Upgrade
         );
 
         // Multisite else Standalone
-        if ( function_exists('is_multisite') && is_multisite() )
-        {
+        if (function_exists('is_multisite') && is_multisite()) {
             global $wpdb;
 
             // Get blog ID's
-            $blog_id_list = $wpdb->get_results( 'SELECT blog_id FROM '. $wpdb->blogs .'  ORDER BY blog_id' );
+            $blog_id_list = $wpdb->get_results('SELECT blog_id FROM ' . $wpdb->blogs . '  ORDER BY blog_id');
 
             // Loop through sites
-            foreach ( $blog_id_list as $blog_id ) {
-                if ( empty( $blog_id ) ) { continue; }
+            foreach ($blog_id_list as $blog_id) {
+                if (empty( $blog_id)) { continue; }
                 
                 // Multisite Switch Blog ID's
-                switch_to_blog( $blog_id );
+                switch_to_blog($blog_id);
 
                 // Delete current cache and option
-                delete_transient( 'WPMyAdminBar' );
-                delete_site_transient( 'multisite_site_list' );
-                delete_option( 'WPMyAdminBar' );
+                delete_transient('WPMyAdminBar');
+                delete_site_transient('multisite_site_list');
+                delete_option('WPMyAdminBar');
 
                 // Delete old cache and options
-                delete_transient( 'multisite_site_list' );
-                delete_site_transient( 'multisite_site_list' );
-                delete_option( 'wp_myadminbar' );
-                delete_option( 'wp_mycache' );
-                delete_option( 'wp_mycustom' );
+                delete_transient('multisite_site_list');
+                delete_site_transient('multisite_site_list');
+                delete_option('wp_myadminbar');
+                delete_option('wp_mycache');
+                delete_option('wp_mycustom');
 
                 // Rebuild Option
-                add_option( 'WPMyAdminBar', serialize( $options_array ), '', 'no' );
+                add_option('WPMyAdminBar', serialize($options_array), '', 'no');
             }
 
             // Return to original blog
             restore_current_blog();
 	} else {
             // Delete current cache and option
-            delete_transient( 'WPMyAdminBar' );
-            delete_site_transient( 'multisite_site_list' );
-            delete_option( 'WPMyAdminBar' );
+            delete_transient('WPMyAdminBar');
+            delete_site_transient('multisite_site_list');
+            delete_option('WPMyAdminBar');
 
             // Delete old cache and options
-            delete_transient( 'multisite_site_list' );
-            delete_site_transient( 'multisite_site_list' );
-            delete_option( 'wp_myadminbar' );
-            delete_option( 'wp_mycache' );
-            delete_option( 'wp_mycustom' );
+            delete_transient('multisite_site_list');
+            delete_site_transient('multisite_site_list');
+            delete_option('wp_myadminbar');
+            delete_option('wp_mycache');
+            delete_option('wp_mycustom');
 
             // Rebuild Option
-            add_option( 'WPMyAdminBar', serialize( $options_array ), '', 'no' );
+            add_option('WPMyAdminBar', serialize($options_array), '', 'no');
         }
     }
 }

@@ -6,7 +6,7 @@
  * @copyright Copyright (c) 2012-2015, Chris Winters
  * @link http://technerdia.com/projects/adminbar/plugin.html
  * @license http://www.gnu.org/licenses/gpl.html
- * @version 1.0.0
+ * @version 1.0.3
  */
 
 /**
@@ -15,18 +15,16 @@
 namespace WPMyAdminBar\AdminBar\Remove;
 
 // Traits
-use \WPMyAdminBar\AdminBar\Common\Options;
+use \WPMyAdminBar\Options;
 
 // Required To Run
-if( count( get_included_files() ) == 1 ){ exit(); }
+if (count(get_included_files()) == 1){ exit(); }
 
 
 /**
  * Remove Admin Bar from Display from the Backend
  * 
  * @see src/WPMyAdminBar/WPMyAdminBar.php
- *
- * @since 1.0.0
  */
 class Backend implements Interfacer
 {
@@ -62,7 +60,7 @@ class Backend implements Interfacer
         // Static var for security()
         static::$SECURITY_OPTION = $this->OPTION_ARRAY;
 
-        add_action( 'admin_init', array( &$this, 'remove' ) );
+        add_action('admin_init', array(&$this, 'remove'));
     }
 
 
@@ -74,12 +72,12 @@ class Backend implements Interfacer
     final public function remove()
     {
         // Required to Run
-        if ( empty( $this->OPTION_ARRAY ) ) { return; }
+        if (empty($this->OPTION_ARRAY)) { return; }
 
         // Yes, remove the Admin Bar from the Admin Area
-        if ( $this->OPTION_ARRAY[ 'admin-bar-admin' ] == 'hide' ) {
-            add_action( 'init', array( &$this, 'removeAdminBar' ) );
-            add_filter( 'admin_head', array( &$this, 'removeStyles' ) );
+        if ($this->OPTION_ARRAY['admin-bar-admin'] == 'hide') {
+            add_action('init', array(&$this, 'removeAdminBar'));
+            add_filter('admin_head', array(&$this, 'removeStyles'));
         }
     }
 
@@ -92,11 +90,11 @@ class Backend implements Interfacer
     final public function removeAdminBar()
     {
         // Wordpress
-        wp_deregister_script( 'admin-bar' );
-        wp_deregister_style( 'admin-bar' );
-        remove_action( 'init', '_wp_admin_bar_init' );
-        remove_action( 'wp_footer', 'wp_admin_bar_render', 1000 );
-        remove_action( 'admin_footer', 'wp_admin_bar_render', 1000 );
+        wp_deregister_script('admin-bar');
+        wp_deregister_style('admin-bar');
+        remove_action('init', '_wp_admin_bar_init');
+        remove_action('wp_footer', 'wp_admin_bar_render', 1000);
+        remove_action('admin_footer', 'wp_admin_bar_render', 1000);
     }
 
 
@@ -125,12 +123,12 @@ class Backend implements Interfacer
      * 
      * @return boolean True is allowed, False is not authorized
      */
-    final public static function security( $slug ) {
+    final public static function security($slug) {
         // Local Vars
         $option = static::$SECURITY_OPTION;
 
         // Init Class
-        $askSecurity = new \WPMyAdminBar\AdminBar\Common\Security( $slug, $option );
+        $askSecurity = new \WPMyAdminBar\AdminBar\Common\Security($slug, $option);
         return $askSecurity->getReponse();
     }
     
@@ -138,12 +136,12 @@ class Backend implements Interfacer
     /**
      * Start instance object within class
      *
-     * @return src/WPMyAdminBar/AdminBar/Menus/MySites.php
+     * @return object
      */
     final public static function start()
     {
         // Create the object
-        if ( null === self::$INSTANCE ) {
+        if (null === self::$INSTANCE) {
             self::$INSTANCE = new self;
         }
 

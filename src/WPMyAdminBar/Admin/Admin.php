@@ -11,24 +11,25 @@
 
 /**
  * Declared Namespace
- *
- * @since 1.0.3
  */
 namespace WPMyAdminBar\Admin;
 
+// Traits
+use \WPMyAdminBar\Options;
+
 // Required To Run
-if( count( get_included_files() ) == 1 ){ exit(); }
+if (count(get_included_files()) == 1){ exit(); }
 
 
 /**
  * Plugin Admin Area
  * 
  * @see src/WPMyAdminBar/WPMyAdminBar.php
- * 
- * @since 1.0.0
  */
 class Admin extends Settings
 {
+    use Options;
+
     /**
      * Plugin page name slug
      *
@@ -51,24 +52,24 @@ class Admin extends Settings
     *
     * @return void
     */
-    final static function display()
+    final public static function display()
     {
         // Required: Force Location
-        if ( static::PAGE_SLUG !== filter_input( INPUT_GET, 'page' ) ) { return; }
+        if (static::PAGE_SLUG !== filter_input(INPUT_GET, 'page')) { return; }
 
         // Filter Settings & Reset Post Items
-        $settings = ( true === ( filter_input( INPUT_POST, 'settings' ) ) ) ? 'yes' : 'no';
-        $reset = ( true === ( filter_input( INPUT_POST, 'reset' ) ) ) ? 'yes' : 'no';
+        $settings = (true == (filter_input(INPUT_POST, 'settings'))) ? 'yes' : 'no';
+        $reset = (true == (filter_input(INPUT_POST, 'reset'))) ? 'yes' : 'no';
 
         // Update/Reset The Option
-        if ( $settings == 'yes' && check_admin_referer( 'mymab_action', 'mymab_nonce' ) ) {
-            static::update( $settings, $reset );
+        if ($settings == 'yes' && check_admin_referer('mymab_action', 'mymab_nonce')) {
+            static::update($settings, $reset);
         }
 
         // Build Admin Area
-        static::template( 'header' );
-        static::template( 'content' );
-        static::template( 'footer' );
+        static::template('header');
+        static::template('content');
+        static::template('footer');
     }
 
 
@@ -80,30 +81,17 @@ class Admin extends Settings
      * @param array $value Foreach $value in radioForms() method
      * @return void
      */
-    final static function template( $template, $value = false )
+    final public static function template($template, $value = false)
     {
         // Require Template
-        if( !file_exists( static::TEMPLATES_PATH .'/'. $template .'.php' ) ) { return; }
+        if(! file_exists(static::TEMPLATES_PATH . '/' . $template . '.php')) { return; }
 
         // Include Template
-        if( $value != false ) {
-            include( static::TEMPLATES_PATH .'/'. $template .'.php' );
+        if($value != false) {
+            include(static::TEMPLATES_PATH . '/' . $template . '.php');
         } else {
-            include_once( static::TEMPLATES_PATH .'/'. $template .'.php' );
+            include_once(static::TEMPLATES_PATH . '/' . $template . '.php');
         }
-    }
-
-
-    /**
-     * Get the primary option data based on the page slug name
-     * 
-     * @see src/WPMyAdminBar/Admin/Templates/radios.php
-     * 
-     * @return void
-     */
-    final static function get_option()
-    {
-        return maybe_unserialize( get_option( static::PAGE_SLUG ) );
     }
 
 
@@ -115,27 +103,27 @@ class Admin extends Settings
      * 
      * @return void
      */
-    final static function update( $settings, $reset )
+    final public static function update($settings, $reset)
     {
         // Ignore if settings post has not happened
-        if ( $settings != "yes" ) { return; }
-        if ( $reset != "yes" && $reset != "no" ) { return; }
-        if ( false === filter_input( INPUT_POST, 'mymab_nonce' ) ) { return; }
+        if ($settings != "yes") { return; }
+        if ($reset != "yes" && $reset != "no") { return; }
+        if (false == filter_input(INPUT_POST, 'mymab_nonce')) { return; }
 
         // Build options array from form post
-        if ( $reset == "no" ) { $options_array = static::buildPostArray(); }
+        if ($reset == "no") { $options_array = static::buildPostArray(); }
 
         // Reset options array, get option data from settings
-        if ( $reset == "yes" ) { $options_array = Settings::$OPTION_DEFAULTS; }
+        if ($reset == "yes") { $options_array = Settings::$OPTION_DEFAULTS; }
         
         // If Multisite and Update Network clicked, Update the Network
-        static::updateOption( $options_array );
+        Options::updateOption($options_array);
 
         // If Multisite and Update Network clicked, Update the Network
-        static::updateOptionNetwork( $options_array );
+        Options::updateOptionNetwork($options_array);
 
         // Remove the update action
-        remove_action( 'update_option', array( __CLASS__, 'updateOption' ), 1 );
+        remove_action('update_option', array(__CLASS__, 'updateOption'), 1);
     }
 
 
@@ -144,24 +132,24 @@ class Admin extends Settings
      * 
      * @return array
      */
-    final static function buildPostArray()
+    final public static function buildPostArray()
     {
         $array = array();
 
         // Loop through allowed input names for form display
-        foreach ( (array) static::$INPUT_NAMES as $value ) {
+        foreach ((array) static::$INPUT_NAMES as $value) {
             // Get the post data based on allowed
-            $input_value = filter_input( INPUT_POST, $value );
+            $input_value = filter_input(INPUT_POST, $value);
 
             // l33t sanitization
-            if ( $input_value != "show" && $input_value != "hide" ) { return; }
+            if ($input_value != "show" && $input_value != "hide") { return; }
 
             // Rebuild array value to use form input values.
             $array[$value] = $input_value;
         }
 
         // Returned serialized array
-        return maybe_serialize( $array );
+        return maybe_serialize($array);
     }
 
 
@@ -171,22 +159,22 @@ class Admin extends Settings
      * @param string $group The group id this block of forms belongs to.
      * @return string
      */
-    final static function radioForms( $group )
+    final public static function radioForms($group)
     {
         // Required
-        if ( !isset( $group ) ) { return; }
+        if (! isset($group)) { return; }
 
         // Loop through settings, display form data
-        foreach ( (array) Settings::formSettings() as $value ) {
+        foreach ((array) Settings::formSettings() as $value) {
             // Skip WP Icon next to Sites in Menus if not Multisite
-            if ( $value['option'] == 'wpicon' && MULTISITE != true ) { return; }
+            if ($value['option'] == 'wpicon' && MULTISITE != true) { return; }
 
             // Group by group ID number, for display
-            if ( $value['group'] == $group )
+            if ($value['group'] == $group)
             {
                 // Load the radios template
                 // @param array $value from foreach
-                echo static::template( 'radios', $value );
+                echo static::template('radios', $value);
             }
         }
 
@@ -199,24 +187,24 @@ class Admin extends Settings
      * 
      * @return string
      */
-    final static function tabs()
+    final public static function tabs()
     {
         // Get tab=$tab
-        $get_tab = filter_input( INPUT_GET, 'tab', FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH );
+        $get_tab = filter_input(INPUT_GET, 'tab', FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
 
         // Setting Tab Names
         $settings_tab_array = Settings::$TAB_NAMES;
 
         // Set current displayed tab
-        $current = isset( $get_tab ) ? $get_tab : key( $settings_tab_array );
+        $current = isset($get_tab) ? $get_tab : key($settings_tab_array);
 
         // Tabs html
-        foreach( (array) $settings_tab_array as $tab => $name ) {
+        foreach ((array) $settings_tab_array as $tab => $name) {
             // Current tab class
-            $class = ( $tab == $current ) ? ' nav-tab-active' : '';
+            $class = ($tab == $current) ? ' nav-tab-active' : '';
 
             // Tab links
-            echo '<a href="?page='. static::PAGE_SLUG .'&tab='. $tab .'" class="nav-tab'. $class .'">'. __( $name, 'WPMyAdminBar' ) .'</a>';
+            echo '<a href="?page=' . static::PAGE_SLUG . '&tab=' . $tab . '" class="nav-tab' . $class . '">' . __($name, 'WPMyAdminBar') . '</a>';
         }
     }
 
@@ -229,23 +217,23 @@ class Admin extends Settings
     final public static function pluginNotice()
     {
         // Required - Plugin Admin
-        if ( filter_input( INPUT_GET, 'page' ) != WPMAB_PAGE_NAME ) { return; }
-        if ( null === filter_input( INPUT_POST, 'settings' ) ) { return; }
+        if (filter_input(INPUT_GET, 'page') != WPMAB_PAGE_NAME) { return; }
+        if (null === filter_input(INPUT_POST, 'settings')) { return; }
 
         // Get tab=$tab
-        $get_tab = filter_input( INPUT_GET, 'tab', FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH );
+        $get_tab = filter_input(INPUT_GET, 'tab', FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
 
         // Build tab for admin url, if set
-        $tab = isset( $get_tab ) ? '&tab='. $get_tab : '';
+        $tab = isset($get_tab) ? '&tab=' . $get_tab : '';
 
         // Message to display
-        $message = sprintf( __( 'Notice: The WP My Admin Bar settings have been updated. -- <a href="?page=%d">Resfresh To View Changes!</a>', 'WPMyAdminBar' ), WPMAB_PAGE_NAME . $tab );
+        $message = sprintf(__('Notice: The WP My Admin Bar settings have been updated. -- <a href="?page=%s">Refresh To View Changes!</a>', 'WPMyAdminBar'), WPMAB_PAGE_NAME . $tab);
 
         // Return message
-        echo '<div class="updated" id="message" onclick="this.parentNode.removeChild(this)"><p><strong><em>'. $message .'</a></em></strong></p></div>';
+        echo '<div class="updated" id="message" onclick="this.parentNode.removeChild(this)"><p><strong><em>' . $message . '</a></em></strong></p></div>';
 
         // Remove Notice Action
-        remove_action( 'admin_notices', array( __CLASS__, 'pluginNotice' ) );
+        remove_action('admin_notices', array(__CLASS__, 'pluginNotice'));
     }
 
 
@@ -254,28 +242,27 @@ class Admin extends Settings
      * 
      * @return void
      */
-    final public function networkNotice()
+    final public static function networkNotice()
     {
         // Multisite Only
-        if ( function_exists('is_multisite') && is_multisite() )
-        {
+        if (function_exists('is_multisite') && is_multisite()) {
             // Network Admin Required
-            if ( !is_network_admin() ) { return; }
+            if (! is_network_admin()) { return; }
 
             // Required - Sites Admin
-            if ( filter_input( INPUT_GET, 'action' ) != 'add-site' ) { return; }
-            if ( null === filter_input( INPUT_GET, 'id' ) ) { return; }
-            if ( null === filter_input( INPUT_GET, 'update' ) ) { return; }
+            if (filter_input(INPUT_GET, 'action') != 'add-site') { return; }
+            if (null === filter_input(INPUT_GET, 'id')) { return; }
+            if (null === filter_input(INPUT_GET, 'update')) { return; }
 
             // Message to display
-            $message = __( 'Notice: The WP My Admin Bar settings have been duplicated to the new website for you.', 'WPMyAdminBar' );
+            $message = __('Notice: The WP My Admin Bar settings have been duplicated to the new website for you. ', 'WPMyAdminBar');
 
             // Return Notice
-            echo '<div class="updated" id="message" onclick="this.parentNode.removeChild(this)"><p><em>'. __( $message, 'WPMyAdminBar' ) .'</em></p></div>';
+            echo '<div class="updated" id="message" onclick="this.parentNode.removeChild(this)"><p><em>' . __($message, 'WPMyAdminBar') . '</em></p></div>';
         }
 
         // Remove Notice Action
-        remove_action( 'network_admin_notices', array( __CLASS__, 'networkNotice' ) );
+        remove_action('network_admin_notices', array(__CLASS__, 'networkNotice'));
     }
 
 
@@ -286,24 +273,48 @@ class Admin extends Settings
      */
     final public static function updateNewSite()
     {
-        if ( function_exists('is_multisite') && is_multisite() )
-        {
+        if (function_exists('is_multisite') && is_multisite()) {
             // Network Admin Required
-            if ( !is_network_admin() ) { return; }
+            if (! is_network_admin()) { return; }
 
             // Required - Sites Admin
-            if ( filter_input( INPUT_GET, 'action' ) != 'add-site' ) { return; }
-            if ( null === filter_input( INPUT_GET, 'id' ) ) { return; }
-            if ( null === filter_input( INPUT_GET, 'update' ) ) { return; }
+            if (filter_input(INPUT_GET, 'action') != 'add-site') { return; }
+            if (null === filter_input(INPUT_GET, 'id')) { return; }
+            if (null === filter_input(INPUT_GET, 'update')) { return; }
             
-            // If option isn't set, then set it!
-            if ( ! get_option( "WPMyAdminBar" ) )
-            {
-                updateOption( $options_array );
+            // Switch to Network Root
+            switch_to_blog('1');
+
+            // If a network option isn't set, then use default settings and set the option
+            if (! get_option('WPMyAdminBar')) {
+                // Default Option Values
+                // @see src/WPMyAdminBar/Admin/Settings.php
+                $options_array = Settings::$OPTION_DEFAULTS;
+
+                // Create the option
+                // @see src/WPMyAdminBar/Options.php
+                Options::updateOption($options_array);
             }
 
-            // Show a notice within the Network Admin
-            add_action( 'network_admin_notices', array( &$this, 'networkNotice' ), 10, 0 );
+            // Now the option should always be set, let's get the option array
+            if (get_option('WPMyAdminBar')) {
+                $options_array = Options::getOption();
+            }
+
+            // Get the site ID
+            $site_id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+
+            // Switch to the New Website
+            switch_to_blog($site_id);
+
+            // Create the option only if it doesn't already exist
+            if (! get_option('WPMyAdminBar')) {
+                // @see src/WPMyAdminBar/Options.php
+                Options::updateOption($options_array);
+            }
+
+            // Return to original blog
+            restore_current_blog();
         }
     }
 
@@ -316,24 +327,24 @@ class Admin extends Settings
      * 
      * @return array
      */
-    final public function pluginLinks( $links, $file ) {
+    final public static function pluginLinks($links, $file) {
         // Force display to proper plugin
-        if ( $file == WPMAB_PLUGIN_BASE ) {
+        if ($file == WPMAB_PLUGIN_BASE) {
             // Wp-Admin Plugin Admin
-            if ( is_user_admin() ) {
-                $links[] = '<a href="options-general.php?page=my_admin_bar.php">'. __( 'Settings', 'WPMyAdminBar' ) .'</a>';
+            if (is_user_admin()) {
+                $links[] = '<a href="options-general.php?page=' . static::PAGE_SLUG . '">' . __('Settings', 'WPMyAdminBar') . '</a>';
             }
 
             // Network Plugin Admin
-            if ( is_network_admin() ) {
-                $links[] = '<a href="settings.php?page=my_admin_bar.php">'. __( 'Settings', 'WPMyAdminBar' ) .'</a>';
+            if (is_network_admin()) {
+                $links[] = '<a href="settings.php?page=' . static::PAGE_SLUG . '">' . __('Settings', 'WPMyAdminBar') . '</a>';
             }
 
             // External Links
-            $links[] = '<a href="http://technerdia.com/projects/adminbar/faq.html">'. __( 'F.A.Q.', 'WPMyAdminBar' ) .'</a>';
-            $links[] = '<a href="http://technerdia.com/projects/adminbar/plugin.html">'. __( 'Support', 'WPMyAdminBar' ) .'</a>';
-            $links[] = '<a href="http://technerdia.com/feedback.html">'. __( 'Feedback', 'WPMyAdminBar' ) .'</a>';
-            $links[] = '<a href="http://technerdia.com/projects/contribute.html">'. __( 'Donations', 'WPMyAdminBar' ) .'</a>';
+            $links[] = '<a href="http://technerdia.com/projects/adminbar/faq.html">' . __('F.A.Q. ', 'WPMyAdminBar') . '</a>';
+            $links[] = '<a href="http://technerdia.com/projects/adminbar/plugin.html">' . __('Support', 'WPMyAdminBar') . '</a>';
+            $links[] = '<a href="http://technerdia.com/feedback.html">' . __('Feedback', 'WPMyAdminBar') . '</a>';
+            $links[] = '<a href="http://technerdia.com/projects/contribute.html">' . __('Donations', 'WPMyAdminBar') . '</a>';
         }
 
         return $links;

@@ -11,23 +11,21 @@
 
 /**
  * Declared Namespace
- *
- * @since 1.0.3
  */
 namespace WPMyAdminBar;
 
 // Required To Run
-if( count( get_included_files() ) == 1 ){ exit(); }
+if (count(get_included_files()) == 1){ exit(); }
 
 
 /**
  * Get Option Data from Options DB Table
  * 
+ * @see src/WPMyAdminBar/Hooks.php
+ * @see src/WPMyAdminBar/Admin/Admin.php
  * @see src/WPMyAdminBar/AdminBar/Menus/MyCache.php
  * @see src/WPMyAdminBar/AdminBar/Menus/MySites.php
  * @see src/WPMyAdminBar/AdminBar/Menus/MyTools.php
- *
- * @since 1.0.0
  */
 trait Options
 {
@@ -36,23 +34,22 @@ trait Options
      * 
      * @return array Unserialize settings option
      */
-    public function getOption()
+    final public static function getOption()
     {
         // Check if Option Data is in Cache, if so return transient data
-        if ( false === ( $current_option_data = get_transient( 'WPMyAdminBar' ) ) )
-        {
+        if (false == ($current_option_data = get_transient('WPMyAdminBar'))) {
             // No transient, get option directly
-            $current_option_data = get_option( 'WPMyAdminBar' );
+            $current_option_data = get_option('WPMyAdminBar');
 
             // Set the Cache
-            set_transient( 'WPMyAdminBar', $current_option_data, 0 );
+            set_transient('WPMyAdminBar', $current_option_data, 0);
         }
 
         // Return if not set, show default admin bar settings
-        if ( empty( $current_option_data ) ) { return; }
+        if (empty($current_option_data)) { return; }
 
         // Return the unserialize data
-        return maybe_unserialize( $current_option_data );
+        return maybe_unserialize($current_option_data);
     }
 
 
@@ -64,19 +61,18 @@ trait Options
      * 
      * @return void
      */
-    public static function updateOption( $options_array )
+    final public static function updateOption($options_array)
     {
-        if ( is_admin() )
-        {
+        if (is_admin() || is_network_admin()) {
             // Delete cache and option
             static::delCache('all');
             static::delOption('all');
 
-            // Create the option
-            add_option( "WPMyAdminBar", $options_array, '', 'no' );
+            // Create the options
+            add_option('WPMyAdminBar', $options_array, '', 'no');
 
             // Remove the update action
-            remove_action( 'update_option', array( __CLASS__, 'updateOption' ), 1 );
+            remove_action('update_option', array( __CLASS__, 'updateOption'), 1);
         }
     }
 
@@ -88,21 +84,21 @@ trait Options
      * 
      * @return void
      */
-    public static function updateOptionNetwork( $options_array )
+    final public static function updateOptionNetwork($options_array)
     {
         // Multisite Only
-        if ( function_exists('is_multisite') && is_multisite() ) {
+        if (function_exists('is_multisite') && is_multisite()) {
             // Loop through the sites
-            foreach ( wp_get_sites() as $value ) {
+            foreach (wp_get_sites() as $value) {
                 // Switch between blogs
-                switch_to_blog( $value['blog_id'] );
+                switch_to_blog($value['blog_id']);
 
                 // Delete cache and option
                 static::delCache('all');
                 static::delOption('all');
 
                 // Create the option
-                add_option( "WPMyAdminBar", $options_array, '', 'no' );
+                add_option('WPMyAdminBar', $options_array, '', 'no');
             }
 
             // Return to original blog
@@ -118,14 +114,13 @@ trait Options
      * 
      * @return void
      */
-    public static function delCache( $action )
+    final public static function delCache($action)
     {
-        if ( empty( $action ) ) { return; }
+        if (empty($action)) { return; }
 
         // Delete Cache
-        if ( get_transient( "WPMyAdminBar" ) )
-        {
-            delete_transient( "WPMyAdminBar" );
+        if (get_transient('WPMyAdminBar')) {
+            delete_transient('WPMyAdminBar');
         }
     }
 
@@ -137,14 +132,13 @@ trait Options
      * 
      * @return void
      */
-    public static function delOption( $action )
+    final public static function delOption($action)
     {
-        if ( $action == 'cache' ) { return; }
+        if ($action == 'cache') { return; }
 
         // Delete option
-        if ( get_option( "WPMyAdminBar" ) )
-        {
-            delete_option( "WPMyAdminBar" );
+        if (get_option('WPMyAdminBar')) {
+            delete_option('WPMyAdminBar');
         }
     }
 }

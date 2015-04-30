@@ -6,7 +6,7 @@
  * @copyright Copyright (c) 2012-2015, Chris Winters
  * @link http://technerdia.com/projects/adminbar/plugin.html
  * @license http://www.gnu.org/licenses/gpl.html
- * @version 1.0.0
+ * @version 1.0.3
  */
 
 /**
@@ -15,15 +15,13 @@
 namespace WPMyAdminBar\AdminBar\Remove;
 
 // Required To Run
-if( count( get_included_files() ) == 1 ){ exit(); }
+if (count(get_included_files()) == 1){ exit(); }
 
 
 /**
  * Features authorized to be removed
  * 
  * @see src/WPMyAdminBar/AdminBar/Remove/Features.php
- * 
- * @since 1.0.0
  */
 class Settings
 {

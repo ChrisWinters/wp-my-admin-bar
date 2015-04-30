@@ -1,6 +1,6 @@
 <?php
-ini_set( "display_errors", "1" );
-error_reporting( E_ALL | E_STRICT );
+ini_set("display_errors", "1");
+error_reporting(E_ALL | E_STRICT);
 /**
  * Plugin Name: WP My Admin Bar | Admin Bar
  * Plugin URI: http://technerdia.com/projects/adminbar/plugin.html
@@ -31,7 +31,7 @@ error_reporting( E_ALL | E_STRICT );
  * @version 1.0.3
  *
  */
-if( count( get_included_files() ) == 1 ){ exit(); }
+if (count(get_included_files()) == 1){ exit(); }
 
 
 /**
@@ -39,23 +39,22 @@ if( count( get_included_files() ) == 1 ){ exit(); }
  * 
  * @return array
  */
-if( function_exists( 'WPMyAdminBarConstants' ) )
-{
-    WPMyAdminBarConstants( Array( 
+if (function_exists('WPMyAdminBarConstants')) {
+    WPMyAdminBarConstants(Array(
         'WPMAB_VERSION'         => '1.0.0',
         'WPMAB_WP_MIN_VERSION'  => '3.8',
 
         'WPMAB_PLUGIN_FILE'     => __FILE__,
-        'WPMAB_PLUGIN_DIR'      => dirname( __FILE__ ),
-        'WPMAB_PLUGIN_BASE'     => plugin_basename( __FILE__ ),
+        'WPMAB_PLUGIN_DIR'      => dirname(__FILE__),
+        'WPMAB_PLUGIN_BASE'     => plugin_basename(__FILE__),
 
         'WPMAB_MENU_NAME'       => 'My Admin Bar',
         'WPMAB_PAGE_NAME'       => 'WPMyAdminBar',
         'WPMAB_PLUGIN_NAME'     => 'WP My Admin Bar',
 
-        'WPMAB_PATH_CLASSES'    => dirname( __FILE__ ) .'/src/WPMyAdminBar',
-        'WPMAB_PATH_TEMPLATES'  => dirname( __FILE__ ) .'/src/WPMyAdminBar/Admin/Templates'
-    ) );
+        'WPMAB_PATH_CLASSES'    => dirname(__FILE__) . '/src/WPMyAdminBar',
+        'WPMAB_PATH_TEMPLATES'  => dirname(__FILE__) . '/src/WPMyAdminBar/Admin/Templates'
+    ));
 }
 
 
@@ -63,12 +62,13 @@ if( function_exists( 'WPMyAdminBarConstants' ) )
  * Loop Through Constants and Define
  * 
  * @param $constants_array Array of Constants
+ * 
  * @return void
  */
-function WPMyAdminBarConstants( $constants_array )
+function WPMyAdminBarConstants($constants_array)
 {
-    foreach( $constants_array as $name => $value ) {
-        define( $name, $value, true );
+    foreach ($constants_array as $name => $value) {
+        define($name, $value, true);
     }
 }
 
@@ -76,22 +76,22 @@ function WPMyAdminBarConstants( $constants_array )
 /**
  * Compare PHP Versions
  */
-if ( version_compare( PHP_VERSION, '5.4.0', '<' ) )
+if (version_compare(PHP_VERSION, '5.4.0', '<'))
 {
-    wp_die( '<pre>Sorry, the WP My Admin Bar Plugin Currently Requires PHP Version 5.4.0 or Higher to run.</pre>' );
+    wp_die(__('<pre>Sorry, the WP My Admin Bar Plugin Currently Requires PHP Version 5.4.0 or Higher to run.</pre>'));
 }
 
 
 /**
  * Include PSR-4 Autoloader
  */
-require_once( WPMAB_PLUGIN_DIR .'/autoloader.php' );
+require_once(WPMAB_PLUGIN_DIR . '/autoloader.php');
 
 
 /**
  * Initialize Plugin
  */
-add_action( 'plugins_loaded', array( '\WPMyAdminBar\AdminBar', 'start' ), 0, 0 );
+add_action('plugins_loaded', array('\WPMyAdminBar\AdminBar', 'start' ), 0, 0);
 
 
 /**
@@ -99,10 +99,10 @@ add_action( 'plugins_loaded', array( '\WPMyAdminBar\AdminBar', 'start' ), 0, 0 )
  */
 
 // On Plugin Activation
-register_activation_hook( WPMAB_PLUGIN_FILE, array( '\WPMyAdminBar\Hooks', 'activate' ) );
+register_activation_hook(WPMAB_PLUGIN_FILE, array('\WPMyAdminBar\Hooks', 'activate'));
 
 // On Plugin Deactivation
-register_deactivation_hook( WPMAB_PLUGIN_FILE, array( '\WPMyAdminBar\Hooks', 'deactivate' ) );
+register_deactivation_hook(WPMAB_PLUGIN_FILE, array('\WPMyAdminBar\Hooks', 'deactivate'));
 
 // On Plugin Uninstall
-register_uninstall_hook( WPMAB_PLUGIN_FILE, array( '\WPMyAdminBar\Hooks', 'uninstall' ) );
+register_uninstall_hook(WPMAB_PLUGIN_FILE, array('\WPMyAdminBar\Hooks', 'uninstall'));

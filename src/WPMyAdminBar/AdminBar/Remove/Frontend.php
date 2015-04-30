@@ -6,7 +6,7 @@
  * @copyright Copyright (c) 2012-2015, Chris Winters
  * @link http://technerdia.com/projects/adminbar/plugin.html
  * @license http://www.gnu.org/licenses/gpl.html
- * @version 1.0.0
+ * @version 1.0.3
  */
 
 /**
@@ -15,18 +15,16 @@
 namespace WPMyAdminBar\AdminBar\Remove;
 
 // Traits
-use \WPMyAdminBar\AdminBar\Common\Options;
+use \WPMyAdminBar\Options;
 
 // Required To Run
-if( count( get_included_files() ) == 1 ){ exit(); }
+if (count(get_included_files()) == 1){ exit(); }
 
 
 /**
  * Remove Admin Bar from Display from the Frontend
  * 
  * @see src/WPMyAdminBar/WPMyAdminBar.php
- *
- * @since 1.0.0
  */
 class Frontend implements Interfacer
 {
@@ -62,7 +60,7 @@ class Frontend implements Interfacer
         // Static var for security()
         static::$SECURITY_OPTION = $this->OPTION_ARRAY;
 
-        add_filter( 'show_admin_bar', array( &$this, 'remove' ) );
+        add_filter('show_admin_bar', array(&$this, 'remove'));
     }
 
 
@@ -74,10 +72,10 @@ class Frontend implements Interfacer
     final public function remove()
     {
         // Required to Run
-        if ( empty( $this->OPTION_ARRAY ) ) { return; }
+        if (empty($this->OPTION_ARRAY)) { return; }
 
         // Set true if admin bar should be shown on frontend
-        if ( $this->OPTION_ARRAY[ 'admin-bar-front' ] == 'show' ) { return true; }
+        if ($this->OPTION_ARRAY['admin-bar-front'] == 'show') { return true; }
 
         return false;
     }
@@ -93,12 +91,12 @@ class Frontend implements Interfacer
      * 
      * @return boolean True is allowed, False is not authorized
      */
-    final public static function security( $slug ) {
+    final public static function security($slug) {
         // Local Vars
         $option = static::$SECURITY_OPTION;
 
         // Init Class
-        $askSecurity = new \WPMyAdminBar\AdminBar\Common\Security( $slug, $option );
+        $askSecurity = new \WPMyAdminBar\AdminBar\Common\Security($slug, $option);
         return $askSecurity->getReponse();
     }
     
@@ -106,12 +104,12 @@ class Frontend implements Interfacer
     /**
      * Start instance object within class
      *
-     * @return src/WPMyAdminBar/AdminBar/Menus/MySites.php
+     * @return object
      */
     final public static function start()
     {
         // Create the object
-        if ( null === self::$INSTANCE ) {
+        if (null === self::$INSTANCE) {
             self::$INSTANCE = new self;
         }
 

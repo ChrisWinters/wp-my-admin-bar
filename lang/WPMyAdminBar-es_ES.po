@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WP My Admin Bar\n"
-"POT-Creation-Date: 2015-04-28 09:28-0700\n"
-"PO-Revision-Date: 2015-04-28 09:29-0700\n"
+"POT-Creation-Date: 2015-04-30 15:23-0700\n"
+"PO-Revision-Date: 2015-04-30 15:29-0700\n"
 "Last-Translator: tribalNerd <tribalnerd@technerdia.com>\n"
 "Language-Team: techNerdia.com\n"
 "Language: es_ES\n"
@@ -17,42 +17,17 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: src/WPMyAdminBar\n"
 
-#: src/WPMyAdminBar/AdminBar.php:177
-#, php-format
+#: wp-my-admin-bar.php:81
 msgid ""
-"Notice: The WP My Admin Bar settings have been updated. -- <a href=\"?page=%d"
-"\">Resfresh To View Changes!</a>"
+"<pre>Sorry, the WP My Admin Bar Plugin Currently Requires PHP Version 5.4.0 "
+"or Higher to run.</pre>"
 msgstr ""
-"Aviso: Los ajustes WP Mi administración Bar han sido actualizados. -- <a "
-"href=\"?page=%d\">Resfresh Para ver los Cambios!</a>"
+"<pre>Lo siento, el WP Mi administración Bar Plugin Actualmente Requiere PHP "
+"versión 5.4.0 o superior para ejecutar.</pre>"
 
-#: src/WPMyAdminBar/AdminBar.php:200
-msgid ""
-"Notice: The WP My Admin Bar settings have been duplicated to the new website "
-"for you."
-msgstr ""
-"Aviso: Los ajustes WP Mi administración Bar se han duplicado en el nuevo "
-"sitio web para usted."
-
-#: src/WPMyAdminBar/AdminBar.php:223 src/WPMyAdminBar/AdminBar.php:228
-msgid "Settings"
-msgstr "Ajustes"
-
-#: src/WPMyAdminBar/AdminBar.php:232
-msgid "F.A.Q."
-msgstr "Preguntas"
-
-#: src/WPMyAdminBar/AdminBar.php:233
-msgid "Support"
-msgstr "Apoyo"
-
-#: src/WPMyAdminBar/AdminBar.php:234
-msgid "Feedback"
-msgstr "Realimentación"
-
-#: src/WPMyAdminBar/AdminBar.php:235
-msgid "Donations"
-msgstr "Donaciones"
+#: src/WPMyAdminBar/Hooks.php:71
+msgid "This plugin requires WordPress "
+msgstr "Este Enchufar Requiere WordPress"
 
 #: src/WPMyAdminBar/Admin/Settings.php:116
 msgid "Display Admin Bar on Frontend"
@@ -166,14 +141,51 @@ msgstr "Wordpress Logo en Admin Bar"
 msgid "WP Icon next to Sites in Menus"
 msgstr "WP icono junto a Sitios en los Menús"
 
-#: src/WPMyAdminBar/Admin/Templates/content.php:22
+#: src/WPMyAdminBar/Admin/Admin.php:230
+#, php-format
+msgid ""
+"Notice: The WP My Admin Bar settings have been updated. -- <a href=\"?page=%s"
+"\">Refresh To View Changes!</a>"
+msgstr ""
+"Aviso: Los ajustes WP Mi Admin Bar han sido actualizados. -- <a href=\"?page="
+"%s\">Actualizar Para ver los Cambios!</a>"
+
+#: src/WPMyAdminBar/Admin/Admin.php:258
+msgid ""
+"Notice: The WP My Admin Bar settings have been duplicated to the new website "
+"for you. "
+msgstr ""
+"Aviso: Los ajustes WP Mi Admin Bar se han duplicado en el nuevo sitio web "
+"para usted."
+
+#: src/WPMyAdminBar/Admin/Admin.php:335 src/WPMyAdminBar/Admin/Admin.php:340
+msgid "Settings"
+msgstr "Ajustes"
+
+#: src/WPMyAdminBar/Admin/Admin.php:344
+msgid "F.A.Q. "
+msgstr "PF."
+
+#: src/WPMyAdminBar/Admin/Admin.php:345
+msgid "Support"
+msgstr "Apoyo"
+
+#: src/WPMyAdminBar/Admin/Admin.php:346
+msgid "Feedback"
+msgstr "Realimentación"
+
+#: src/WPMyAdminBar/Admin/Admin.php:347
+msgid "Donations"
+msgstr "Donaciones"
+
+#: src/WPMyAdminBar/Admin/Templates/content.php:20
 msgid ""
 "Notice: Resetting will replace the current settings with default settings."
 msgstr ""
 "Aviso: Restablecimiento reemplazará la configuración actual con la "
 "configuración predeterminada."
 
-#: src/WPMyAdminBar/Admin/Templates/content.php:25
+#: src/WPMyAdminBar/Admin/Templates/content.php:23
 msgid ""
 "The WP My Admin Bar Plugin, expands the Wordpress Administration Bar, adding "
 "a new My Sites menu with extended menu options, a My Cache menu for quick "
@@ -184,11 +196,28 @@ msgstr ""
 "ampliado, un menú Mi caché para el acceso rápido y caché Mi menú "
 "Herramientas cargado con herramientas útiles para los desarrolladores web."
 
-#: src/WPMyAdminBar/Admin/Templates/content.php:29
+#: src/WPMyAdminBar/Admin/Templates/content.php:30
+msgid "NETWORK SETTINGS"
+msgstr "CONFIGURACIÓN DE RED"
+
+#: src/WPMyAdminBar/Admin/Templates/content.php:30
+msgid ""
+"To update all sites in the Network, define the settings, then scroll down "
+"and click the Update Network button to update all Websites. When new Network "
+"Sites are created the settings below will automatically be duplicated to the "
+"new site for you."
+msgstr ""
+"Para actualizar todos los sitios de la Red, definir los ajustes, a "
+"continuación, desplácese hacia abajo y haga clic en el botón de "
+"actualización de la red para actualizar todos los sitios web. Cuando los "
+"nuevos sitios de la red se crean los siguientes ajustes serán "
+"automáticamente replicado en el nuevo sitio para usted."
+
+#: src/WPMyAdminBar/Admin/Templates/content.php:35
 msgid "Menu Display Options"
 msgstr "Menú de opciones de visualización"
 
-#: src/WPMyAdminBar/Admin/Templates/content.php:30
+#: src/WPMyAdminBar/Admin/Templates/content.php:36
 msgid ""
 "Select [show] to enable the item. Select [hide] to disable the item. Click "
 "the Save button at the bottom to save the form. After saving click the "
@@ -199,74 +228,74 @@ msgstr ""
 "para guardar el formulario. Después de guardar, haga clic en el enlace que "
 "aparece en Actualizar para recargar la administración Bar Wordpress."
 
-#: src/WPMyAdminBar/Admin/Templates/content.php:38
+#: src/WPMyAdminBar/Admin/Templates/content.php:44
 msgid "Default Admin Bar Display"
 msgstr "Predeterminado del administrador de la barra Exhibición"
 
-#: src/WPMyAdminBar/Admin/Templates/content.php:39
+#: src/WPMyAdminBar/Admin/Templates/content.php:45
 msgid "Control the display of the Wordpress Admin Bar."
 msgstr "Controla la visualización de la administración Bar Wordpress."
 
-#: src/WPMyAdminBar/Admin/Templates/content.php:45
+#: src/WPMyAdminBar/Admin/Templates/content.php:51
 msgid "My Sites / Sites Menu"
 msgstr "Mi Sites / Sitios Menú"
 
-#: src/WPMyAdminBar/Admin/Templates/content.php:46
+#: src/WPMyAdminBar/Admin/Templates/content.php:52
 msgid "Custom My Sites menu with extended admin area sub-menu links."
 msgstr ""
 "Custom Mis sitios menú con la zona de administración enlaces submenú "
 "prolongados."
 
-#: src/WPMyAdminBar/Admin/Templates/content.php:52
+#: src/WPMyAdminBar/Admin/Templates/content.php:58
 msgid "My Cache Menu &amp; Plugins"
 msgstr "Mi caché Menú & amp; Plugins"
 
-#: src/WPMyAdminBar/Admin/Templates/content.php:53
+#: src/WPMyAdminBar/Admin/Templates/content.php:59
 msgid "Custom My Cache menu with links to the listed cache plugins."
 msgstr "¡Mi menú caché con enlaces a los plugins de caché en la lista."
 
-#: src/WPMyAdminBar/Admin/Templates/content.php:59
+#: src/WPMyAdminBar/Admin/Templates/content.php:65
 msgid "My Tools Menu"
 msgstr "Mi Menú Herramientas"
 
-#: src/WPMyAdminBar/Admin/Templates/content.php:60
+#: src/WPMyAdminBar/Admin/Templates/content.php:66
 msgid "Custom My Tools menu featuring helpful web developer tools."
 msgstr ""
 "¡Mi menú Herramientas que ofrece herramientas de desarrollo web útiles."
 
-#: src/WPMyAdminBar/Admin/Templates/content.php:66
+#: src/WPMyAdminBar/Admin/Templates/content.php:72
 msgid "Howdy Menu / My Account Items"
 msgstr "Howdy Menú / Mi Cuenta Artículos"
 
-#: src/WPMyAdminBar/Admin/Templates/content.php:67
+#: src/WPMyAdminBar/Admin/Templates/content.php:73
 msgid "Manage the Howdy menu and related dropdown items."
 msgstr "Administrar el menú Howdy y elementos desplegables relacionados."
 
-#: src/WPMyAdminBar/Admin/Templates/content.php:73
+#: src/WPMyAdminBar/Admin/Templates/content.php:79
 msgid "Other Menu Items"
 msgstr "Otros elementos del menú"
 
-#: src/WPMyAdminBar/Admin/Templates/content.php:74
+#: src/WPMyAdminBar/Admin/Templates/content.php:80
 msgid "Other Wordpress Created Menus."
 msgstr "Otros Wordpress Creado menús."
 
-#: src/WPMyAdminBar/Admin/Templates/content.php:80
+#: src/WPMyAdminBar/Admin/Templates/content.php:86
 msgid "Wordpress Logos"
 msgstr "Wordpress Logos"
 
-#: src/WPMyAdminBar/Admin/Templates/content.php:81
+#: src/WPMyAdminBar/Admin/Templates/content.php:87
 msgid "Wordpress logo control."
 msgstr "Control logo Wordpress."
 
-#: src/WPMyAdminBar/Admin/Templates/content.php:88
+#: src/WPMyAdminBar/Admin/Templates/content.php:94
 msgid "Save"
 msgstr "Guardar"
 
-#: src/WPMyAdminBar/Admin/Templates/content.php:88
-msgid "Global Save"
-msgstr "Global Guardar"
+#: src/WPMyAdminBar/Admin/Templates/content.php:99
+msgid "Update Network"
+msgstr "Actualización de Red"
 
-#: src/WPMyAdminBar/Admin/Templates/content.php:91
+#: src/WPMyAdminBar/Admin/Templates/content.php:104
 msgid "Reset to default settings."
 msgstr "Restablecer Configuración Predeterminada."
 
@@ -291,30 +320,34 @@ msgid "Project Details"
 msgstr "Detalles del Proyecto"
 
 #: src/WPMyAdminBar/Admin/Templates/sidebar.php:26
-msgid "Plugin at Wordpress.org"
-msgstr "Plugin at Wordpress.org"
+msgid "Plugin at GitHub"
+msgstr "Enchufar en GitHub"
 
 #: src/WPMyAdminBar/Admin/Templates/sidebar.php:26
-msgid "WP My Admin Bar"
-msgstr "El WP Mi Admin Bar"
+msgid "Plugin at Wordpress.org"
+msgstr "Plugin at Wordpress.org"
 
 #: src/WPMyAdminBar/Admin/Templates/sidebar.php:27
 msgid "Contact Form"
 msgstr "Formulario de contacto"
 
 #: src/WPMyAdminBar/Admin/Templates/sidebar.php:27
-msgid "Problems, Questions?"
-msgstr "Problemas, preguntas?"
+msgid "Send Me Feedback."
+msgstr "Enviarme Comentarios."
 
-#: src/WPMyAdminBar/Admin/Templates/sidebar.php:33
+#: src/WPMyAdminBar/Admin/Templates/sidebar.php:28
+msgid "Report Bugs and Issues."
+msgstr "Informar de Bugs y Problemas."
+
+#: src/WPMyAdminBar/Admin/Templates/sidebar.php:34
 msgid "Show Some Love"
 msgstr "Muestre un cierto amor"
 
-#: src/WPMyAdminBar/Admin/Templates/sidebar.php:36
+#: src/WPMyAdminBar/Admin/Templates/sidebar.php:37
 msgid "Please Rate This Plugin!"
 msgstr "Por favor, Fuente Del Plugin!"
 
-#: src/WPMyAdminBar/Admin/Templates/sidebar.php:36
+#: src/WPMyAdminBar/Admin/Templates/sidebar.php:37
 msgid ""
 "It only takes a few seconds to <a href=\"http://wordpress.org/extend/plugins/"
 "wp-my-admin-bar/\" target=\"_blank\">rate this plugin</a>! Your rating helps "
@@ -324,19 +357,19 @@ msgstr ""
 "wp-my-admin-bar/\" target=\"_blank\"> evaluar este </a> Plugin ! Tu "
 "calificación ayuda a crear la motivación para futuros desarrollos!"
 
-#: src/WPMyAdminBar/Admin/Templates/sidebar.php:37
+#: src/WPMyAdminBar/Admin/Templates/sidebar.php:38
 msgid "Thank You For Your Support"
 msgstr "Gracias Por Su Apoyo"
 
-#: src/WPMyAdminBar/Admin/Templates/sidebar.php:44
+#: src/WPMyAdminBar/Admin/Templates/sidebar.php:45
 msgid "Donate To The Wp My Tool Bar Project Directly!"
 msgstr "Donar al proyecto Wp Mi barra de herramientas directamente!"
 
-#: src/WPMyAdminBar/Admin/Templates/sidebar.php:50
+#: src/WPMyAdminBar/Admin/Templates/sidebar.php:51
 msgid "Notice"
 msgstr "Aviso"
 
-#: src/WPMyAdminBar/Admin/Templates/sidebar.php:53
+#: src/WPMyAdminBar/Admin/Templates/sidebar.php:54
 msgid ""
 "Disabling this plugin does NOT delete the plugin settings. Deleting the "
 "plugin, through Wordpress, deletes all plugin settings."
@@ -344,331 +377,340 @@ msgstr ""
 "Desactivación de este plugin no elimina la configuración del plugin. Borrar "
 "el plugin, a través de Wordpress, borra todos los ajustes del plugin."
 
-#: src/WPMyAdminBar/Admin/Templates/radios.php:23
+#: src/WPMyAdminBar/Admin/Templates/radios.php:24
 msgid "show"
 msgstr "mostrar"
 
-#: src/WPMyAdminBar/Admin/Templates/radios.php:24
+#: src/WPMyAdminBar/Admin/Templates/radios.php:25
 msgid "hide"
 msgstr "ocultar"
 
-#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:40
+#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:36
 msgid "DB Cache"
 msgstr "DB Caché"
 
-#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:41
+#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:37
 msgid "Super Cache"
 msgstr "Súper Caché"
 
-#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:42
+#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:38
 msgid "Total Cache"
 msgstr "Total Caché"
 
-#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:43
+#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:39
 msgid "Widget Cache"
 msgstr "Widget Caché"
 
-#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:44
+#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:40
 msgid "WP Minify"
 msgstr "WP Minify"
 
-#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:56
+#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:52
 msgid "Keyword Tools"
 msgstr "Herramientas Para Palabras Clave"
 
-#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:57
+#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:53
 msgid "SEO Tools"
 msgstr "Herramientas SEO"
 
-#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:58
+#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:54
 msgid "Traffic &amp; Rankings"
 msgstr "Tráfico &amp; Clasificaciones"
 
-#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:59
+#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:55
 msgid "Validators"
 msgstr "Validadores"
 
-#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:60
+#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:56
 msgid "Web Health"
 msgstr "Web de la Salud"
 
-#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:61
+#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:57
 msgid "Web Tools"
 msgstr "Herramientas Web"
 
-#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:62
+#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:58
 msgid "Word Tools"
 msgstr "Herramientas de Word"
 
-#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:74
+#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:70
 msgid "Google KeyTool"
 msgstr "Herramienta Clave Google"
 
-#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:75
+#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:71
 msgid "Google Insights"
 msgstr "Google Insights"
 
-#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:76
+#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:72
 msgid "Google Trends"
 msgstr "Google Trends"
 
-#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:77
+#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:73
 msgid "Keyword Map"
 msgstr "Palabra clave Mapa"
 
-#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:78
+#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:74
 msgid "Keyword Spy"
 msgstr "Palabra clave del espía"
 
-#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:79
+#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:75
 msgid "Meta Glossary"
 msgstr "Meta Glosario"
 
-#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:80
+#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:76
 msgid "SEO Digger"
 msgstr "SEO Digger"
 
-#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:81
+#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:77
 msgid "Thesaurus"
 msgstr "Tesauro"
 
-#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:82
+#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:78
 msgid "Uber Suggest"
 msgstr "Uber Sugerir"
 
-#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:83
+#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:79
 msgid "Urban Dictionary"
 msgstr "Diccionario Urbano"
 
-#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:84
+#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:80
 msgid "Wordtracker"
 msgstr "Wordtracker"
 
-#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:96
+#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:92
 msgid "Compete Rank"
 msgstr "Compete Rank"
 
-#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:97
+#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:93
 msgid "Alexa Rank"
 msgstr "Alexa Rank"
 
-#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:109
+#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:105
 msgid "Ahrefs Explorer"
 msgstr "Ahrefs Explorer"
 
-#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:110
+#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:106
 msgid "Majestic SEO"
 msgstr "Majestic SEO"
 
-#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:111
+#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:107
 msgid "SEO Moz"
 msgstr "SEO Moz"
 
-#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:112
+#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:108
 msgid "SEO Profiler"
 msgstr "SEO Profiler"
 
-#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:113
+#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:109
 msgid "SE Rush"
 msgstr "SE Rush"
 
-#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:125
+#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:121
 msgid "W3C Validate Page"
 msgstr "W3C Validar Página"
 
-#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:126
+#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:122
 msgid "W3C Validate CSS"
 msgstr "W3C Validar CSS"
 
-#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:127
+#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:123
 msgid "W3C Mobile Checker"
 msgstr "W3C Mobile Checker"
 
-#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:128
+#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:124
 msgid "W3C Validate Feed"
 msgstr "W3C Validar RSS"
 
-#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:129
+#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:125
 msgid "W3C Link Checker"
 msgstr "W3C Link Checker"
 
-#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:141
+#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:137
 msgid "Internet Conditions"
 msgstr "Condiciones de Internet"
 
-#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:142
+#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:138
 msgid "Internet Health"
 msgstr "Internet Salud"
 
-#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:143
+#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:139
 msgid "Internet Health Map"
 msgstr "Internet Salud Mapa"
 
-#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:144
+#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:140
 msgid "Traffic Report"
 msgstr "Informe de Tráfico"
 
-#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:145
+#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:141
 msgid "Google Servers"
 msgstr "Servidores de Google"
 
-#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:157
+#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:153
 msgid "Domain Whois"
 msgstr "Whois del dominio"
 
-#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:158
+#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:154
 msgid "Down For Me?"
 msgstr "Abajo Para Mí?"
 
-#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:159
+#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:155
 msgid "iWeb Tools"
 msgstr "Herramientas de iWeb"
 
-#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:160
+#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:156
 msgid "Pingler Ping Tool"
 msgstr "Herramienta Ping Pingler"
 
-#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:161
+#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:157
 msgid "Pingler Web Tools"
 msgstr "Pingler Herramientas Web"
 
-#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:162
+#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:158
 msgid "Qbase Site Data"
 msgstr "Qbase Datos Del Sitio"
 
-#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:163
+#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:159
 msgid "WayBackMachine"
 msgstr "WayBackMachine"
 
-#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:175
+#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:171
 msgid "Combine Words"
 msgstr "Combine Palabras"
 
-#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:176
+#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:172
 msgid "Keyword Density"
 msgstr "Densidad de Palabras clave"
 
-#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:177
+#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:173
 msgid "Keyword Mixer"
 msgstr "Palabra clave Mixer"
 
-#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:178
+#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:174
 msgid "Readability Index"
 msgstr "Readability Índice"
 
-#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:179
+#: src/WPMyAdminBar/AdminBar/Menus/Settings.php:175
 msgid "Typo Generator"
 msgstr "Typo Generator"
 
-#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:95
+#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:92
 msgid "My Sites"
 msgstr "Mi Sitios"
 
-#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:131
-#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:146
+#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:127
+#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:142
 msgid "Dashboard"
 msgstr "Salpicadero"
 
-#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:132
+#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:128
 msgid "Network Home"
 msgstr "Red Inicio"
 
-#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:133
+#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:129
 msgid "Edit This Site"
 msgstr "Editar Este Sitio"
 
-#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:134
+#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:130
 msgid "Show Sites"
 msgstr "Mostrar Sitios"
 
-#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:135
-#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:179
+#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:131
+#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:171
 msgid "Users Admin"
 msgstr "Usuarios de Admin"
 
-#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:136
+#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:132
 msgid "Themes Admin"
 msgstr "Temas de Admin"
 
-#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:137
-#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:178
+#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:133
+#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:170
 msgid "Plugins Admin"
 msgstr "Enchufars de Admin"
 
-#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:138
-#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:180
+#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:134
+#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:172
 msgid "Settings Admin"
 msgstr "Ajustes de Administración"
 
-#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:139
-#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:184
+#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:135
+#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:176
 msgid "Log Out"
 msgstr "Cerrar Sesión"
 
-#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:147
+#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:143
 msgid "Visit Site"
 msgstr "Visita Del Sitio"
 
-#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:152
+#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:147
 msgid "View Comments"
 msgstr "Ver Comentarios"
 
-#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:158
+#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:152
 msgid "Add Content"
 msgstr "Añadir Contenido"
 
-#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:159
+#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:153
 msgid "Add Post"
 msgstr "Agregar Mensaje"
 
-#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:160
+#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:154
 msgid "Add Page"
 msgstr "Añadir Página"
 
-#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:161
+#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:155
 msgid "Add Media"
 msgstr "Añadir Contenido"
 
-#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:167
+#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:160
 msgid "Posts and Pages"
 msgstr "Mensajes y Páginas"
 
-#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:168
+#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:161
 msgid "View Posts"
 msgstr "Ver Mensajes"
 
-#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:169
+#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:162
 msgid "View Drafts"
 msgstr "Ver Borradores"
 
-#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:170
+#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:163
 msgid "View Pages"
 msgstr "Ver Páginas"
 
-#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:176
+#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:168
 msgid "Administration"
 msgstr "Administración"
 
-#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:177
+#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:169
 msgid "Appearance Admin"
 msgstr "Aspecto de Admin"
 
-#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:250
+#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:247
 msgid "Network Admin"
 msgstr "Red Admin"
 
-#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:266
+#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:265
 msgid "Visit This Website"
 msgstr "Visite este sitio"
 
-#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:319
+#: src/WPMyAdminBar/AdminBar/Menus/MySites.php:323
 msgid "Website"
 msgstr "Sitio Web"
 
-#: src/WPMyAdminBar/AdminBar/Menus/MyCache.php:103
+#: src/WPMyAdminBar/AdminBar/Menus/MyCache.php:101
 msgid "My Cache"
 msgstr "Mi Caché"
 
-#: src/WPMyAdminBar/AdminBar/Menus/MyTools.php:190
+#: src/WPMyAdminBar/AdminBar/Menus/MyTools.php:188
 msgid "My Tools"
 msgstr "Mi Ayuda"
+
+#~ msgid "Global Save"
+#~ msgstr "Global Guardar"
+
+#~ msgid "WP My Admin Bar"
+#~ msgstr "El WP Mi Admin Bar"
+
+#~ msgid "Problems, Questions?"
+#~ msgstr "Problemas, preguntas?"

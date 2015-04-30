@@ -8,18 +8,16 @@
  * @license http://www.gnu.org/licenses/gpl.html
  * @version 1.0.3
  */
-if( count( get_included_files() ) == 1 ){ exit(); }
+if (count(get_included_files()) == 1){ exit(); }
 
 /**
  * Admin Area Content Body Template
  *
- * @see classes/Admin.php
- *
- * @since 1.0.3
+ * @see src/WPMyAdminBar/Admin/Admin.php
  */
 
 // Reset Alert Notice
-$alert = __( 'Notice: Resetting will replace the current settings with default settings.', 'WPMyAdminBar' );
+$alert = __( 'Notice: Resetting will replace the current settings with default settings.', 'WPMyAdminBar');
 ?>
 <div class="postbox"><div class="inside">
     <p><?php _e('The WP My Admin Bar Plugin, expands the Wordpress Administration Bar, adding a new My Sites menu with extended menu options, a My Cache menu for quick cache access and My Tools menu loaded with handy tools for web developers.', 'WPMyAdminBar');?></p>
@@ -27,9 +25,9 @@ $alert = __( 'Notice: Resetting will replace the current settings with default s
 
 <?php
 // Multisite Only
-if ( function_exists('is_multisite') && is_multisite() ) {?>
+if ( is_network_admin() ) {?>
 <div class="postbox"><div class="inside">
-    <p><?php _e('NETWORK SETTINGS: To update all sites in the Network, define the settings, then scroll down and click the Update Network button. When new Network Sites are created the settings below will automatically be duplicated to the new site for you.', 'WPMyAdminBar');?></p>
+    <p><b><u><?php _e('NETWORK SETTINGS', 'WPMyAdminBar');?></u></b> : <?php _e('To update all sites in the Network, define the settings, then scroll down and click the Update Network button to update all Websites. When new Network Sites are created the settings below will automatically be duplicated to the new site for you.', 'WPMyAdminBar');?></p>
 </div></div>
 <?php }?>
 
@@ -46,64 +44,64 @@ if ( function_exists('is_multisite') && is_multisite() ) {?>
             &bull; <u><?php _e('Default Admin Bar Display', 'WPMyAdminBar');?></u><br />
             <p class="description"><?php _e('Control the display of the Wordpress Admin Bar.', 'WPMyAdminBar');?></p>
          </th></tr>
-        <?php echo static::radioForms( "1" );?>
+        <?php echo static::radioForms('1');?>
         <tr><td colspan="2"><hr /></td></tr>
 
         <tr><th colspan="2">
             &bull; <u><?php _e('My Sites / Sites Menu', 'WPMyAdminBar');?></u><br />
             <p class="description"><?php _e('Custom My Sites menu with extended admin area sub-menu links.', 'WPMyAdminBar');?></p>
         </th></tr>
-        <?php echo static::radioForms( "2" );?>
+        <?php echo static::radioForms('2');?>
         <tr><td colspan="2"><hr /></td></tr>
 
         <tr><th colspan="2">
             &bull; <u><?php _e('My Cache Menu &amp; Plugins', 'WPMyAdminBar');?></u><br />
             <p class="description"><?php _e('Custom My Cache menu with links to the listed cache plugins.', 'WPMyAdminBar');?></p>
         </th></tr>
-        <?php echo static::radioForms( "3" );?>
+        <?php echo static::radioForms('3');?>
         <tr><td colspan="2"><hr /></td></tr>
 
         <tr><th colspan="2">
             &bull; <u><?php _e('My Tools Menu', 'WPMyAdminBar');?></u><br />
             <p class="description"><?php _e('Custom My Tools menu featuring helpful web developer tools.', 'WPMyAdminBar');?></p>
         </th></tr>
-        <?php echo static::radioForms( "4" );?>
+        <?php echo static::radioForms('4');?>
         <tr><td colspan="2"><hr /></td></tr>
 
         <tr><th colspan="2">
             &bull; <u><?php _e('Howdy Menu / My Account Items', 'WPMyAdminBar');?></u><br />
             <p class="description"><?php _e('Manage the Howdy menu and related dropdown items.', 'WPMyAdminBar');?></p>
         </th></tr>
-        <?php echo static::radioForms( "5" );?>
+        <?php echo static::radioForms('5');?>
         <tr><td colspan="2"><hr /></td></tr>
 
         <tr><th colspan="2">
             &bull; <u><?php _e('Other Menu Items', 'WPMyAdminBar');?></u><br />
             <p class="description"><?php _e('Other Wordpress Created Menus.', 'WPMyAdminBar');?></p>
         </th></tr>
-        <?php echo static::radioForms( "6" );?>
+        <?php echo static::radioForms('6');?>
         <tr><td colspan="2"><hr /></td></tr>
 
         <tr><th colspan="2">
             &bull; <u><?php _e('Wordpress Logos', 'WPMyAdminBar');?></u><br />
             <p class="description"><?php _e('Wordpress logo control.', 'WPMyAdminBar');?></p>
         </th></tr>
-        <?php echo static::radioForms( "7" );?>
+        <?php echo static::radioForms('7');?>
         <tr><td colspan="2"><hr /></td></tr>
         </tbody>
         </table>
 
-        <p><input type="submit" name="settings" class="button button-primary" value=" <?php echo __( 'Save', 'WPMyAdminBar' );?> " /></p>
+        <p><input type="submit" name="settings" class="button button-primary" value=" <?php echo __('Save', 'WPMyAdminBar');?> " /></p>
         
         <?php
 // Multisite Only
-if ( function_exists('is_multisite') && is_multisite() ) {?>
-        <p class="alignright"><input type="submit" name="settings" class="button button-primary" value=" <?php echo __( 'Update Network', 'WPMyAdminBar' );?> " /></p>
+if (is_network_admin()) {?>
+        <p class="alignright"><input type="submit" name="settings" class="button button-primary" value=" <?php echo __('Update Network', 'WPMyAdminBar');?> " /></p>
         <input type="hidden" name="network" value="1" />
 <?php }?>
 
         <br /><br /><br />
-        <p class="alignright"><input type="checkbox" name="reset" value="1" id="reset" onclick="alert( <?php echo $alert;?> );" /> <label for="reset"><small><?php _e('Reset to default settings.', 'WPMyAdminBar');?></small></label></p>
+        <p class="alignright"><input type="checkbox" name="reset" value="1" id="reset" onclick="alert(<?php echo $alert;?>);" /> <label for="reset"><small><?php _e('Reset to default settings.', 'WPMyAdminBar');?></small></label></p>
         <br class="clear" />
     </form>
 
