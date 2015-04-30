@@ -1,0 +1,29 @@
+{
+    "name": "tribalNerd/wp-my-admin-bar",
+    "type": "wordpress-plugin",
+    "description": "The Wp My Admin Bar Plugin extends the default Wordpress Admin Bar.",
+    "homepage": "https://github.com/tribalNerd/wp-my-admin-bar",
+    "keywords": [
+        "techNerdia",
+        "tribalNerd",
+        "my admin bar",
+        "admin bar","wp",
+        "wordpress",
+        "plugin"
+    ],
+    "license": "GNU",
+    "authors": [ {
+        "name": "tribalNerd",
+        "homepage": "http://techNerdia.com/"
+    } ],
+    "support": {
+        "forum": "https://wordpress.org/support/plugin/wp-my-admin-bar",
+        "issues": "https://github.com/tribalNerd/wp-my-admin-bar/issues"
+    },
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "autoload": {
+        "psr-4": { "WPMyAdminBar\\": "src/WPMyAdminBar/" }
+    }
+}

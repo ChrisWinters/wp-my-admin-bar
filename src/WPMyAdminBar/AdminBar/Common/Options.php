@@ -52,4 +52,37 @@ trait Options
         // Return the unserialize data
         return maybe_unserialize( $current_option_data );
     }
+
+
+    /**
+     * Update the options on Multisite Networks
+     * 
+     * @value boolean $options_array $_POST from from
+     * 
+     * @return void
+     */
+    public function updateMultisite( $options_array )
+    {
+        if ( function_exists('is_multisite') && is_multisite() ) {
+            global $wpdb;
+
+            // Get blog ID's
+            $blog_ids = $wpdb->get_results( $wpdb->prepare( "SELECT blog_id FROM %d WHERE public = '1' AND archived = '0' AND spam = '0' AND deleted = '0' ORDER BY blog_id", $wpdb->siteid ) );
+ 
+            // Loop through sites
+            foreach ( $blog_ids as $blog_id ) {
+                if ( empty( $blog_id ) ) { continue; }
+
+                // Delete cache and option
+                delete_transient( "WPMyAdminBar" );
+                delete_option( "WPMyAdminBar" );
+
+                // Create the option
+                add_option( "WPMyAdminBar", $options_array, '', 'no' );
+            }
+
+            // Return to original blog
+            restore_current_blog();
+        }
+    }
 }

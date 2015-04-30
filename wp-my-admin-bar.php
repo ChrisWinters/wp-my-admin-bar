@@ -1,10 +1,12 @@
 <?php
+ini_set( "display_errors", "1" );
+error_reporting( E_ALL | E_STRICT );
 /**
  * Plugin Name: WP My Admin Bar | Admin Bar
  * Plugin URI: http://technerdia.com/projects/adminbar/plugin.html
  * Description: The WP My Admin Bar Plugin, replaces and expands the Wordpress Admin Bar, adding a new My Sites menu with extended options, a My Cache menu for quick cache access and My Tools for all WP Developers and Blogger needs.
  * Tags: myadmin, myadminbar, adminbar, admin bar, admin, bar, toolbar, tool bar, my sites, mysites, tools, cache, multisite, webtools, web tools, technerdia
- * Version: 1.0.2
+ * Version: 1.0.3
  * License: GPL
  * Author: tribalNerd
  * Author URI: http://techNerdia.com/
@@ -26,7 +28,7 @@
  * @copyright Copyright (c) 2012-2015, Chris Winters
  * @link http://technerdia.com/projects/adminbar/plugin.html
  * @license http://www.gnu.org/licenses/gpl.html
- * @version 1.0.2
+ * @version 1.0.3
  *
  */
 if( count( get_included_files() ) == 1 ){ exit(); }
@@ -90,3 +92,17 @@ require_once( WPMAB_PLUGIN_DIR .'/autoloader.php' );
  * Initialize Plugin
  */
 add_action( 'plugins_loaded', array( '\WPMyAdminBar\AdminBar', 'start' ), 0, 0 );
+
+
+/**
+ * Wordpress Register Hooks
+ */
+
+// On Plugin Activation
+register_activation_hook( WPMAB_PLUGIN_FILE, array( '\WPMyAdminBar\Hooks', 'activate' ) );
+
+// On Plugin Deactivation
+register_deactivation_hook( WPMAB_PLUGIN_FILE, array( '\WPMyAdminBar\Hooks', 'deactivate' ) );
+
+// On Plugin Uninstall
+register_uninstall_hook( WPMAB_PLUGIN_FILE, array( '\WPMyAdminBar\Hooks', 'uninstall' ) );

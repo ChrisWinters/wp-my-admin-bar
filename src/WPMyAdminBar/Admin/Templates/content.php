@@ -6,7 +6,7 @@
  * @copyright Copyright (c) 2012-2015, Chris Winters
  * @link http://technerdia.com/projects/adminbar/plugin.html
  * @license http://www.gnu.org/licenses/gpl.html
- * @version 1.0.0
+ * @version 1.0.3
  */
 if( count( get_included_files() ) == 1 ){ exit(); }
 
@@ -15,7 +15,7 @@ if( count( get_included_files() ) == 1 ){ exit(); }
  *
  * @see classes/Admin.php
  *
- * @since 1.0.0
+ * @since 1.0.3
  */
 
 // Reset Alert Notice
@@ -24,6 +24,14 @@ $alert = __( 'Notice: Resetting will replace the current settings with default s
 <div class="postbox"><div class="inside">
     <p><?php _e('The WP My Admin Bar Plugin, expands the Wordpress Administration Bar, adding a new My Sites menu with extended menu options, a My Cache menu for quick cache access and My Tools menu loaded with handy tools for web developers.', 'WPMyAdminBar');?></p>
 </div></div>
+
+<?php
+// Multisite Only
+if ( function_exists('is_multisite') && is_multisite() ) {?>
+<div class="postbox"><div class="inside">
+    <p><?php _e('NETWORK SETTINGS: To update all sites in the Network, define the settings, then scroll down and click the Update Network button. When new Network Sites are created the settings below will automatically be duplicated to the new site for you.', 'WPMyAdminBar');?></p>
+</div></div>
+<?php }?>
 
 <div  class="postbox"><div class="inside">
     <h2><?php _e('Menu Display Options', 'WPMyAdminBar');?>:</h2>
@@ -85,7 +93,14 @@ $alert = __( 'Notice: Resetting will replace the current settings with default s
         </tbody>
         </table>
 
-        <p><input type="submit" name="settings" id="save" class="button button-primary" value=" <?php echo is_network_admin() ? __( 'Save', 'WPMyAdminBar' ) : __( 'Global Save', 'WPMyAdminBar' );?> " /></p>
+        <p><input type="submit" name="settings" class="button button-primary" value=" <?php echo __( 'Save', 'WPMyAdminBar' );?> " /></p>
+        
+        <?php
+// Multisite Only
+if ( function_exists('is_multisite') && is_multisite() ) {?>
+        <p class="alignright"><input type="submit" name="settings" class="button button-primary" value=" <?php echo __( 'Update Network', 'WPMyAdminBar' );?> " /></p>
+        <input type="hidden" name="network" value="1" />
+<?php }?>
 
         <br /><br /><br />
         <p class="alignright"><input type="checkbox" name="reset" value="1" id="reset" onclick="alert( <?php echo $alert;?> );" /> <label for="reset"><small><?php _e('Reset to default settings.', 'WPMyAdminBar');?></small></label></p>

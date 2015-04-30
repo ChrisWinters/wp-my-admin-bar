@@ -1,14 +1,16 @@
-Wp My Admin Bar
-=========================
+# Wp My Admin Bar
+
 The Wp My Admin Bar Plugin expands on the default Wordpress Admin Bar, adding 3 new custom menus, the ability to show / hide every feature on the Admin Bar, and even the Admin Bar itself.
 
-*Licensed under the GNU General Public license: See the LICENSE file included with this package.
+-- Requires PHP Version 5.4+ or higher!
 
+Project is now on [Github](https://github.com/tribalNerd/wp-my-admin-bar)
 
-:: Overview
---------
+## Overview
 
-The 'Wp My Admin Bar' Plugin expands on the default Wordpress Admin Bar. Three new custom menus (My Sites, My Cache & My Tools) have been added, along with the ability to show / hide every feature on the Admin Bar, and even the Admin Bar itself.
+The 'Wp My Admin Bar' Plugin expands on the default Wordpress Admin Bar. Adding three new custom menus (My Sites, My Cache & My Tools), along with the ability to show / hide every feature on the Admin Bar, and even the Admin Bar itself.
+
+Works on both Standalone Wordpress Installs and Multisite Networks.
 
 
 :: 3 New Menus
@@ -18,15 +20,26 @@ The 'Wp My Admin Bar' Plugin expands on the default Wordpress Admin Bar. Three n
 * My Cache: Allows for quick access to selected Cache Plugins.
 * My Tools: Web tools for WP Developers and Bloggers.
 
-Other Features Include: Being able to remove the Wordpress Logo from the Admin Bar, remove the Howdy statement and for multisite setups: Remove the WP Icon from the My Sites menu and replace it with Site ID's.
+* Other Features Include:
+* Remove the Wordpress Logo from the Admin Bar.
+* Remove the Howdy Dropdown, disable the dropdown, or remove features within the dropdown.
+* Disable the dropdown on the Howdy menu.
+* Remove Update Notices, Content menus and the Search Icon from the Frontend.
+* Disable the Admin Bar on the Backend and/or the Frontend.
+
 
 :: Plugin works with and has been tested on:
+--------
 
 * Multisite - Network Activated
 * Multisite - Site Activated
 * Standalone Installs (non-multisite)
 
-:: Wordpress Plugin Admin, search for: WP My Admin Bar
+:: To Install/Activate
+--------
+
+From the Wordpress Plugin Admin, search for: WP My Admin Bar
+
 * Download, Install and Activate like any other plugin.
 * Access the Settings Menu > My Admin Bar menu link to setup the Admin Bar.
 
@@ -78,6 +91,12 @@ A) Yes.
 :: Change Log
 --------
 Release
+= 1.0.3 =
+- Moved the activation, deactivation, uninstall hooks to wp-my-admin-bar.php
+- Moved all option get/set methods to \WPMyAdminBar\Options
+- Adjusted Admin, Hooks, MyCache, MySites, & My Tools to new Options location & methods
+- Set a Network message in \WPMyAdminBar\Admin\Templates\content.php
+
 = 1.0.2 =
 - Added in PHP Version Compare
 - Modified compare statements

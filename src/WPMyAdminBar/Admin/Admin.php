@@ -6,11 +6,13 @@
  * @copyright Copyright (c) 2012-2015, Chris Winters
  * @link http://technerdia.com/projects/adminbar/plugin.html
  * @license http://www.gnu.org/licenses/gpl.html
- * @version 1.0.0
+ * @version 1.0.3
  */
 
 /**
  * Declared Namespace
+ *
+ * @since 1.0.3
  */
 namespace WPMyAdminBar\Admin;
 
@@ -60,7 +62,7 @@ class Admin extends Settings
 
         // Update/Reset The Option
         if ( $settings == 'yes' && check_admin_referer( 'mymab_action', 'mymab_nonce' ) ) {
-            static::updateOption( $settings, $reset );
+            static::update( $settings, $reset );
         }
 
         // Build Admin Area
@@ -113,7 +115,7 @@ class Admin extends Settings
      * 
      * @return void
      */
-    final static function updateOption( $settings, $reset )
+    final static function update( $settings, $reset )
     {
         // Ignore if settings post has not happened
         if ( $settings != "yes" ) { return; }
@@ -125,13 +127,12 @@ class Admin extends Settings
 
         // Reset options array, get option data from settings
         if ( $reset == "yes" ) { $options_array = Settings::$OPTION_DEFAULTS; }
+        
+        // If Multisite and Update Network clicked, Update the Network
+        static::updateOption( $options_array );
 
-        // Delete cache and option
-        delete_transient( "WPMyAdminBar" );
-        delete_option( "WPMyAdminBar" );
-
-        // Create the option
-        add_option( "WPMyAdminBar", $options_array, '', 'no' );
+        // If Multisite and Update Network clicked, Update the Network
+        static::updateOptionNetwork( $options_array );
 
         // Remove the update action
         remove_action( 'update_option', array( __CLASS__, 'updateOption' ), 1 );

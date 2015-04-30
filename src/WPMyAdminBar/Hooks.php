@@ -6,13 +6,18 @@
  * @copyright Copyright (c) 2012-2015, Chris Winters
  * @link http://technerdia.com/projects/adminbar/plugin.html
  * @license http://www.gnu.org/licenses/gpl.html
- * @version 1.0.0
+ * @version 1.0.3
  */
 
 /**
  * Declared Namespace
+ *
+ * @since 1.0.3
  */
 namespace WPMyAdminBar;
+
+// Traits
+use \WPMyAdminBar\Options;
 
 // Required To Run
 if( count( get_included_files() ) == 1 ){ exit(); }
@@ -27,6 +32,35 @@ if( count( get_included_files() ) == 1 ){ exit(); }
  */
 class Hooks extends Settings
 {
+    use Options;
+
+    /**
+     * @var array Option Data
+     */
+    protected $OPTION_ARRAY = array();
+
+    /**
+     * @var array Settings Array for Option
+     */
+    protected $DEFAULT_OPTION_ARRAY = array();
+
+    
+    /**
+     * Define Class Variables
+     * 
+     * @return void
+     */
+    public function __construct() {
+        // Define Option Var
+        // @see src/WPMyAdminBar/Options.php
+        $this->OPTION_ARRAY = $this->getOption();
+
+        // Default Reset / Install Option Var
+        // @see src/WPMyAdminBar/Settings.php
+        $this->DEFAULT_OPTION_ARRAY = Settings::$DEFAULT_OPTION_SETTINGS;
+    }
+
+
     /**
      * Activate Plugin
      * 
@@ -42,8 +76,8 @@ class Hooks extends Settings
             wp_die( 'This plugin requires WordPress '. WPMAB_WP_MIN_VERSION .' or higher. Please Upgrade Wordpress, then try activating this plugin again.' );
         }
 
-        // Remove cache
-        static::delCache( 'all' );
+        // Remove cache, if found
+        Options::delCache( 'all' );
 
         // Add option, if not found
         if ( !get_option( "WPMyAdminBar" ) )
@@ -52,8 +86,11 @@ class Hooks extends Settings
             // @see classes/Settings.php
             $options_array = Settings::$DEFAULT_OPTION_SETTINGS;
 
-            // Add default option
-            add_option( "WPMyAdminBar", serialize( $options_array ), '', 'no' );
+            // If Multisite and Update Network clicked, Update the Network
+            static::updateOption( $options_array );
+
+            // If Multisite and Update Network clicked, Update the Network
+            static::updateOptionNetwork( $options_array );
         }
 
         // Upgrade the WP My Admin Bar Plugin
@@ -74,11 +111,13 @@ class Hooks extends Settings
      */
     final public static function deactivate()
     {
-        // Remove cache
-        static::delCache( 'all' );
+        // Delete cache
+        Options::delCache('all');
+        Options::delOption('all');
 
         // Cleanup Multisite Network Sites
-        static::cleanNetwork( 'cache' );
+        //static::delOptionNetwork( 'cache' );
+        static::delOptionNetwork( 'all' );
     }
 
 
@@ -89,14 +128,12 @@ class Hooks extends Settings
      */
     final public static function uninstall()
     {
-        // Remove cache
-        static::delCache( 'all' );
-
-        // Remove option
-        static::delOption( 'all' );
+        // Delete cache and option
+        Options::delCache('all');
+        Options::delOption('all');
 
         // Cleanup Multisite Network Sites
-        static::cleanNetwork( 'all' );
+        static::delOptionNetwork( 'all' );
     }
 
 
@@ -106,25 +143,21 @@ class Hooks extends Settings
      * @param $action string
      * @return void
      */
-    final public static function cleanNetwork( $action )
+    final public static function delOptionNetwork( $action )
     {
+        if ( empty( $action ) ) { return; }
+
         // Multisite Only
         if ( function_exists('is_multisite') && is_multisite() )
         {
-            global $wpdb;
+            // Loop through the sites
+            foreach ( wp_get_sites() as $value ) {
+                // Switch between blogs
+                switch_to_blog( $value['blog_id'] );
 
-            // Get blog ID's
-            $site_list = $wpdb->get_results( 'SELECT blog_id FROM '. $wpdb->blogs .'  ORDER BY blog_id' );
-
-            // Loop through sites
-            foreach ( $site_list as $site ) {
-                if ( empty( $site ) ) { continue; }
-
-                // Remove cache
-                static::delCache( $action );
-
-                // Remove option
-                static::delOption( $action );
+                // Delete cache and option
+                Options::delCache('all');
+                Options::delOption('all');
             }
 
             // Return to original blog
@@ -138,7 +171,7 @@ class Hooks extends Settings
      * 
      * @param $action string
      * @return void
-     */
+     
     final public static function delCache( $action )
     {
         if ( empty( $action ) ) { return; }
@@ -149,14 +182,14 @@ class Hooks extends Settings
             delete_transient( "WPMyAdminBar" );
         }
     }
-
+*/
 
     /**
      * Delete the option
      * 
      * @param $action string
      * @return void
-     */
+     
     final public static function delOption( $action )
     {
         if ( $action == 'cache' ) { return; }
@@ -167,4 +200,5 @@ class Hooks extends Settings
             delete_option( "WPMyAdminBar" );
         }
     }
+*/
 }

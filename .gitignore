@@ -3,6 +3,7 @@
 .DS_Store
 .git
 .htaccess
+.mm
 .project
 .sass-cache
 .settings
@@ -16,14 +17,19 @@ tests
 tests/
 test
 test/
+vendor
+vendor/
 
 access_log
+composer.lock
+composer.phar
 error_log
 license.txt
+phpunit.xml
 readme.html
 readme.txt
 Thumbs.db
 
 *.log
-*.Trashe
+*.Trash
 *.Trashes

@@ -6,11 +6,13 @@
  * @copyright Copyright (c) 2012-2015, Chris Winters
  * @link http://technerdia.com/projects/adminbar/plugin.html
  * @license http://www.gnu.org/licenses/gpl.html
- * @version 1.0.0
+ * @version 1.0.3
  */
 
 /**
  * Declared Namespace
+ *
+ * @since 1.0.3
  */
 namespace WPMyAdminBar;
 
@@ -87,20 +89,6 @@ class AdminBar
 
         // Remove Admin Bar from WP Admin
         add_action( 'after_setup_theme', array( '\WPMyAdminBar\AdminBar\Remove\Backend', 'start' ), 20, 0 );
-
-        
-        /**
-         * Wordpress Register Hooks
-         */
-        
-        // On Plugin Activation
-        register_activation_hook( WPMAB_PLUGIN_FILE, array( '\WPMyAdminBar\Hooks', 'activate' ) );
-        
-        // On Plugin Deactivation
-        register_deactivation_hook( WPMAB_PLUGIN_FILE, array( '\WPMyAdminBar\Hooks', 'deactivate' ) );
-            
-        // On Plugin Uninstall
-        register_uninstall_hook( WPMAB_PLUGIN_FILE, array( '\WPMyAdminBar\Hooks', 'uninstall' ) );
     }
 
 
@@ -149,6 +137,7 @@ class AdminBar
         if( !is_super_admin() ) { return; }
         if( !is_user_logged_in() ) { return; }
         if( !is_network_admin() ) { return; }
+        if( !is_plugin_active_for_network( WPMAB_PLUGIN_BASE ) ) { return; }
 
         // Network Settings Menu Item
         // @params $parent_slug | $page_title | $menu_title | $capability | $menu_slug | $function
