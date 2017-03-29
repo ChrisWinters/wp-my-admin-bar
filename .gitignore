@@ -28,18 +28,12 @@
 .Trash-*
 .travis.yml
 
-bin
-bin/
-nbproject
-nbproject/
-test
-test/
-vendor
-vendor/
+psds
+psds/
 
+copy.sh
 access_log
 error_log
 license.txt
 phpunit.xml
 readme.html
-readme.txt

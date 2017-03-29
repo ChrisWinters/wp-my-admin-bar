@@ -1,0 +1,8 @@
+table{border:1px solid #eeeeee;margin:25px auto;width:100%;}
+.form-table th{background:#f7f7f7;border:1px solid #eeeeee;color:#333333;font-size:12px;font-weight:bold;padding:10px 6px;text-align:left;width:30%;}
+.form-table td{background:#fefefe;border:1px solid #eeeeee;color:#333333;font-size:14px;padding:10px 6px;vertical-align:top;}
+#poststuff h2{font-size:18px;font-weight:bold;margin: 24px 0 8px 0;padding:0;}
+.form-table label{font-size:12px;}
+.textcenter p.submit{text-align:center;}
+span.description{color:#666666;}
+.inactive{color:#cc0000;font-weight:bold;text-decoration:underline;}

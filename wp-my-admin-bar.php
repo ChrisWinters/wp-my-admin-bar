@@ -1,108 +1,161 @@
 <?php
-#ini_set("display_errors", "1");
-#error_reporting(E_ALL | E_STRICT);
 /**
  * Plugin Name: WP My Admin Bar | Admin Bar
- * Plugin URI: http://technerdia.com/projects/adminbar/plugin.html
+ * Plugin URI: https://github.com/tribalNerd/wp-my-admin-bar
  * Description: The WP My Admin Bar Plugin, replaces and expands the Wordpress Admin Bar, adding a new My Sites menu with extended options, a My Cache menu for quick cache access and My Tools for all WP Developers and Blogger needs.
  * Tags: myadmin, myadminbar, adminbar, admin bar, admin, bar, toolbar, tool bar, my sites, mysites, tools, cache, multisite, webtools, web tools, technerdia
- * Version: 1.0.3
- * License: GPL
- * Author: tribalNerd
+ * Version: 2.0.0
+ * License: GNU GPLv3
+ * Copyright (c) 2017 Chris Winters
+ * Author: tribalNerd, Chris Winters
  * Author URI: http://techNerdia.com/
- *
- * Created Feb 12, 2012
- *
- * This program is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License as published by the Free Software
- * Foundation; either version 2 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License along with
- * this program; if not, please visit: http://www.gnu.org/licenses/gpl.html
- *
- * @author tribalNerd (tribalnerd@technerdia.com)
- * @copyright Copyright (c) 2012-2015, Chris Winters
- * @link http://technerdia.com/projects/adminbar/plugin.html
- * @license http://www.gnu.org/licenses/gpl.html
- * @version 1.0.3
- *
+ * Text Domain: wp-my-admin-bar
  */
-if (count(get_included_files()) == 1){ exit(); }
+if ( ! defined( 'ABSPATH' ) ) { exit; }
+if ( count( get_included_files() ) == 1 ){ exit(); }
 
 
 /**
- * Define Constants
- * 
- * @return array
+ * @about Define Constants
  */
-if (function_exists('WPMyAdminBarConstants')) {
-    WPMyAdminBarConstants(Array(
-        'WPMAB_VERSION'         => '1.0.0',
-        'WPMAB_WP_MIN_VERSION'  => '3.8',
+if( function_exists( 'WpMyAdminBarConstants' ) )
+{
+    WpMyAdminBarConstants( Array(
+        'WP_MY_ADMIN_BAR_BASE_URL'          => get_bloginfo( 'url' ),
+        'WP_MY_ADMIN_BAR_VERSION'           => '2.0.0',
+        'WP_MY_ADMIN_BAR_WP_MIN_VERSION'    => '3.8',
 
-        'WPMAB_PLUGIN_FILE'     => __FILE__,
-        'WPMAB_PLUGIN_DIR'      => dirname(__FILE__),
-        'WPMAB_PLUGIN_BASE'     => plugin_basename(__FILE__),
+        'WP_MY_ADMIN_BAR_PLUGIN_FILE'       => __FILE__,
+        'WP_MY_ADMIN_BAR_PLUGIN_DIR'        => dirname( __FILE__ ),
+        'WP_MY_ADMIN_BAR_PLUGIN_BASE'       => plugin_basename( __FILE__ ),
 
-        'WPMAB_MENU_NAME'       => 'My Admin Bar',
-        'WPMAB_PAGE_NAME'       => 'WPMyAdminBar',
-        'WPMAB_PLUGIN_NAME'     => 'WP My Admin Bar',
+        'WP_MY_ADMIN_BAR_MENU_NAME'         => __( 'My Admin Bar', 'wp-my-admin-bar' ),
+        'WP_MY_ADMIN_BAR_PAGE_NAME'         => __( 'WP My Admin Bar', 'wp-my-admin-bar' ),
+        'WP_MY_ADMIN_BAR_OPTION_NAME'       => 'wpmyadminbar_',
+        'WP_MY_ADMIN_BAR_PLUGIN_NAME'       => 'wp-my-admin-bar',
 
-        'WPMAB_PATH_CLASSES'    => dirname(__FILE__) . '/src/WPMyAdminBar',
-        'WPMAB_PATH_TEMPLATES'  => dirname(__FILE__) . '/src/WPMyAdminBar/Admin/Templates'
-    ));
+        'WP_MY_ADMIN_BAR_CLASSES'           => dirname( __FILE__ ) .'/classes',
+        'WP_MY_ADMIN_BAR_TEMPLATES'         => dirname( __FILE__ ) .'/templates'
+    ) );
 }
 
 
 /**
- * Loop Through Constants and Define
- * 
- * @param $constants_array Array of Constants
- * 
- * @return void
+ * @about Loop Through Constants
  */
-function WPMyAdminBarConstants($constants_array)
+function WpMyAdminBarConstants( $constants_array )
 {
-    foreach ($constants_array as $name => $value) {
-        define($name, $value, true);
+    foreach( $constants_array as $name => $value ) {
+        define( $name, $value, true );
     }
 }
 
 
 /**
- * Compare PHP Versions
+ * @about Register Classes & Include
  */
-if (version_compare(PHP_VERSION, '5.4.0', '<'))
+spl_autoload_register( function ( $class )
 {
-    wp_die(__('<pre>Sorry, the WP My Admin Bar Plugin Currently Requires PHP Version 5.4.0 or Higher to run.</pre>'));
+    if( strpos( $class, 'WpMyAdminBar_' ) !== false ) {
+        $class_name = str_replace( 'WpMyAdminBar_', "", $class );
+
+        // If the Class Exists, Include the Class
+        if( file_exists( WP_MY_ADMIN_BAR_CLASSES .'/class-'. strtolower( $class_name ) .'.php' ) ) {
+            include_once( WP_MY_ADMIN_BAR_CLASSES .'/class-'. strtolower( $class_name ) .'.php' );
+        }
+    }
+} );
+
+
+/**
+ * @about Run Plugin
+ */
+if( ! class_exists( 'wp_my_admin_bar' ) )
+{
+    class wp_my_admin_bar
+    {
+        // Holds Instance Object
+        protected static $instance = NULL;
+
+
+        /**
+         * @about Initiate Plugin
+         */
+        final public function init()
+        {
+            // Activate Plugin
+            register_activation_hook( __FILE__, array( $this, 'activate' ) );
+
+            // Inject Plugin Links
+            add_filter( 'plugin_row_meta', array( $this, 'links' ), 10, 2 );
+
+            // Load Admin Area
+            WpMyAdminBar_AdminArea::instance();
+
+            // Manage Settings
+            WpMyAdminBar_Settings::instance();
+
+            // Manage Form Posts Outside of Settings
+            WpMyAdminBar_Process::instance();
+
+            // Core Admin Bar Manager
+            WpMyAdminBar_Core::instance();
+        }
+
+
+        /**
+         * @about Activate Plugin
+         */
+        final public function activate()
+        {
+            // Wordpress Version Check
+            global $wp_version;
+
+            // Version Check
+            if( version_compare( $wp_version, WP_MY_ADMIN_BAR_WP_MIN_VERSION, "<" ) ) {
+                wp_die( __( '<b>Activation Failed</b>: The ' . WP_MY_ADMIN_BAR_PAGE_NAME . ' plugin requires WordPress version ' . WP_MY_ADMIN_BAR_WP_MIN_VERSION . ' or higher. Please Upgrade Wordpress, then try activating this plugin again.', 'wp-my-admin-bar' ) );
+            }
+        }
+
+
+        /**
+         * @about Inject Links Into Plugin Admin
+         * @param array $links Default links for this plugin
+         * @param string $file The name of the plugin being displayed
+         * @return array $links The links to inject
+         */
+        final public function links( $links, $file )
+        {
+            // Get Current URL
+            $request_uri = filter_input( INPUT_SERVER, 'REQUEST_URI', FILTER_SANITIZE_URL );
+
+            // Links To Inject
+            if ( $file == WP_MY_ADMIN_BAR_PLUGIN_BASE && strpos( $request_uri, "plugins.php" ) !== false ) {
+                $links[] = '<a href="options-general.php?page=' . WP_MY_ADMIN_BAR_PLUGIN_NAME . '">'. __( 'Website Settings', 'wp-my-admin-bar' ) .'</a>';
+                $links[] = '<a href="http://technerdia.com/wpmab/#faq" target="_blank">'. __( 'F.A.Q.', 'wp-my-admin-bar' ) .'</a>';
+                $links[] = '<a href="http://technerdia.com/help/" target="_blank">'. __( 'Support', 'wp-my-admin-bar' ) .'</a>';
+                $links[] = '<a href="http://technerdia.com/feedback/" target="_blank">'. __( 'Feedback', 'wp-my-admin-bar' ) .'</a>';
+                $links[] = '<a href="http://technerdia.com/donate/" target="_blank">'. __( 'Donations', 'wp-my-admin-bar' ) .'</a>';
+                $links[] = '<a href="http://technerdia.com/wpmab/" target="_blank">'. __( 'PRO Details', 'wp-my-admin-bar' ) .'</a>';
+            }
+
+            return $links;
+        }
+
+
+        /**
+        * @about Create Instance
+        */
+        final public static function instance()
+        {
+            if ( ! self::$instance ) {
+                self::$instance = new self();
+                self::$instance->init();
+            }
+
+            return self::$instance;
+        }
+    }
 }
 
-
-/**
- * Include PSR-4 Autoloader
- */
-require_once(WPMAB_PLUGIN_DIR . '/autoloader.php');
-
-
-/**
- * Initialize Plugin
- */
-add_action('plugins_loaded', array('\WPMyAdminBar\AdminBar', 'start' ), 0, 0);
-
-
-/**
- * Wordpress Register Hooks
- */
-
-// On Plugin Activation
-register_activation_hook(WPMAB_PLUGIN_FILE, array('\WPMyAdminBar\Hooks', 'activate'));
-
-// On Plugin Deactivation
-register_deactivation_hook(WPMAB_PLUGIN_FILE, array('\WPMyAdminBar\Hooks', 'deactivate'));
-
-// On Plugin Uninstall
-register_uninstall_hook(WPMAB_PLUGIN_FILE, array('\WPMyAdminBar\Hooks', 'uninstall'));
+add_action( 'after_setup_theme', array( 'wp_my_admin_bar', 'instance' ), 0 );
