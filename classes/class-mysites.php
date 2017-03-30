@@ -9,6 +9,7 @@ if ( count( get_included_files() ) == 1 ){ exit(); }
  * 
  * @method init()       Init Menus
  * @method render()     Render Menu Parts
+ * @method menuTitle()  Build Menu Title
  * @method superadmin() Network Admin Menu
  * @method website()    Menu Items | Unique Website
  * @method websites()   Menu Items | Website Listing
@@ -40,11 +41,15 @@ if( ! class_exists( 'WpMyAdminBar_MySites' ) )
         {
             global $wp_admin_bar;
 
+            // Menu Link
+            $network = ( is_network_admin() ) ? network_admin_url( '/sites.php' ) : home_url( '/' );
+            $href = ( is_admin() || ! current_user_can( 'read' ) ) ? $network : admin_url();
+
             // Menu Title - My Sites
             $wp_admin_bar->add_menu( array(
                 'id'    => 'mysites',
-                'title' => __( 'My Sites', 'wp-my-admin-bar' ),
-                'href'  => admin_url( 'my-sites.php' ),
+                'title' => $this->menuTitle(),
+                'href'  => $href,
             ) );
 
             // Network Enabled
@@ -60,6 +65,28 @@ if( ! class_exists( 'WpMyAdminBar_MySites' ) )
                 // Menu Items | Unique Website
                 $this->website( $wp_admin_bar );
             }
+        }
+
+
+        /**
+         * @about Build Menu Title
+         */
+        final public function menuTitle()
+        {
+            // Multisite Title
+            if ( is_multisite() ) {
+                $title = __( 'My Sites', 'wp-my-admin-bar' );
+            } else {
+                // Default Blog Name
+                $title = get_bloginfo( 'name' );
+
+                // Build Title If Blog Name Not Defined
+                if ( ! $title ) {
+                    $title = preg_replace( '#^(https?://)?(www.)?#', '', get_home_url() );
+                }
+            }
+
+            return wp_html_excerpt( $title, 40, '&hellip;' );
         }
 
 

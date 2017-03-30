@@ -24,9 +24,9 @@ Please [contact us directly](http://technerdia.com/help/) if you need assistance
 
 ### 3 New Menus:
 
-* My Sites: Extended menu options, posts, pages, media, plugins, settings, etc...
-* My Cache: Allows for quick access to selected Cache Plugins.
-* My Tools: Web tools for WP Developers and Bloggers.
+* My Sites / Site Name Menu: Extended menu options, posts, pages, media, plugins, settings, etc...
+* My Cache Menu: Allows for quick access to selected Cache Plugins.
+* My Tools Menu: Web tools for WP Developers and Bloggers.
 
 ### Other Features Include:
 
@@ -231,4 +231,10 @@ Alpha Release
 
 == Screenshots ==
 
-1. Coming Soon
+1. Plugin Admin Area Pointing Out The Admin Link & 3 New Menus
+
+2. New "Site Name" Admin Area Menu Being Displayed
+
+3. New My Sites Menu For Multisite Networks
+
+4. Network Admin Area Pointing Out Admin Link

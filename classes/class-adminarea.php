@@ -108,11 +108,11 @@ if ( ! class_exists( 'WpMyAdminBar_AdminArea' ) )
 
 
         /**
-         * @about Enqueue Stylesheet and jQuery
+         * @about Enqueue Stylesheet
          */
         final public function enqueue()
         {
-            wp_enqueue_style( $this->plugin_name, plugins_url( '/assets/admin.css', $this->plugin_file ), '', date( 'YmdHis', time() ), 'all' );
+            wp_enqueue_style( $this->plugin_name, plugin_dir_url( $this->plugin_file ) . 'assets/admin.css', '', date( 'YmdHis', time() ), 'all' );
         }
 
 

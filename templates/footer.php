@@ -11,7 +11,7 @@ if ( count( get_included_files() ) == 1 ){ exit(); }?>
 </div></div> <!-- close poststuff and post-body -->
 
 <br /><hr />
-<p style="text-align:right;"><small><b><?php _e( 'Created by', 'includes-for-wordpress' );?></b>: <a href="http://technerdia.com/" target="_blank">techNerdia</a></small></p>
+<p style="text-align:right;"><small><b><?php _e( 'Created by', 'wp-my-admin-bar' );?></b>: <a href="http://technerdia.com/" target="_blank">techNerdia</a></small></p>
 </div> <!-- end wrap -->
 
 <br class="clear" />

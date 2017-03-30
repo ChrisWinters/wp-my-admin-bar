@@ -1,0 +1,737 @@
+# Copyright (C) 2017 WP My Admin Bar | Admin Bar
+# This file is distributed under the same license as the WP My Admin Bar | Admin Bar package.
+msgid ""
+msgstr ""
+"Project-Id-Version: WP My Admin Bar | Admin Bar 2.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-my-admin-bar\n"
+"POT-Creation-Date: 2017-03-30 21:29:17+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
+"Last-Translator: tribalNerd <tribalnerd@technerdia.com>\n"
+"Language-Team: tribalNerd <tribalnerd@technerdia.com>\n"
+
+#: classes/class-adminarea.php:50 classes/class-adminarea.php:60
+msgid "Website"
+msgstr ""
+
+#: classes/class-adminarea.php:51 classes/class-adminarea.php:67
+msgid "Network"
+msgstr ""
+
+#: classes/class-extended.php:128 classes/class-extended.php:133
+msgid "You are not authorized to perform this action."
+msgstr ""
+
+#: classes/class-mycache.php:46
+msgid "My Cache"
+msgstr ""
+
+#: classes/class-mycache.php:126 classes/class-settings.php:103
+#: templates/network.php:53
+msgid "Total Cache"
+msgstr ""
+
+#: classes/class-mycache.php:136 classes/class-settings.php:104
+#: templates/network.php:56
+msgid "Super Cache"
+msgstr ""
+
+#: classes/class-mycache.php:146 classes/class-settings.php:105
+#: templates/network.php:59
+msgid "Comet Cache"
+msgstr ""
+
+#: classes/class-mycache.php:156 classes/class-settings.php:106
+#: templates/network.php:62
+msgid "Fastest Cache"
+msgstr ""
+
+#: classes/class-mycache.php:166 classes/class-settings.php:107
+#: templates/network.php:65
+msgid "CSS Minify"
+msgstr ""
+
+#: classes/class-mycache.php:176 classes/class-settings.php:109
+#: templates/network.php:71
+msgid "Fast Velocity Minify"
+msgstr ""
+
+#: classes/class-mycache.php:186 classes/class-settings.php:108
+#: templates/network.php:68
+msgid "WP Minify Fix"
+msgstr ""
+
+#: classes/class-mysites.php:78
+msgid "My Sites"
+msgstr ""
+
+#: classes/class-mysites.php:108
+msgid "Network Admin"
+msgstr ""
+
+#: classes/class-mysites.php:116 classes/class-mysites.php:276
+msgid "Dashboard"
+msgstr ""
+
+#: classes/class-mysites.php:124
+msgid "Manage Network"
+msgstr ""
+
+#: classes/class-mysites.php:134
+msgid "Edit This Site"
+msgstr ""
+
+#: classes/class-mysites.php:143
+msgid "Add Website"
+msgstr ""
+
+#: classes/class-mysites.php:151
+msgid "Add Plugin"
+msgstr ""
+
+#: classes/class-mysites.php:159
+msgid "Add User"
+msgstr ""
+
+#: classes/class-mysites.php:167
+msgid "Network Admins"
+msgstr ""
+
+#: classes/class-mysites.php:175
+msgid "Sites Admin"
+msgstr ""
+
+#: classes/class-mysites.php:183 classes/class-mysites.php:398
+msgid "Users Admin"
+msgstr ""
+
+#: classes/class-mysites.php:191
+msgid "Themes Admin"
+msgstr ""
+
+#: classes/class-mysites.php:199 classes/class-mysites.php:390
+msgid "Plugins Admin"
+msgstr ""
+
+#: classes/class-mysites.php:207 classes/class-mysites.php:406
+msgid "Settings Admin"
+msgstr ""
+
+#: classes/class-mysites.php:284
+msgid "Visit Site"
+msgstr ""
+
+#: classes/class-mysites.php:293
+msgid "View Comments"
+msgstr ""
+
+#: classes/class-mysites.php:304
+msgid "Add Content"
+msgstr ""
+
+#: classes/class-mysites.php:312
+msgid "Add Post"
+msgstr ""
+
+#: classes/class-mysites.php:320
+msgid "Add Page"
+msgstr ""
+
+#: classes/class-mysites.php:328
+msgid "Add Media"
+msgstr ""
+
+#: classes/class-mysites.php:339
+msgid "Posts and Pages"
+msgstr ""
+
+#: classes/class-mysites.php:347
+msgid "View Posts"
+msgstr ""
+
+#: classes/class-mysites.php:355
+msgid "View Drafts"
+msgstr ""
+
+#: classes/class-mysites.php:363
+msgid "View Pages"
+msgstr ""
+
+#: classes/class-mysites.php:374
+msgid "Administration"
+msgstr ""
+
+#: classes/class-mysites.php:382
+msgid "Appearance Admin"
+msgstr ""
+
+#: classes/class-mysites.php:415
+msgid "Logout"
+msgstr ""
+
+#: classes/class-mytools.php:50
+msgid "My Tools"
+msgstr ""
+
+#: classes/class-mytools.php:91
+msgid "Keyword Tools"
+msgstr ""
+
+#: classes/class-mytools.php:100
+msgid "Google KeyTool"
+msgstr ""
+
+#: classes/class-mytools.php:101
+msgid "Google Insights"
+msgstr ""
+
+#: classes/class-mytools.php:102
+msgid "Google Trends"
+msgstr ""
+
+#: classes/class-mytools.php:103
+msgid "Keyword Map"
+msgstr ""
+
+#: classes/class-mytools.php:104
+msgid "Keyword Spy"
+msgstr ""
+
+#: classes/class-mytools.php:105
+msgid "Meta Glossary"
+msgstr ""
+
+#: classes/class-mytools.php:106
+msgid "SEO Digger"
+msgstr ""
+
+#: classes/class-mytools.php:107
+msgid "Thesaurus"
+msgstr ""
+
+#: classes/class-mytools.php:108
+msgid "Uber Suggest"
+msgstr ""
+
+#: classes/class-mytools.php:109
+msgid "Urban Dictionary"
+msgstr ""
+
+#: classes/class-mytools.php:110
+msgid "Wordtracker"
+msgstr ""
+
+#: classes/class-mytools.php:131
+msgid "Ranking Tools"
+msgstr ""
+
+#: classes/class-mytools.php:140
+msgid "Compete Rank"
+msgstr ""
+
+#: classes/class-mytools.php:141
+msgid "Alexa Rank"
+msgstr ""
+
+#: classes/class-mytools.php:162
+msgid "SEO Tools"
+msgstr ""
+
+#: classes/class-mytools.php:171
+msgid "Ahrefs Explorer"
+msgstr ""
+
+#: classes/class-mytools.php:172
+msgid "Majestic SEO"
+msgstr ""
+
+#: classes/class-mytools.php:173
+msgid "SEO Moz"
+msgstr ""
+
+#: classes/class-mytools.php:174
+msgid "SEO Profiler"
+msgstr ""
+
+#: classes/class-mytools.php:175
+msgid "SE Rush"
+msgstr ""
+
+#: classes/class-mytools.php:196
+msgid "Validation Tools"
+msgstr ""
+
+#: classes/class-mytools.php:205
+msgid "W3C Validate Page"
+msgstr ""
+
+#: classes/class-mytools.php:206
+msgid "W3C Validate CSS"
+msgstr ""
+
+#: classes/class-mytools.php:207
+msgid "W3C Mobile Checker"
+msgstr ""
+
+#: classes/class-mytools.php:208
+msgid "W3C Validate Feed"
+msgstr ""
+
+#: classes/class-mytools.php:209
+msgid "W3C Link Checker"
+msgstr ""
+
+#: classes/class-mytools.php:230
+msgid "Monitoring Tools"
+msgstr ""
+
+#: classes/class-mytools.php:239
+msgid "Internet Conditions"
+msgstr ""
+
+#: classes/class-mytools.php:240
+msgid "Internet Health"
+msgstr ""
+
+#: classes/class-mytools.php:241
+msgid "Internet Health Map"
+msgstr ""
+
+#: classes/class-mytools.php:242
+msgid "Traffic Report"
+msgstr ""
+
+#: classes/class-mytools.php:243
+msgid "Google Servers"
+msgstr ""
+
+#: classes/class-mytools.php:264
+msgid "Web Tools"
+msgstr ""
+
+#: classes/class-mytools.php:273
+msgid "Domain Whois"
+msgstr ""
+
+#: classes/class-mytools.php:274
+msgid "Down For Me?"
+msgstr ""
+
+#: classes/class-mytools.php:275
+msgid "iWeb Tools"
+msgstr ""
+
+#: classes/class-mytools.php:276
+msgid "Pingler Ping Tool"
+msgstr ""
+
+#: classes/class-mytools.php:277
+msgid "Pingler Web Tools"
+msgstr ""
+
+#: classes/class-mytools.php:278
+msgid "Qbase Site Data"
+msgstr ""
+
+#: classes/class-mytools.php:279
+msgid "WayBackMachine"
+msgstr ""
+
+#: classes/class-mytools.php:300
+msgid "Word Tools"
+msgstr ""
+
+#: classes/class-mytools.php:309
+msgid "Combine Words"
+msgstr ""
+
+#: classes/class-mytools.php:310
+msgid "Keyword Density"
+msgstr ""
+
+#: classes/class-mytools.php:311
+msgid "Keyword Mixer"
+msgstr ""
+
+#: classes/class-mytools.php:312
+msgid "Readability Index"
+msgstr ""
+
+#: classes/class-mytools.php:313
+msgid "Typo Generator"
+msgstr ""
+
+#: classes/class-process.php:154
+msgid ""
+"<u>Website Enabled</u>: Please <a href=\"javascript:window.location."
+"reload(true)\">refresh</a> to update the admin bar view."
+msgstr ""
+
+#: classes/class-process.php:158
+msgid ""
+"<u>Website Disabled</u>: Please <a href=\"javascript:window.location."
+"reload(true)\">refresh</a> to update the admin bar view."
+msgstr ""
+
+#: classes/class-process.php:162
+msgid ""
+"<u>Website Settings Deleted</u>: All WP My Admin Bar settings have been "
+"deleted on this website."
+msgstr ""
+
+#: classes/class-process.php:166
+msgid ""
+"<u>Network Enabled</u>: Please <a href=\"javascript:window.location."
+"reload(true)\">refresh</a> to update the admin bar view."
+msgstr ""
+
+#: classes/class-process.php:170
+msgid ""
+"<u>Network Disabled</u>: Please <a href=\"javascript:window.location."
+"reload(true)\">refresh</a> to update the admin bar view."
+msgstr ""
+
+#: classes/class-process.php:174
+msgid ""
+"<u>Network Settings Deleted</u>: All settings related to the WP My Admin Bar "
+"plugin have been deleted."
+msgstr ""
+
+#: classes/class-settings.php:76 templates/network.php:11
+msgid "Default Admin Bar Display"
+msgstr ""
+
+#: classes/class-settings.php:77 templates/network.php:26
+msgid "My Sites / Sites Menu"
+msgstr ""
+
+#: classes/class-settings.php:78 templates/network.php:44
+msgid "My Cache Menu & Plugins"
+msgstr ""
+
+#: classes/class-settings.php:79 templates/network.php:77
+msgid "My Tools Menu"
+msgstr ""
+
+#: classes/class-settings.php:80 templates/network.php:89
+msgid "Howdy Menu / My Account Items"
+msgstr ""
+
+#: classes/class-settings.php:81 templates/network.php:113
+msgid "Other Menu Items"
+msgstr ""
+
+#: classes/class-settings.php:82
+msgid "Wordpress Logo"
+msgstr ""
+
+#: classes/class-settings.php:93 templates/network.php:17
+msgid "Admin Bar on Frontend"
+msgstr ""
+
+#: classes/class-settings.php:94 templates/network.php:20
+msgid "Admin Bar on Backend"
+msgstr ""
+
+#: classes/class-settings.php:96 templates/network.php:32
+msgid "Custom My Sites Menu"
+msgstr ""
+
+#: classes/class-settings.php:98 templates/network.php:35
+msgid "Site Ids Next To Site Names"
+msgstr ""
+
+#: classes/class-settings.php:100 templates/network.php:38
+msgid "Local/Current Site Menu"
+msgstr ""
+
+#: classes/class-settings.php:102 templates/network.php:50
+msgid "Custom My Cache Menu"
+msgstr ""
+
+#: classes/class-settings.php:111 templates/network.php:83
+msgid "Custom My Tools Menu"
+msgstr ""
+
+#: classes/class-settings.php:113 templates/network.php:95
+msgid "Howdy, Menu on Admin Bar"
+msgstr ""
+
+#: classes/class-settings.php:114 templates/network.php:98
+msgid "Howdy, Menu Dropdown Only"
+msgstr ""
+
+#: classes/class-settings.php:115 templates/network.php:101
+msgid "Avatar & Username within Dropdown"
+msgstr ""
+
+#: classes/class-settings.php:116 templates/network.php:104
+msgid "Edit Profile Link within Dropdown"
+msgstr ""
+
+#: classes/class-settings.php:117 templates/network.php:107
+msgid "Logout Link within Dropdown"
+msgstr ""
+
+#: classes/class-settings.php:119 templates/network.php:119
+msgid "Update Notices Menu"
+msgstr ""
+
+#: classes/class-settings.php:120 templates/network.php:122
+msgid "New Content Menu"
+msgstr ""
+
+#: classes/class-settings.php:121 templates/network.php:125
+msgid "Comments Menu"
+msgstr ""
+
+#: classes/class-settings.php:122 templates/network.php:128
+msgid "Search Icon on Frontend"
+msgstr ""
+
+#: classes/class-settings.php:124 templates/network.php:140
+msgid "Wordpress Logo on Admin Bar"
+msgstr ""
+
+#: classes/class-settings.php:126 templates/network.php:143
+msgid "WP Icon next to Sites in Menus"
+msgstr ""
+
+#: classes/class-settings.php:181 templates/network.php:12
+msgid "Control the display of the Wordpress Admin Bar."
+msgstr ""
+
+#: classes/class-settings.php:190 templates/network.php:27
+msgid "Custom My Sites menu with extended admin area sub-menu links."
+msgstr ""
+
+#: classes/class-settings.php:199 templates/network.php:45
+msgid "Custom My Cache menu with links to the listed cache plugins."
+msgstr ""
+
+#: classes/class-settings.php:208 templates/network.php:78
+msgid "Custom My Tools menu featuring helpful web developer tools."
+msgstr ""
+
+#: classes/class-settings.php:217 templates/network.php:90
+msgid "Manage the Howdy menu and related dropdown items."
+msgstr ""
+
+#: classes/class-settings.php:226 templates/network.php:114
+msgid "Other Wordpress Created Menus."
+msgstr ""
+
+#: classes/class-settings.php:235 templates/network.php:135
+msgid "Wordpress logo control."
+msgstr ""
+
+#: classes/class-settings.php:244 classes/class-settings.php:253
+#: classes/class-settings.php:280 classes/class-settings.php:370
+#: classes/class-settings.php:379 classes/class-settings.php:388
+#: classes/class-settings.php:397 classes/class-settings.php:406
+#: classes/class-settings.php:415 classes/class-settings.php:424
+#: classes/class-settings.php:433 classes/class-settings.php:442
+#: classes/class-settings.php:450 classes/class-settings.php:459
+#: templates/network.php:18 templates/network.php:21 templates/network.php:39
+#: templates/network.php:96 templates/network.php:99 templates/network.php:102
+#: templates/network.php:105 templates/network.php:108
+#: templates/network.php:120 templates/network.php:123
+#: templates/network.php:126 templates/network.php:129
+#: templates/network.php:141 templates/network.php:144
+msgid "Check to Disable"
+msgstr ""
+
+#: classes/class-settings.php:262 classes/class-settings.php:271
+#: classes/class-settings.php:289 classes/class-settings.php:298
+#: classes/class-settings.php:307 classes/class-settings.php:316
+#: classes/class-settings.php:325 classes/class-settings.php:334
+#: classes/class-settings.php:343 classes/class-settings.php:352
+#: classes/class-settings.php:361 templates/network.php:33
+#: templates/network.php:36 templates/network.php:51 templates/network.php:54
+#: templates/network.php:57 templates/network.php:60 templates/network.php:63
+#: templates/network.php:66 templates/network.php:69 templates/network.php:72
+#: templates/network.php:84
+msgid "Check to Enable"
+msgstr ""
+
+#: classes/class-settings.php:298 classes/class-settings.php:307
+#: classes/class-settings.php:316 classes/class-settings.php:325
+#: classes/class-settings.php:334 classes/class-settings.php:343
+#: classes/class-settings.php:352 templates/network.php:54
+#: templates/network.php:57 templates/network.php:60 templates/network.php:63
+#: templates/network.php:66 templates/network.php:69 templates/network.php:72
+msgid "Plugin Details"
+msgstr ""
+
+#: templates/footer.php:14
+msgid "Created by"
+msgstr ""
+
+#: templates/network.php:5
+msgid "Global Network Update"
+msgstr ""
+
+#: templates/network.php:5
+msgid "Plugin Is Currently Globally Disabled"
+msgstr ""
+
+#: templates/network.php:6
+msgid ""
+"The options below equalize all Wp My Admin Bar features across the entire "
+"network."
+msgstr ""
+
+#: templates/network.php:134
+msgid "Wordpress Logos"
+msgstr ""
+
+#: templates/network.php:149
+msgid "update network"
+msgstr ""
+
+#: templates/network.php:160
+msgid "WARNING: Delete all plugin settings across the entire network."
+msgstr ""
+
+#: templates/network.php:162
+msgid "Enable plugin on all network websites."
+msgstr ""
+
+#: templates/network.php:164
+msgid "Disable plugin on all network websites, keeping all settings."
+msgstr ""
+
+#: templates/sidebar.php:10 wp-my-admin-bar.php:33
+msgid "WP My Admin Bar"
+msgstr ""
+
+#: templates/sidebar.php:14
+msgid "Plugin Home Page"
+msgstr ""
+
+#: templates/sidebar.php:15
+msgid "Bugs & Feature Requests"
+msgstr ""
+
+#: templates/sidebar.php:16
+msgid "Contact Support"
+msgstr ""
+
+#: templates/sidebar.php:17
+msgid "Submit Feedback"
+msgstr ""
+
+#: templates/sidebar.php:18
+msgid "More Plugins!"
+msgstr ""
+
+#: templates/sidebar.php:24
+msgid "Please Rate This Plugin At Wordpress.org!"
+msgstr ""
+
+#: templates/website.php:5 wp-my-admin-bar.php:134
+msgid "Website Settings"
+msgstr ""
+
+#: templates/website.php:5
+msgid "Plugin Is Currently Disabled"
+msgstr ""
+
+#: templates/website.php:6
+msgid "Modify the settings below to adjust the display of the Admin Bar."
+msgstr ""
+
+#: templates/website.php:11
+msgid "update admin bar"
+msgstr ""
+
+#: templates/website.php:17
+msgid "update my sites menu"
+msgstr ""
+
+#: templates/website.php:23
+msgid "update my cache menu"
+msgstr ""
+
+#: templates/website.php:29
+msgid "update my tools menu"
+msgstr ""
+
+#: templates/website.php:35
+msgid "update howdy menu"
+msgstr ""
+
+#: templates/website.php:41
+msgid "update other menus"
+msgstr ""
+
+#: templates/website.php:47
+msgid "update wp logos"
+msgstr ""
+
+#: templates/website.php:58
+msgid "WARNING: Delete all plugin settings for this website."
+msgstr ""
+
+#: templates/website.php:60
+msgid "Enable plugin on this website."
+msgstr ""
+
+#: templates/website.php:62
+msgid "Disable plugin on this website, keeping all settings."
+msgstr ""
+
+#: wp-my-admin-bar.php:32
+msgid "My Admin Bar"
+msgstr ""
+
+#: wp-my-admin-bar.php:135
+msgid "F.A.Q."
+msgstr ""
+
+#: wp-my-admin-bar.php:136
+msgid "Support"
+msgstr ""
+
+#: wp-my-admin-bar.php:137
+msgid "Feedback"
+msgstr ""
+
+#: wp-my-admin-bar.php:138
+msgid "Donations"
+msgstr ""
+
+#: wp-my-admin-bar.php:139
+msgid "PRO Details"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "WP My Admin Bar | Admin Bar"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com/tribalNerd/wp-my-admin-bar"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"The WP My Admin Bar Plugin, replaces and expands the Wordpress Admin Bar, "
+"adding a new My Sites menu with extended options, a My Cache menu for quick "
+"cache access and My Tools for all WP Developers and Blogger needs."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "tribalNerd, Chris Winters"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://techNerdia.com/"
+msgstr ""
+
+#. Tags of the plugin/theme
+msgid ""
+"myadmin, myadminbar, adminbar, admin bar, admin, bar, toolbar, tool bar, my "
+"sites, mysites, tools, cache, multisite, webtools, web tools, technerdia"
+msgstr ""

@@ -238,4 +238,10 @@ Alpha Release
 :: Screenshots
 --------
 
-1. [Coming Soon](https://github.com/tribalNerd/wp-my-admin-bar/blob/master/svn/assets/screenshot-1.png)
+1. [Plugin Admin Area Pointing Out The Admin Link & 3 New Menus](https://github.com/tribalNerd/wp-my-admin-bar/blob/master/svn/assets/screenshot-1.png)
+
+2. [New "Site Name" Admin Area Menu Being Displayed](https://github.com/tribalNerd/wp-my-admin-bar/blob/master/svn/assets/screenshot-2.png)
+
+3. [New My Sites Menu For Multisite Networks](https://github.com/tribalNerd/wp-my-admin-bar/blob/master/svn/assets/screenshot-3.png)
+
+4. [Network Admin Area Pointing Out Admin Link](https://github.com/tribalNerd/wp-my-admin-bar/blob/master/svn/assets/screenshot-4.png)

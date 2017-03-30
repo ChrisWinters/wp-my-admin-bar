@@ -8,7 +8,8 @@ if ( count( get_included_files() ) == 1 ){ exit(); }
  * @call WpMyAdminBar_Process::instance();
  * 
  * @method init()           Start Admin Bar Manager
- * @method globalOptions()  Update Options For Network
+ * @method networkSave()    Save Network Array Option
+ * @method updateGlobal()   Update Options On All Network Websites
  * @method qString()        Get Query String Item
  * @method message()        Display Messages To User
  * @method updateWebsite()  Update Website
@@ -43,17 +44,41 @@ if( ! class_exists( 'WpMyAdminBar_Process' ) )
             }
 
             // Global Option Update
-            add_action( 'network_admin_edit_wpmyadminbar', array( $this, 'globalOptions' ), 10, 0 );
+            add_action( 'network_admin_edit_wpmyadminbar', array( $this, 'networkSave' ), 10, 0 );
         }
 
 
         /**
-         * @about Update Options For Network
+         * @about Save Network Array Option
          */
-        final public function globalOptions()
+        final public function networkSave()
         {
             // Form Security Check
             parent::validate();
+
+            // Get Post
+            $post = filter_input_array( INPUT_POST, FILTER_SANITIZE_STRING );
+
+            // Delete Site Option
+            if ( empty( $post['network'] ) ) {
+                delete_option( $this->option_name . 'network' );
+            }
+
+            // Update Site Option
+            if ( ! empty( $post['network'] ) ) {
+                update_option( $this->option_name . 'network', $post['network'] );
+            }
+ 
+            $this->updateGlobal( $post['network'] );
+        }
+
+
+        /**
+         * @about Update Options On All Network Websites
+         * @param array $post Network Array of Saved Options
+         */
+        final public function updateGlobal( $post )
+        {
 
             global $wpdb;
 
@@ -66,43 +91,43 @@ if( ! class_exists( 'WpMyAdminBar_Process' ) )
                 switch_to_blog( $site->blog_id );
 
                 // Update Admin Bar Settings
-                if ( filter_input( INPUT_POST, 'wpmyadminbar_frontend' ) == "1" ) { update_option( $this->option_name . 'frontend', true ); } else { delete_option( $this->option_name . 'frontend' ); }
-                if ( filter_input( INPUT_POST, 'wpmyadminbar_backend' ) == "1" ) { update_option( $this->option_name . 'frontend', true ); } else { delete_option( $this->option_name . 'frontend' ); }
+                if ( isset( $post['wpmyadminbar_frontend'] ) ) { update_option( $this->option_name . 'frontend', true ); } else { delete_option( $this->option_name . 'frontend' ); }
+                if ( isset( $post['wpmyadminbar_backend'] ) ) { update_option( $this->option_name . 'frontend', true ); } else { delete_option( $this->option_name . 'frontend' ); }
 
                 // Update My Sites Settings
-                if ( filter_input( INPUT_POST, 'wpmyadminbar_mysites' ) == "1" ) { update_option( $this->option_name . 'mysites', true ); } else { delete_option( $this->option_name . 'mysites' ); }
-                if ( filter_input( INPUT_POST, 'wpmyadminbar_siteids' ) == "1" ) { update_option( $this->option_name . 'siteids', true ); } else { delete_option( $this->option_name . 'siteids' ); }
-                if ( filter_input( INPUT_POST, 'wpmyadminbar_site-name' ) == "1" ) { update_option( $this->option_name . 'site-name', true ); } else { delete_option( $this->option_name . 'site-name' ); }
+                if ( isset( $post['wpmyadminbar_mysites'] ) ) { update_option( $this->option_name . 'mysites', true ); } else { delete_option( $this->option_name . 'mysites' ); }
+                if ( isset( $post['wpmyadminbar_siteids'] ) ) { update_option( $this->option_name . 'siteids', true ); } else { delete_option( $this->option_name . 'siteids' ); }
+                if ( isset( $post['wpmyadminbar_site-name'] ) ) { update_option( $this->option_name . 'site-name', true ); } else { delete_option( $this->option_name . 'site-name' ); }
 
                 // Update My Cache Settings
-                if ( filter_input( INPUT_POST, 'wpmyadminbar_mycache' ) == "1" ) { update_option( $this->option_name . 'mycache', true ); } else { delete_option( $this->option_name . 'mycache' ); }
-                if ( filter_input( INPUT_POST, 'wpmyadminbar_total' ) == "1" ) { update_option( $this->option_name . 'total', true ); } else { delete_option( $this->option_name . 'total' ); }
-                if ( filter_input( INPUT_POST, 'wpmyadminbar_super' ) == "1" ) { update_option( $this->option_name . 'super', true ); } else { delete_option( $this->option_name . 'super' ); }
-                if ( filter_input( INPUT_POST, 'wpmyadminbar_comet' ) == "1" ) { update_option( $this->option_name . 'comet', true ); } else { delete_option( $this->option_name . 'comet' ); }
-                if ( filter_input( INPUT_POST, 'wpmyadminbar_fastest' ) == "1" ) { update_option( $this->option_name . 'fastest', true ); } else { delete_option( $this->option_name . 'fastest' ); }
-                if ( filter_input( INPUT_POST, 'wpmyadminbar_cssminify' ) == "1" ) { update_option( $this->option_name . 'cssminify', true ); } else { delete_option( $this->option_name . 'cssminify' ); }
-                if ( filter_input( INPUT_POST, 'wpmyadminbar_wpminify' ) == "1" ) { update_option( $this->option_name . 'wpminify', true ); } else { delete_option( $this->option_name . 'wpminify' ); }
-                if ( filter_input( INPUT_POST, 'wpmyadminbar_fastvelocity' ) == "1" ) { update_option( $this->option_name . 'fastvelocity', true ); } else { delete_option( $this->option_name . 'fastvelocity' ); }
+                if ( isset( $post['wpmyadminbar_mycache'] ) ) { update_option( $this->option_name . 'mycache', true ); } else { delete_option( $this->option_name . 'mycache' ); }
+                if ( isset( $post['wpmyadminbar_total'] ) ) { update_option( $this->option_name . 'total', true ); } else { delete_option( $this->option_name . 'total' ); }
+                if ( isset( $post['wpmyadminbar_super'] ) ) { update_option( $this->option_name . 'super', true ); } else { delete_option( $this->option_name . 'super' ); }
+                if ( isset( $post['wpmyadminbar_comet'] ) ) { update_option( $this->option_name . 'comet', true ); } else { delete_option( $this->option_name . 'comet' ); }
+                if ( isset( $post['wpmyadminbar_fastest'] ) ) { update_option( $this->option_name . 'fastest', true ); } else { delete_option( $this->option_name . 'fastest' ); }
+                if ( isset( $post['wpmyadminbar_cssminify'] ) ) { update_option( $this->option_name . 'cssminify', true ); } else { delete_option( $this->option_name . 'cssminify' ); }
+                if ( isset( $post['wpmyadminbar_wpminify'] ) ) { update_option( $this->option_name . 'wpminify', true ); } else { delete_option( $this->option_name . 'wpminify' ); }
+                if ( isset( $post['wpmyadminbar_fastvelocity'] ) ) { update_option( $this->option_name . 'fastvelocity', true ); } else { delete_option( $this->option_name . 'fastvelocity' ); }
 
                 // Update My Tools Settings
-                if ( filter_input( INPUT_POST, 'wpmyadminbar_mytools' ) == "1" ) { update_option( $this->option_name . 'mytools', true ); } else { delete_option( $this->option_name . 'mytools' ); }
+                if ( isset( $post['wpmyadminbar_mytools'] ) ) { update_option( $this->option_name . 'mytools', true ); } else { delete_option( $this->option_name . 'mytools' ); }
 
                 // Update Howdy Settings
-                if ( filter_input( INPUT_POST, 'wpmyadminbar_my-account' ) == "1" ) { update_option( $this->option_name . 'my-account', true ); } else { delete_option( $this->option_name . 'my-account' ); }
-                if ( filter_input( INPUT_POST, 'wpmyadminbar_user-actions' ) == "1" ) { update_option( $this->option_name . 'user-actions', true ); } else { delete_option( $this->option_name . 'user-actions' ); }
-                if ( filter_input( INPUT_POST, 'wpmyadminbar_user-info' ) == "1" ) { update_option( $this->option_name . 'user-info', true ); } else { delete_option( $this->option_name . 'user-info' ); }
-                if ( filter_input( INPUT_POST, 'wpmyadminbar_edit-profile' ) == "1" ) { update_option( $this->option_name . 'edit-profile', true ); } else { delete_option( $this->option_name . 'edit-profile' ); }
-                if ( filter_input( INPUT_POST, 'wpmyadminbar_logout' ) == "1" ) { update_option( $this->option_name . 'logout', true ); } else { delete_option( $this->option_name . 'logout' ); }
+                if ( isset( $post['wpmyadminbar_my-account'] ) ) { update_option( $this->option_name . 'my-account', true ); } else { delete_option( $this->option_name . 'my-account' ); }
+                if ( isset( $post['wpmyadminbar_user-actions'] ) ) { update_option( $this->option_name . 'user-actions', true ); } else { delete_option( $this->option_name . 'user-actions' ); }
+                if ( isset( $post['wpmyadminbar_user-info'] ) ) { update_option( $this->option_name . 'user-info', true ); } else { delete_option( $this->option_name . 'user-info' ); }
+                if ( isset( $post['wpmyadminbar_edit-profile'] ) ) { update_option( $this->option_name . 'edit-profile', true ); } else { delete_option( $this->option_name . 'edit-profile' ); }
+                if ( isset( $post['wpmyadminbar_logout'] ) ) { update_option( $this->option_name . 'logout', true ); } else { delete_option( $this->option_name . 'logout' ); }
 
                 // Update Other Settings
-                if ( filter_input( INPUT_POST, 'wpmyadminbar_updates' ) == "1" ) { update_option( $this->option_name . 'updates', true ); } else { delete_option( $this->option_name . 'updates' ); }
-                if ( filter_input( INPUT_POST, 'wpmyadminbar_new-content' ) == "1" ) { update_option( $this->option_name . 'new-content', true ); } else { delete_option( $this->option_name . 'new-content' ); }
-                if ( filter_input( INPUT_POST, 'wpmyadminbar_comments' ) == "1" ) { update_option( $this->option_name . 'comments', true ); } else { delete_option( $this->option_name . 'comments' ); }
-                if ( filter_input( INPUT_POST, 'wpmyadminbar_search' ) == "1" ) { update_option( $this->option_name . 'search', true ); } else { delete_option( $this->option_name . 'search' ); }
+                if ( isset( $post['wpmyadminbar_updates'] ) ) { update_option( $this->option_name . 'updates', true ); } else { delete_option( $this->option_name . 'updates' ); }
+                if ( isset( $post['wpmyadminbar_new-content'] ) ) { update_option( $this->option_name . 'new-content', true ); } else { delete_option( $this->option_name . 'new-content' ); }
+                if ( isset( $post['wpmyadminbar_comments'] ) ) { update_option( $this->option_name . 'comments', true ); } else { delete_option( $this->option_name . 'comments' ); }
+                if ( isset( $post['wpmyadminbar_search'] ) ) { update_option( $this->option_name . 'search', true ); } else { delete_option( $this->option_name . 'search' ); }
 
                 // Update Logo Settings
-                if ( filter_input( INPUT_POST, 'wpmyadminbar_wp-logo' ) == "1" ) { update_option( $this->option_name . 'wp-logo', true ); } else { delete_option( $this->option_name . 'wp-logo' ); }
-                if ( filter_input( INPUT_POST, 'wpmyadminbar_wpicon' ) == "1" ) { update_option( $this->option_name . 'wpicon', true ); } else { delete_option( $this->option_name . 'wpicon' ); }
+                if ( isset( $post['wpmyadminbar_wp-logo'] ) ) { update_option( $this->option_name . 'wp-logo', true ); } else { delete_option( $this->option_name . 'wp-logo' ); }
+                if ( isset( $post['wpmyadminbar_wpicon'] ) ) { update_option( $this->option_name . 'wpicon', true ); } else { delete_option( $this->option_name . 'wpicon' ); }
     
                 // Restore Website
                 restore_current_blog();
@@ -112,7 +137,6 @@ if( ! class_exists( 'WpMyAdminBar_Process' ) )
             wp_redirect( add_query_arg( array( 'page' => $this->plugin_name, 'updated' => 'true' ), network_admin_url( 'settings.php' ) ) );
             exit();
         }
-
 
         /**
          * @about Display Messages To User
@@ -135,7 +159,7 @@ if( ! class_exists( 'WpMyAdminBar_Process' ) )
                 break;
 
                 case 'websitedelete':
-                    $message = __( '<u>Website Settings Deleted</u>: Please <a href="javascript:window.location.reload(true)">refresh</a> to update the admin bar view.', 'wp-my-admin-bar' );
+                    $message = __( '<u>Website Settings Deleted</u>: All WP My Admin Bar settings have been deleted on this website.', 'wp-my-admin-bar' );
                 break;
 
                 case 'networkenable':
@@ -147,7 +171,7 @@ if( ! class_exists( 'WpMyAdminBar_Process' ) )
                 break;
 
                 case 'networkdelete':
-                    $message = __( '<u>Network Settings Deleted</u>: Please <a href="javascript:window.location.reload(true)">refresh</a> to update the admin bar view.', 'wp-my-admin-bar' );
+                    $message = __( '<u>Network Settings Deleted</u>: All settings related to the WP My Admin Bar plugin have been deleted.', 'wp-my-admin-bar' );
                 break;
             }
 
@@ -167,6 +191,7 @@ if( ! class_exists( 'WpMyAdminBar_Process' ) )
          */
         final public function updateWebsite()
         {
+
             // Enable Plugin
             if ( filter_input( INPUT_POST, 'type' ) == "enable" ) {
                 delete_option( $this->option_name . 'disable' );
@@ -248,16 +273,14 @@ if( ! class_exists( 'WpMyAdminBar_Process' ) )
         {
             // Enable Plugin
             if ( filter_input( INPUT_POST, 'type' ) == "enable" ) {
-                // Delete Network Option
-                delete_site_option( $this->option_name . 'disable' );
+                delete_option( $this->option_name . 'disable' );
 
                 $this->manageNetwork( 'enable' );
             }
 
             // Disable Plugin
             if ( filter_input( INPUT_POST, 'type' ) == "disable" ) {
-                // Update Network Option
-                update_site_option( $this->option_name . 'disable', true );
+                update_option( $this->option_name . 'disable', true );
 
                 $this->manageNetwork( 'disable' );
             }

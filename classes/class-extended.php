@@ -7,6 +7,7 @@ if ( count( get_included_files() ) == 1 ){ exit(); }
  * 
  * @method __construct()    Set Parent Variables
  * @method option()         Get Saved Option Data For Inputs/Display
+ * @method field()          Fields for network.php
  * @method getBlogname()    Build Blogname
  * @method qString()        Get Query String Item
  * @method validate()       Form Validation
@@ -64,9 +65,19 @@ if( ! class_exists( 'WpMyAdminBar_Extended' ) )
          */
         final public function option( $option = '' )
         {
-            if ( ! empty( $option ) ) {
-                return get_option( $this->option_name . $option );
-            }
+            return get_option( $this->option_name . $option );
+        }
+
+
+        /**
+         * @about Fields for network.php
+         * @call echo $this->field( 'frontend' );
+         * @param string $option The Option Name
+         */
+        final public function field( $option = '' )
+        {
+            $data = get_option( $this->option_name . 'network' );
+            return ( isset( $data[$this->option_name . $option] ) ) ? $data[$this->option_name . $option] : '';
         }
 
 
@@ -75,26 +86,20 @@ if( ! class_exists( 'WpMyAdminBar_Extended' ) )
          */
         final public function getBlogname( $blogname, $blog_id )
         {
-            // Create default blogname from website url if no name was passed in
-            $blog_name = ( $blogname == 'url' ) ? preg_replace( '#^(https?://)?(www.)?#', '', get_home_url() ) : $blogname;
-
-            // Required to further customize the Blog Name
-            if ( ! $this->option( 'wpicon' ) && ! $this->option( 'siteids' ) ) { return '<div class="blavatar"></div>' . $blog_name; }
-     
             // Hide WP Icon & Hide Site ID's, return default blogname
-            if ( ! $this->option( 'wpicon' ) && ! $this->option( 'siteids' ) ) { return $blog_name; }
+            if ( $this->option( 'wpicon' ) && ! $this->option( 'siteids' ) ) { $title = $blogname; }
 
             // Hide WP Icon & Show Site ID's
-            if ( ! $this->option( 'wpicon' ) && $this->option( 'siteids' ) ) { return '('. $blog_id .') '. $blog_name; }
+            if ( $this->option( 'wpicon' ) && $this->option( 'siteids' ) ) { $title = '('. $blog_id .') '. $blogname; }
 
             // Show WP Icon & Show Site ID's
-            if ( $this->option( 'wpicon' ) && $this->option( 'siteids' ) ) { return '<div class="blavatar"></div>' .'('. $blog_id .') '. $blog_name; }
+            if ( ! $this->option( 'wpicon' ) && $this->option( 'siteids' ) ) { $title = '<div class="blavatar"></div>' .'('. $blog_id .') '. $blogname; }
 
             // Show WP Icon & Hide Site ID's
-            if ( $this->option( 'wpicon' ) && ! $this->option( 'siteids' ) ) { return '<div class="blavatar"></div>' . $blog_name; }
+            if ( ! $this->option( 'wpicon' ) && ! $this->option( 'siteids' ) ) { $title = '<div class="blavatar"></div>' . $blogname; }
 
-            // Something is wrong, return default $blog_name
-            return $blog_name;
+            // Return New Title
+            return $title;
         }
 
 
