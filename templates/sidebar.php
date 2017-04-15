@@ -21,4 +21,4 @@ if ( count( get_included_files() ) == 1 ){ exit(); }
 </div></div> <!-- end inside-pad & inside -->
 </div> <!-- end postbox -->
 
-<p><a href="https://wordpress.org/plugins/wp-my-admin-bar/" target="_blank"><img src="<?php echo WP_MY_ADMIN_BAR_BASE_URL;?>/wp-content/plugins/wp-my-admin-bar/assets/sidebar_rate-plugin.gif" alt="<?php _e( 'Please Rate This Plugin At Wordpress.org!', 'wp-my-admin-bar' );?>" /></a></p>
+<p><a href="https://wordpress.org/support/plugin/wp-my-admin-bar/reviews/?rate=5#new-post" target="_blank"><img src="<?php echo WP_MY_ADMIN_BAR_BASE_URL;?>/wp-content/plugins/wp-my-admin-bar/assets/sidebar_rate-plugin.gif" alt="<?php _e( 'Please Rate This Plugin At Wordpress.org!', 'wp-my-admin-bar' );?>" /></a></p>

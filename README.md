@@ -19,6 +19,9 @@ The 'Wp My Admin Bar' Plugin expands on the default Wordpress Admin Bar. Adding 
 Works on both Standalone Wordpress Installs and Multisite Networks.
 
 
+2.0.0 Update: This update uses the Settings API, which means the option names have changed. If you have any problems you can revert back by downloading/installing version 1.0.3 at Github: https://github.com/tribalNerd/wp-my-admin-bar/releases
+
+
 = For Support & Bugs =
 
 Please [contact us directly](http://technerdia.com/help/) if you need assistance or have found a bug. The WordPress Support forum does not notify us of new support tickets, no idea why, so contact us directly. Or, view on [Github!](https://github.com/tribalNerd/multisite-robotstxt-manager/) and clone/fork yourself a copy, report a bug or submit a ticket & pull request!
