@@ -3,8 +3,8 @@
 * **Contributors:** tribalNerd, Chris Winters
 * **Tags:** myadminbar, wpmyadminbar, plugin, admin, administration, adminbar, admin-bar, toolbar, toolbars, bar, network, multisite, tools, cache, sites, technerdia, tribalnerd
 * **Requires at least:** 3.8
-* **Tested up to:** 4.7.3
-* **Stable tag:** 2.0.0
+* **Tested up to:** 4.7.4
+* **Stable tag:** 2.0.1
 * **License:** GNU GPLv3
 * **License URI:** https://github.com/tribalNerd/multisite-robotstxt-manager/blob/master/LICENSE
 
