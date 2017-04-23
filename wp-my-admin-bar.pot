@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the WP My Admin Bar | Admin Bar package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WP My Admin Bar | Admin Bar 2.0.0\n"
+"Project-Id-Version: WP My Admin Bar | Admin Bar 2.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-my-admin-bar\n"
-"POT-Creation-Date: 2017-03-30 21:29:17+00:00\n"
+"POT-Creation-Date: 2017-04-23 15:33:30+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -363,40 +363,54 @@ msgstr ""
 msgid "Typo Generator"
 msgstr ""
 
-#: classes/class-process.php:154
+#: classes/class-process.php:161
 msgid ""
 "<u>Website Enabled</u>: Please <a href=\"javascript:window.location."
 "reload(true)\">refresh</a> to update the admin bar view."
 msgstr ""
 
-#: classes/class-process.php:158
+#: classes/class-process.php:165
 msgid ""
 "<u>Website Disabled</u>: Please <a href=\"javascript:window.location."
 "reload(true)\">refresh</a> to update the admin bar view."
 msgstr ""
 
-#: classes/class-process.php:162
+#: classes/class-process.php:169
 msgid ""
 "<u>Website Settings Deleted</u>: All WP My Admin Bar settings have been "
 "deleted on this website."
 msgstr ""
 
-#: classes/class-process.php:166
+#: classes/class-process.php:173
 msgid ""
 "<u>Network Enabled</u>: Please <a href=\"javascript:window.location."
 "reload(true)\">refresh</a> to update the admin bar view."
 msgstr ""
 
-#: classes/class-process.php:170
+#: classes/class-process.php:177
 msgid ""
 "<u>Network Disabled</u>: Please <a href=\"javascript:window.location."
 "reload(true)\">refresh</a> to update the admin bar view."
 msgstr ""
 
-#: classes/class-process.php:174
+#: classes/class-process.php:181
 msgid ""
 "<u>Network Settings Deleted</u>: All settings related to the WP My Admin Bar "
 "plugin have been deleted."
+msgstr ""
+
+#: classes/class-process.php:442
+msgid "Click Here"
+msgstr ""
+
+#: classes/class-process.php:445
+msgid ""
+"<b>WP My Admin Bar</b>: This Websites Admin Bar Settings Have Been Updated "
+"For You! %s To View To Open The Plugin Admin Area For This Website."
+msgstr ""
+
+#: classes/class-process.php:445
+msgid "Dismiss this notice."
 msgstr ""
 
 #: classes/class-settings.php:76 templates/network.php:11
@@ -688,23 +702,11 @@ msgid "My Admin Bar"
 msgstr ""
 
 #: wp-my-admin-bar.php:135
-msgid "F.A.Q."
-msgstr ""
-
-#: wp-my-admin-bar.php:136
 msgid "Support"
 msgstr ""
 
-#: wp-my-admin-bar.php:137
+#: wp-my-admin-bar.php:136
 msgid "Feedback"
-msgstr ""
-
-#: wp-my-admin-bar.php:138
-msgid "Donations"
-msgstr ""
-
-#: wp-my-admin-bar.php:139
-msgid "PRO Details"
 msgstr ""
 
 #. Plugin Name of the plugin/theme

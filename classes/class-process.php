@@ -7,16 +7,18 @@ if ( count( get_included_files() ) == 1 ){ exit(); }
  * @location classes/wp-my-admin-bar.php
  * @call WpMyAdminBar_Process::instance();
  * 
- * @method init()           Start Admin Bar Manager
- * @method networkSave()    Save Network Array Option
- * @method updateGlobal()   Update Options On All Network Websites
- * @method qString()        Get Query String Item
- * @method message()        Display Messages To User
- * @method updateWebsite()  Update Website
- * @method deleteNetwork()  Delete All Settings Across Network
- * @method updateNetwork()  Update Network
- * @method manageNetwork()  Enable/Disable/Delete Network
- * @method instance()       Create Instance
+ * @method init()               Start Admin Bar Manager
+ * @method networkSave()        Save Network Array Option
+ * @method updateGlobal()       Update Options On All Network Websites
+ * @method qString()            Get Query String Item
+ * @method message()            Display Messages To User
+ * @method updateWebsite()      Update Website
+ * @method deleteNetwork()      Delete All Settings Across Network
+ * @method updateNetwork()      Update Network
+ * @method manageNetwork()      Enable/Disable/Delete Network
+ * @method populateAdminbar()   Copy Settings To New Network Websites
+ * @method messagePopulated()   Message: New Website Updated
+ * @method instance()           Create Instance
  */
 if( ! class_exists( 'WpMyAdminBar_Process' ) )
 {
@@ -42,6 +44,10 @@ if( ! class_exists( 'WpMyAdminBar_Process' ) )
                     add_action( 'admin_init', array( $this, 'updateWebsite') );
                 }
             }
+
+            // Copy Admin Bar Settings For Newly Added Network Websites
+            // @version 2.0.1
+            add_action( 'admin_init', array( $this, 'populateAdminbar' ) );
 
             // Global Option Update
             add_action( 'network_admin_edit_wpmyadminbar', array( $this, 'networkSave' ), 10, 0 );
@@ -137,6 +143,7 @@ if( ! class_exists( 'WpMyAdminBar_Process' ) )
             wp_redirect( add_query_arg( array( 'page' => $this->plugin_name, 'updated' => 'true' ), network_admin_url( 'settings.php' ) ) );
             exit();
         }
+
 
         /**
          * @about Display Messages To User
@@ -354,6 +361,88 @@ if( ! class_exists( 'WpMyAdminBar_Process' ) )
                 $this->message( 'networkdelete', 'updated' );
             }
 
+        }
+
+
+        /**
+         * @about Copy Admin Bar Settings To Newly Added Network Websites
+         * @version 2.0.1
+         */
+        final public function populateAdminbar() {
+            // Network & Valid Numeric ID Required
+            if ( ! is_network_admin() || ! filter_input( INPUT_GET, 'id' ) ) {
+                return;
+            }
+
+            // New Site Post Page
+            if ( strpos( filter_input( INPUT_SERVER, 'REQUEST_URI' ), "site-new.php" ) !== false ) {
+                // Get Network Settings
+                $settings = get_option( $this->option_name . 'network' );
+
+                // Swich To Website
+                switch_to_blog( absint( filter_input( INPUT_GET, 'id', FILTER_UNSAFE_RAW ) ) );
+
+                // Update Admin Bar Settings
+                if ( isset( $settings['wpmyadminbar_frontend'] ) ) { update_option( $this->option_name . 'frontend', true ); }
+                if ( isset( $settings['wpmyadminbar_backend'] ) ) { update_option( $this->option_name . 'frontend', true ); }
+
+                // Update My Sites Settings
+                if ( isset( $settings['wpmyadminbar_mysites'] ) ) { update_option( $this->option_name . 'mysites', true ); }
+                if ( isset( $settings['wpmyadminbar_siteids'] ) ) { update_option( $this->option_name . 'siteids', true ); }
+                if ( isset( $settings['wpmyadminbar_site-name'] ) ) { update_option( $this->option_name . 'site-name', true ); }
+
+                // Update My Cache Settings
+                if ( isset( $settings['wpmyadminbar_mycache'] ) ) { update_option( $this->option_name . 'mycache', true ); }
+                if ( isset( $settings['wpmyadminbar_total'] ) ) { update_option( $this->option_name . 'total', true ); }
+                if ( isset( $settings['wpmyadminbar_super'] ) ) { update_option( $this->option_name . 'super', true ); }
+                if ( isset( $settings['wpmyadminbar_comet'] ) ) { update_option( $this->option_name . 'comet', true ); }
+                if ( isset( $settings['wpmyadminbar_fastest'] ) ) { update_option( $this->option_name . 'fastest', true ); }
+                if ( isset( $settings['wpmyadminbar_cssminify'] ) ) { update_option( $this->option_name . 'cssminify', true ); }
+                if ( isset( $settings['wpmyadminbar_wpminify'] ) ) { update_option( $this->option_name . 'wpminify', true ); }
+                if ( isset( $settings['wpmyadminbar_fastvelocity'] ) ) { update_option( $this->option_name . 'fastvelocity', true ); }
+
+                // Update My Tools Settings
+                if ( isset( $settings['wpmyadminbar_mytools'] ) ) { update_option( $this->option_name . 'mytools', true ); }
+
+                // Update Howdy Settings
+                if ( isset( $settings['wpmyadminbar_my-account'] ) ) { update_option( $this->option_name . 'my-account', true ); }
+                if ( isset( $settings['wpmyadminbar_user-actions'] ) ) { update_option( $this->option_name . 'user-actions', true ); }
+                if ( isset( $settings['wpmyadminbar_user-info'] ) ) { update_option( $this->option_name . 'user-info', true ); }
+                if ( isset( $settings['wpmyadminbar_edit-profile'] ) ) { update_option( $this->option_name . 'edit-profile', true ); }
+                if ( isset( $settings['wpmyadminbar_logout'] ) ) { update_option( $this->option_name . 'logout', true ); }
+
+                // Update Other Settings
+                if ( isset( $settings['wpmyadminbar_updates'] ) ) { update_option( $this->option_name . 'updates', true ); }
+                if ( isset( $settings['wpmyadminbar_new-content'] ) ) { update_option( $this->option_name . 'new-content', true ); }
+                if ( isset( $settings['wpmyadminbar_comments'] ) ) { update_option( $this->option_name . 'comments', true ); }
+                if ( isset( $settings['wpmyadminbar_search'] ) ) { update_option( $this->option_name . 'search', true ); }
+
+                // Update Logo Settings
+                if ( isset( $settings['wpmyadminbar_wp-logo'] ) ) { update_option( $this->option_name . 'wp-logo', true ); }
+                if ( isset( $settings['wpmyadminbar_wpicon'] ) ) { update_option( $this->option_name . 'wpicon', true ); }
+
+                // Restore Website
+                restore_current_blog();
+
+                // Display Message
+                add_action( 'network_admin_notices', array( $this, 'messagePopulated' ) );
+            }
+        }
+
+
+        /**
+         * @about Message: New Website Updated
+         * @version 2.0.1
+         */
+        final public function messagePopulated() {
+            // Blog ID
+            $id = absint( filter_input( INPUT_GET, 'id', FILTER_UNSAFE_RAW ) );
+            
+            // Build URL To Robots.txt File
+            $link = '<a href="' . get_admin_url( $id ) . 'options-general.php?page=wp-my-admin-bar" target="_blank">' . __( 'Click Here', 'wp-my-admin-bar' ) . '</a>';
+
+            // Message
+            echo '<div id="message" class="updated notice is-dismissible"><p>' . sprintf( __( '<b>WP My Admin Bar</b>: This Websites Admin Bar Settings Have Been Updated For You! %s To View To Open The Plugin Admin Area For This Website.', 'wp-my-admin-bar' ), $link ) . '</p><button type="button" class="notice-dismiss"><span class="screen-reader-text">' . __( 'Dismiss this notice.', 'wp-my-admin-bar' ) . '</span></button></div>';
         }
 
 

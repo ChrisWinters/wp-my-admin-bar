@@ -4,7 +4,7 @@
  * Plugin URI: https://github.com/tribalNerd/wp-my-admin-bar
  * Description: The WP My Admin Bar Plugin, replaces and expands the Wordpress Admin Bar, adding a new My Sites menu with extended options, a My Cache menu for quick cache access and My Tools for all WP Developers and Blogger needs.
  * Tags: myadmin, myadminbar, adminbar, admin bar, admin, bar, toolbar, tool bar, my sites, mysites, tools, cache, multisite, webtools, web tools, technerdia
- * Version: 2.0.0
+ * Version: 2.0.1
  * License: GNU GPLv3
  * Copyright (c) 2017 Chris Winters
  * Author: tribalNerd, Chris Winters
@@ -22,7 +22,7 @@ if( function_exists( 'WpMyAdminBarConstants' ) )
 {
     WpMyAdminBarConstants( Array(
         'WP_MY_ADMIN_BAR_BASE_URL'          => get_bloginfo( 'url' ),
-        'WP_MY_ADMIN_BAR_VERSION'           => '2.0.0',
+        'WP_MY_ADMIN_BAR_VERSION'           => '2.0.1',
         'WP_MY_ADMIN_BAR_WP_MIN_VERSION'    => '3.8',
 
         'WP_MY_ADMIN_BAR_PLUGIN_FILE'       => __FILE__,
@@ -132,11 +132,8 @@ if( ! class_exists( 'wp_my_admin_bar' ) )
             // Links To Inject
             if ( $file == WP_MY_ADMIN_BAR_PLUGIN_BASE && strpos( $request_uri, "plugins.php" ) !== false ) {
                 $links[] = '<a href="options-general.php?page=' . WP_MY_ADMIN_BAR_PLUGIN_NAME . '">'. __( 'Website Settings', 'wp-my-admin-bar' ) .'</a>';
-                $links[] = '<a href="http://technerdia.com/wpmab/#faq" target="_blank">'. __( 'F.A.Q.', 'wp-my-admin-bar' ) .'</a>';
                 $links[] = '<a href="http://technerdia.com/help/" target="_blank">'. __( 'Support', 'wp-my-admin-bar' ) .'</a>';
                 $links[] = '<a href="http://technerdia.com/feedback/" target="_blank">'. __( 'Feedback', 'wp-my-admin-bar' ) .'</a>';
-                $links[] = '<a href="http://technerdia.com/donate/" target="_blank">'. __( 'Donations', 'wp-my-admin-bar' ) .'</a>';
-                $links[] = '<a href="http://technerdia.com/wpmab/" target="_blank">'. __( 'PRO Details', 'wp-my-admin-bar' ) .'</a>';
             }
 
             return $links;
