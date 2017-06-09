@@ -4,7 +4,7 @@
  * Plugin URI: https://github.com/tribalNerd/wp-my-admin-bar
  * Description: The WP My Admin Bar Plugin, replaces and expands the Wordpress Admin Bar, adding a new My Sites menu with extended options, a My Cache menu for quick cache access and My Tools for all WP Developers and Blogger needs.
  * Tags: myadmin, myadminbar, adminbar, admin bar, admin, bar, toolbar, tool bar, my sites, mysites, tools, cache, multisite, webtools, web tools, technerdia
- * Version: 2.0.1
+ * Version: 2.0.2
  * License: GNU GPLv3
  * Copyright (c) 2017 Chris Winters
  * Author: tribalNerd, Chris Winters
@@ -22,7 +22,7 @@ if( function_exists( 'WpMyAdminBarConstants' ) )
 {
     WpMyAdminBarConstants( Array(
         'WP_MY_ADMIN_BAR_BASE_URL'          => get_bloginfo( 'url' ),
-        'WP_MY_ADMIN_BAR_VERSION'           => '2.0.1',
+        'WP_MY_ADMIN_BAR_VERSION'           => '2.0.2',
         'WP_MY_ADMIN_BAR_WP_MIN_VERSION'    => '3.8',
 
         'WP_MY_ADMIN_BAR_PLUGIN_FILE'       => __FILE__,
