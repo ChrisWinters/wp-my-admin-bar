@@ -3,8 +3,8 @@ Plugin Name: WP My Admin Bar | Admin Bar
 Contributors: tribalNerd, Chris Winters
 Tags: myadminbar, wpmyadminbar, plugin, admin, administration, adminbar, admin-bar, toolbar, toolbars, bar, network, multisite, tools, cache, sites, technerdia
 Requires at least: 3.8
-Tested up to: 4.7.4
-Stable tag: 2.0.1
+Tested up to: 4.8
+Stable tag: 2.0.2
 License: GNU GPLv3
 License URI: https://github.com/tribalNerd/wp-my-admin-bar/blob/master/LICENSE
 
@@ -118,14 +118,21 @@ A) Yes!
 
 == Changelog ==
 
-= 2.0.1 =
+= 2.0.2 2017-9-6 =
+
+* Tested: Wordpress Version 4.8
+
+= 2.0.1 2017-23-4 =
+
 * Tested: Wordpress Version 4.7.4
 * Update: New feature to populate Admin Bar settings for newly added Network Websites.
 
 = 2.0.0 =
+
 * Update: Complete rewrite of the plugin
 
 = 1.0.3 =
+
 * Changed: Moved the activation, deactivation, uninstall hooks to wp-my-admin-bar.php
 * Changed: Moved all option get/set methods to \WPMyAdminBar\Options
 * Changed: Adjusted Admin, Hooks, MyCache, MySites, & My Tools to new Options location & methods
@@ -136,19 +143,22 @@ A) Yes!
 * Changed: Improved the PSR1-4 Standards within everything
 
 = 1.0.2 =
+
 * Changed: Added in PHP Version Compare
 * Changed: Modified compare statements
 
 = 1.0.0 =
+
 * Changed: Restructured the classes, used some old stuff, built some new stuff: In short, made it less stupid.
 * Moved the project to Github: https://github.com/tribalNerd/wp-my-admin-bar
 
-Alpha Release
 = 0.2.0 =
+
 * Changed: Added delete_site_transient when new Websites are created via the Network Admin.
 * Changed: Readme file updated.
 
 = 0.1.9 =
+
 * Changed: Modified prepare() statements.
 * Fixed: Corrected missing menu ID's.
 * Changed: Modified add_options statements.
@@ -158,6 +168,7 @@ Alpha Release
 * Changed: PHP Debug and WP Debug checked.
 
 = 0.1.7 =
+
 * Changed: Created new option wp_myadminbar_nw to allow site id 1 and network admin to use different settings.
 * Changed: Created new option wp_cache_nw to allow site id 1 and network admin to use different settings.
 * Fixed: settings_sites.php template, corrected php debug index errors.
@@ -177,15 +188,18 @@ Alpha Release
 * Changed: Adjusted uninstall.php and activate.php to contain new wp_myadminbar_nw and wp_cache_nw options.
 
 = 0.1.6 =
+
 * Fixed: Corrected menu link: My Sites > Visit This Site > View Posts - Now opens the proper edit.php page.
 * Fixed: Corrected issue with admin bar menu options displaying to logged in users.
 * Fixed: Removed ob_gzhandler
 
 = 0.1.5 =
+
 * Fixed: Files missing in repository.
 * Fixed: Corrected deleted files.
 
 = 0.1.4 =
+
 * Fixed: Added wp_nonce_field and check_admin_referer to setting pages & templates.
 * Fixed: Corrected Network Menu var that made the Network Dashboard link not appear.
 * Fixed: Added is_admin and is_network_admin rather than parsing the urls.
@@ -211,22 +225,26 @@ Alpha Release
 * Update: Created upgrade.php: Auto upgrades old option value names to the new names, only runs once.
 
 = 0.1.3 =
+
 * Fixed: Screenshot correction, again.
 * Fixed: Added release tag to main file.
 
 = 0.1.2 =
+
 * Fixed: Added root Site Name display back to Admin Bar.
 * Update: Generated POT file and set domain for gettext calls.
 * Changed: Added link to Plugin in settings_sidebar template.
 * Fixed: Screenshot added, I think.
 
 = 0.1.1 =
+
 * Note: Testing how the svn works.
 * Fixed: Corrected display of New Post Option under My Sites menu.
 * Fixed: Corrected wp_blogs to use $wpdb->blogs
 * Fixed: Updates to: Spelling, readme.txt layout, plugin url added.
 
 = 0.1 =
+
 * Created: Feb 12, 2012
 
 
