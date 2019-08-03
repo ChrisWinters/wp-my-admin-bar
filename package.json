@@ -1,0 +1,57 @@
+{
+    "name": "WpMyAdminBar",
+    "author": "ChrisW.",
+    "version": "3.0.0",
+    "license": "GPL-2.0",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ChrisWinters/wp-my-admin-bar/"
+    },
+    "bugs": {
+        "url": "https://github.com/ChrisWinters/wp-my-admin-bar/issues"
+    },
+    "keywords": [
+        "wordpress",
+        "network",
+        "multisite",
+        "bootstrap",
+        "plugin",
+        "adminbar",
+        "admin-bar",
+        "admin",
+        "bar",
+        "administrationbar",
+        "administration-bar"
+    ],
+    "scripts": {
+        "postinstall": "gulp assets"
+    },
+    "engines": {
+        "node": ">=8.0.0",
+        "npm": ">=6.5.0"
+    },
+    "devDependencies": {
+        "bootstrap": "^4.3.1",
+        "browser-sync": "^2.26.5",
+        "del": "^3.0.0",
+        "gulp": "^4.0.2",
+        "gulp-autoprefixer": "^6.1.0",
+        "gulp-concat": "^2.6.1",
+        "gulp-imagemin": "^5.0.3",
+        "gulp-line-ending-corrector": "^1.0.3",
+        "gulp-notify": "^3.2.0",
+        "gulp-remove-empty-lines": "^0.1.0",
+        "gulp-rename": "^1.4.0",
+        "gulp-replace": "^1.0.0",
+        "gulp-sass": "^4.0.2",
+        "gulp-sort": "^2.0.0",
+        "gulp-strip-comments": "^2.5.2",
+        "gulp-strip-css-comments": "^2.0.0",
+        "gulp-uglify": "^3.0.2",
+        "gulp-uglifycss": "^1.1.0",
+        "gulp-wp-pot": "^2.3.5",
+        "inquirer": "^6.3.1",
+        "require-dir": "^1.2.0",
+        "undertaker-forward-reference": "^1.0.2"
+    }
+}

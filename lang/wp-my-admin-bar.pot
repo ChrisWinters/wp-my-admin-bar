@@ -1,0 +1,341 @@
+# Copyright (C) 2019 wp-my-admin-bar
+# This file is distributed under the same license as the wp-my-admin-bar package.
+msgid ""
+msgstr ""
+"Project-Id-Version: wp-my-admin-bar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language-Team: ChrisW. <chrisw@null.net>\n"
+"Last-Translator: ChrisW. <chrisw@null.net>\n"
+"Report-Msgid-Bugs-To: https://github.com/ChrisWinters/wp-my-admin-bar/issues\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: inc/classes/class-do-menu-my-sites-network.php:92, inc/classes/class-do-menu-my-sites.php:92
+msgid "My Sites"
+msgstr ""
+
+#: inc/classes/class-do-menu-my-sites-network.php:109, inc/classes/class-do-menu-my-sites.php:109
+msgid "Network Admin"
+msgstr ""
+
+#: inc/classes/class-do-menu-my-sites-network.php:118, inc/classes/class-do-menu-my-sites.php:118, inc/classes/class-do-menu-my-sites.php:160, inc/classes/class-do-site-name-menu.php:128, inc/classes/class-trait-menu-item-arrays.php:44
+msgid "Dashboard"
+msgstr ""
+
+#: inc/classes/class-do-menu-my-sites.php:151
+msgid "Visit Website"
+msgstr ""
+
+#: inc/classes/class-do-site-name-menu.php:133, inc/classes/class-trait-menu-item-arrays.php:53
+msgid "Visit Site"
+msgstr ""
+
+#: inc/classes/class-do-site-name-menu.php:151, inc/classes/class-trait-menu-item-arrays.php:74
+msgid "View Comments"
+msgstr ""
+
+#: inc/classes/class-do-site-name-menu.php:169, inc/classes/class-trait-menu-item-arrays.php:92
+msgid "Add Content"
+msgstr ""
+
+#: inc/classes/class-do-site-name-menu.php:174, inc/classes/class-do-site-name-menu.php:207, inc/classes/class-trait-menu-item-arrays.php:97, inc/classes/class-trait-menu-item-arrays.php:130
+msgid "Add Post"
+msgstr ""
+
+#: inc/classes/class-do-site-name-menu.php:179, inc/classes/class-do-site-name-menu.php:212, inc/classes/class-trait-menu-item-arrays.php:102, inc/classes/class-trait-menu-item-arrays.php:135
+msgid "Add Page"
+msgstr ""
+
+#: inc/classes/class-do-site-name-menu.php:184, inc/classes/class-do-site-name-menu.php:217, inc/classes/class-trait-menu-item-arrays.php:107, inc/classes/class-trait-menu-item-arrays.php:140
+msgid "Add Media"
+msgstr ""
+
+#: inc/classes/class-do-site-name-menu.php:202, inc/classes/class-trait-menu-item-arrays.php:125
+msgid "Posts and Pages"
+msgstr ""
+
+#: inc/classes/class-do-site-name-menu.php:235, inc/classes/class-trait-menu-item-arrays.php:158
+msgid "Administration"
+msgstr ""
+
+#: inc/classes/class-do-site-name-menu.php:240, inc/classes/class-trait-menu-item-arrays.php:163
+msgid "Appearance Admin"
+msgstr ""
+
+#: inc/classes/class-do-site-name-menu.php:245, inc/classes/class-trait-menu-item-arrays.php:168, inc/classes/class-trait-menu-item-arrays.php:237
+msgid "Plugins Admin"
+msgstr ""
+
+#: inc/classes/class-do-site-name-menu.php:250, inc/classes/class-trait-menu-item-arrays.php:173, inc/classes/class-trait-menu-item-arrays.php:227
+msgid "Users Admin"
+msgstr ""
+
+#: inc/classes/class-do-site-name-menu.php:255, inc/classes/class-trait-menu-item-arrays.php:178, inc/classes/class-trait-menu-item-arrays.php:242
+msgid "Settings Admin"
+msgstr ""
+
+#: inc/classes/class-do-site-name-menu.php:269, inc/classes/class-trait-menu-item-arrays.php:256
+msgid "Logout"
+msgstr ""
+
+#: inc/classes/class-plugin-activate.php:40
+msgid "WordPress 3.8 is required. Please upgrade WordPress and try again."
+msgstr ""
+
+#: inc/classes/class-plugin-admin-notices.php:47
+msgid "Settings Saved."
+msgstr ""
+
+#: inc/classes/class-plugin-admin-notices.php:51
+msgid "Settings Update Failed."
+msgstr ""
+
+#: inc/classes/class-plugin-admin-notices.php:55
+msgid "Plugin Settings Deleted."
+msgstr ""
+
+#: inc/classes/class-plugin-admin-notices.php:59
+msgid "Plugin has already been upgraded."
+msgstr ""
+
+#: inc/classes/class-plugin-admin-notices.php:63
+msgid "Plugin upgraded."
+msgstr ""
+
+#: inc/classes/class-plugin-admin.php:82, inc/classes/class-plugin-admin.php:98, inc/templates/footer.php:38, inc/templates/header.php:24, inc/templates/sidebar.php:33
+msgid "WP My Admin Bar"
+msgstr ""
+
+#: inc/classes/class-plugin-admin.php:202
+msgid "Settings"
+msgstr ""
+
+#: inc/classes/class-trait-menu-item-arrays.php:192
+msgid "Manage Network"
+msgstr ""
+
+#: inc/classes/class-trait-menu-item-arrays.php:197
+msgid "Edit This Site"
+msgstr ""
+
+#: inc/classes/class-trait-menu-item-arrays.php:202
+msgid "Add Website"
+msgstr ""
+
+#: inc/classes/class-trait-menu-item-arrays.php:207
+msgid "Add Plugin"
+msgstr ""
+
+#: inc/classes/class-trait-menu-item-arrays.php:212
+msgid "Add User"
+msgstr ""
+
+#: inc/classes/class-trait-menu-item-arrays.php:217
+msgid "Network Admins"
+msgstr ""
+
+#: inc/classes/class-trait-menu-item-arrays.php:222
+msgid "Sites Admin"
+msgstr ""
+
+#: inc/classes/class-trait-menu-item-arrays.php:232
+msgid "Themes Admin"
+msgstr ""
+
+#: inc/classes/class-trait-security-check.php:26
+msgid "You are not authorized to perform this action."
+msgstr ""
+
+#: inc/templates/footer.php:39
+msgid "top"
+msgstr ""
+
+#: inc/templates/header.php:24
+msgid "A simple WordPress Admin Bar manager plugin."
+msgstr ""
+
+#: inc/templates/settings.php:54, inc/templates/settings.php:81
+msgid "Custom Menu"
+msgstr ""
+
+#: inc/templates/settings.php:55
+msgid "Custom My Sites menu with extended admin area sub-menu links."
+msgstr ""
+
+#: inc/templates/settings.php:59
+msgid "New My Sites Menu"
+msgstr ""
+
+#: inc/templates/settings.php:60, inc/templates/settings.php:64, inc/templates/settings.php:68, inc/templates/settings.php:72, inc/templates/settings.php:76, inc/templates/settings.php:87, inc/templates/settings.php:98, inc/templates/settings.php:102, inc/templates/settings.php:122, inc/templates/settings.php:127, inc/templates/settings.php:139, inc/templates/settings.php:143, inc/templates/settings.php:147, inc/templates/settings.php:151, inc/templates/settings.php:155, inc/templates/settings.php:166, inc/templates/settings.php:170, inc/templates/settings.php:174, inc/templates/settings.php:178, inc/templates/settings.php:182, inc/templates/settings.php:186
+msgid "enable"
+msgstr ""
+
+#: inc/templates/settings.php:60, inc/templates/settings.php:64, inc/templates/settings.php:68, inc/templates/settings.php:72, inc/templates/settings.php:76, inc/templates/settings.php:87, inc/templates/settings.php:98, inc/templates/settings.php:102, inc/templates/settings.php:122, inc/templates/settings.php:127, inc/templates/settings.php:139, inc/templates/settings.php:143, inc/templates/settings.php:147, inc/templates/settings.php:151, inc/templates/settings.php:155, inc/templates/settings.php:166, inc/templates/settings.php:170, inc/templates/settings.php:174, inc/templates/settings.php:178, inc/templates/settings.php:182, inc/templates/settings.php:186
+msgid "disable"
+msgstr ""
+
+#: inc/templates/settings.php:63
+msgid "New Website / Dashboard Jump Links"
+msgstr ""
+
+#: inc/templates/settings.php:67
+msgid "Site Ids Next To Site Names"
+msgstr ""
+
+#: inc/templates/settings.php:71
+msgid "WP Icon next to Sites in Menu"
+msgstr ""
+
+#: inc/templates/settings.php:75
+msgid "WP Icon next to Site in Menu"
+msgstr ""
+
+#: inc/templates/settings.php:82
+msgid "Custom Site menu with extended admin area sub-menu links."
+msgstr ""
+
+#: inc/templates/settings.php:86
+msgid "New Site Menu"
+msgstr ""
+
+#: inc/templates/settings.php:92
+msgid "Admin Bar Display"
+msgstr ""
+
+#: inc/templates/settings.php:93
+msgid "Control the display of the WordPress Admin Bar."
+msgstr ""
+
+#: inc/templates/settings.php:97
+msgid "Frontend Admin Bar Display"
+msgstr ""
+
+#: inc/templates/settings.php:101
+msgid "Backend Admin Bar Display"
+msgstr ""
+
+#: inc/templates/settings.php:108
+msgid "WordPress My Sites Menu"
+msgstr ""
+
+#: inc/templates/settings.php:109
+msgid "The default WordPress My Sites dropdown menu and WordPress current site menu."
+msgstr ""
+
+#: inc/templates/settings.php:111
+msgid "WordPress Site Menu"
+msgstr ""
+
+#: inc/templates/settings.php:112
+msgid "The default WordPress current site dropdown menu."
+msgstr ""
+
+#: inc/templates/settings.php:118
+msgid "My Sites Menu"
+msgstr ""
+
+#: inc/templates/settings.php:120
+msgid "My Site Menu"
+msgstr ""
+
+#: inc/templates/settings.php:126
+msgid "Current Site Menu"
+msgstr ""
+
+#: inc/templates/settings.php:133
+msgid "Howdy Menu / My Account Items"
+msgstr ""
+
+#: inc/templates/settings.php:134
+msgid "Manage the Howdy menu and related dropdown items."
+msgstr ""
+
+#: inc/templates/settings.php:138
+msgid "Howdy, Menu on Admin Bar"
+msgstr ""
+
+#: inc/templates/settings.php:142
+msgid "Howdy, Menu Dropdown Only"
+msgstr ""
+
+#: inc/templates/settings.php:146
+msgid "Avatar & Username within Dropdown"
+msgstr ""
+
+#: inc/templates/settings.php:150
+msgid "Edit Profile Link within Dropdown"
+msgstr ""
+
+#: inc/templates/settings.php:154
+msgid "Logout Link within Dropdown"
+msgstr ""
+
+#: inc/templates/settings.php:160
+msgid "Other Menu Items"
+msgstr ""
+
+#: inc/templates/settings.php:161
+msgid "Other WordPress Created Menus."
+msgstr ""
+
+#: inc/templates/settings.php:165
+msgid "WordPress Logo on Admin Bar"
+msgstr ""
+
+#: inc/templates/settings.php:169
+msgid "Update Notices Menu"
+msgstr ""
+
+#: inc/templates/settings.php:173
+msgid "New Content Menu"
+msgstr ""
+
+#: inc/templates/settings.php:177
+msgid "Comments Menu"
+msgstr ""
+
+#: inc/templates/settings.php:181
+msgid "Search Icon on Frontend"
+msgstr ""
+
+#: inc/templates/settings.php:185
+msgid "Customizer Menu on Frontend"
+msgstr ""
+
+#: inc/templates/settings.php:192
+msgid "update settings"
+msgstr ""
+
+#: inc/templates/settings.php:194
+msgid "Publish settings to all network websites."
+msgstr ""
+
+#: inc/templates/settings.php:214
+msgid "WARNING: Delete plugin settings for network admin only."
+msgstr ""
+
+#: inc/templates/settings.php:216
+msgid "WARNING: Delete plugin settings for this website only."
+msgstr ""
+
+#: inc/templates/sidebar.php:36
+msgid "Plugin Home Page"
+msgstr ""
+
+#: inc/templates/sidebar.php:37
+msgid "Bugs & Feature Requests"
+msgstr ""
+
+#: inc/templates/sidebar.php:38
+msgid "WordPress Forum"
+msgstr ""
+
+#: inc/templates/sidebar.php:43
+msgid "Please Rate This Plugin At WordPress.org!"
+msgstr ""
