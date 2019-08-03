@@ -4,7 +4,7 @@ WordPress Plugin - Wp My Admin Bar - Upgrade Your WordPress Adminbar & Menus! Th
 
 ## WordPress Hosted Plugin
 
-Search for Wp My Admin Bar or [Download](https://wordpress.org/plugins/wp-my-admin-bar/) at WordPress.org
+Add a new plugin and search for **Wp My Admin Bar** or [Download](https://wordpress.org/plugins/wp-my-admin-bar/) from WordPress.org to manually install.
 
 
 ## Changelog
