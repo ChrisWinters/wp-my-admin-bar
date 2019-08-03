@@ -3,8 +3,8 @@ Plugin Name: WP My Admin Bar | Admin Bar
 Contributors: tribalNerd, Chris Winters
 Tags: myadminbar, wpmyadminbar, plugin, admin, administration, adminbar, admin-bar, toolbar, toolbars, bar, network, multisite, tools, cache, sites, technerdia
 Requires at least: 3.8
-Tested up to: 4.8
-Stable tag: 3.0.0
+Tested up to: 5.2.2
+Stable tag: 3.0.1
 License: GNU GPLv3
 License URI: https://github.com/tribalNerd/wp-my-admin-bar/blob/master/LICENSE
 

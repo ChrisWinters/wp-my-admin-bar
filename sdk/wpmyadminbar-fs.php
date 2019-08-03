@@ -29,17 +29,13 @@ if ( true === function_exists( 'wpmyadminbar_fs' ) ) {
 
 			require_once dirname( WPMYADMINBAR_FILE ) . '/sdk/freemius/start.php';
 
-			$slug = [];
-
-			if ( true === is_user_admin() ) {
-				$slug = [
-					'slug' => 'options-general.php',
-				];
-			}
-
 			if ( true === is_network_admin() ) {
 				$slug = [
 					'slug' => 'settings.php',
+				];
+			} else {
+				$slug = [
+					'slug' => 'options-general.php',
 				];
 			}
 
