@@ -282,7 +282,7 @@ final class Do_Save_Settings {
 			if ( true === is_multisite() ) {
 				$post_object['my_sites'] = 'disable';
 			} else {
-				$post_object['my_sites'] = 'disable';
+				$post_object['site_name'] = 'disable';
 			}
 		}
 

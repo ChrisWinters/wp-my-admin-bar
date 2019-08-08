@@ -1,5 +1,10 @@
 # Changelog
 
+# 3.0.1
+**2019-08-08 - Hotfix**
+
+* Corrected site-name menu not disabling correctly
+
 # 3.0.0
 **2019-08-01 - Release**
 

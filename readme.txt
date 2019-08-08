@@ -94,9 +94,9 @@ A) No settings are adjusted or removed if the public is disabled.
 == Changelog ==
 
 
-= 3.0.0 =
-* Released: 2019-08-01
-* Changelog: https://github.com/ChrisWinters/wp-my-admin-bar/blob/master/CHANGELOG.md#300
+= 3.0.1 =
+* Released: 2019-08-08
+* Changelog: https://github.com/ChrisWinters/wp-my-admin-bar/blob/master/CHANGELOG.md#301
 
 
 == Screenshots ==

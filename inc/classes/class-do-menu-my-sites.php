@@ -54,6 +54,10 @@ final class Do_Menu_My_Sites {
 	 * Maybe Remove Menu Item Nodes
 	 */
 	public function remove_nodes() {
+		if ( false === is_multisite() ) {
+			return;
+		}
+
 		$display_status = $this->option_manager->get_setting( 'mysites' );
 
 		if ( true === empty( $display_status ) || ( true !== empty( $display_status ) && 'disable' === $display_status ) ) {
@@ -78,6 +82,10 @@ final class Do_Menu_My_Sites {
 	 * Add Custom Menu
 	 */
 	public function add_menu() {
+		if ( false === is_multisite() ) {
+			return;
+		}
+
 		$display_status = $this->option_manager->get_setting( 'mysites' );
 
 		if ( true === empty( $display_status ) || ( true !== empty( $display_status ) && 'disable' === $display_status ) ) {

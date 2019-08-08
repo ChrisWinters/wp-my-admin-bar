@@ -40,10 +40,10 @@ final class WpMyAdminBar {
 			 */
 			if ( true === is_network_admin() ) {
 				// Network Facing.
-				//$my_sites_network = new \WpMyAdminBar\Do_Menu_My_Sites_Network( $option_manager );
+				$my_sites_network = new \WpMyAdminBar\Do_Menu_My_Sites_Network( $option_manager );
 			} else {
 				// Website Facing.
-				//$my_sites_website = new \WpMyAdminBar\Do_Menu_My_Sites( $option_manager );
+				$my_sites_website = new \WpMyAdminBar\Do_Menu_My_Sites( $option_manager );
 			}
 		} else {
 			// Website - No Network.
@@ -64,7 +64,6 @@ final class WpMyAdminBar {
 		 * https://developer.wordpress.org/reference/functions/is_admin/
 		 */
 		if ( true === is_admin() ) {
-
 			// Loads Translated Strings.
 			$translate = new \WpMyAdminBar\Translate();
 

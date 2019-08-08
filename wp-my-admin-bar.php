@@ -62,7 +62,7 @@ add_action(
  * https://developer.wordpress.org/reference/functions/register_activation_hook/
  */
 register_activation_hook(
-	WPMYADMINBAR_FILE,
+	__FILE__,
 	[
 		'WpMyAdminBar\Plugin_Activate',
 		'init',

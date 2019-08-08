@@ -7,7 +7,7 @@
 
 # Copy Plugin Files To Wordpress
 SLUG="wp-my-admin-bar"
-MOVE_TO_PATH="/var/www/html/testing.localhost/wp-content/plugins/"
+MOVE_TO_PATH="/var/www/html/multisite.localhost/wp-content/plugins/"
 LOCAL_SOURCE="/home/gingerbot/Public/cw/$SLUG"
 
 clear

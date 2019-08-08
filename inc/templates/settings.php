@@ -48,7 +48,7 @@ wp_nonce_field(
 
 <table class="form-table">
 	<tbody>
-<?php if ( true === is_multisite() ) { ?>
+<?php if ( true === is_multisite() && true === is_network_admin() ) { ?>
 		<tr>
 		<td colspan="2">
 			<div class="text-dark font-weight-bold p-0 mt-4 h5"><?php esc_html_e( 'Custom Menu', 'wp-my-admin-bar' ); ?></div>
@@ -60,16 +60,8 @@ wp_nonce_field(
 		<td class="p-1"><input type="radio" name="mysites" value="enable" id="mysites-enable" <?php checked( $mysites, 'enable' ); ?> /><label for="mysites-enable"><?php esc_html_e( 'enable', 'wp-my-admin-bar' ); ?></label>&nbsp;&nbsp;<input type="radio" name="mysites" value="disable" id="mysites-disable" <?php checked( $mysites, 'disable' ); ?> /><label for="mysites-disable"><?php esc_html_e( 'disable', 'wp-my-admin-bar' ); ?></label></td>
 		</tr>
 		<tr>
-		<th scope="row" class="p-1"><?php esc_html_e( 'New Website / Dashboard Jump Links', 'wp-my-admin-bar' ); ?></th>
-		<td class="p-1"><input type="radio" name="site_link" value="enable" id="site_link-enable" <?php checked( $site_link, 'enable' ); ?> /><label for="site_link-enable"><?php esc_html_e( 'enable', 'wp-my-admin-bar' ); ?></label>&nbsp;&nbsp;<input type="radio" name="site_link" value="disable" id="site_link-disable" <?php checked( $site_link, 'disable' ); ?> /><label for="site_link-disable"><?php esc_html_e( 'disable', 'wp-my-admin-bar' ); ?></label></td>
-		</tr>
-		<tr>
 		<th scope="row" class="p-1"><?php esc_html_e( 'Site Ids Next To Site Names', 'wp-my-admin-bar' ); ?></th>
 		<td class="p-1"><input type="radio" name="siteids" value="enable" id="siteids-enable" <?php checked( $siteids, 'enable' ); ?> /><label for="siteids-enable"><?php esc_html_e( 'enable', 'wp-my-admin-bar' ); ?></label>&nbsp;&nbsp;<input type="radio" name="siteids" value="disable" id="siteids-disable" <?php checked( $siteids, 'disable' ); ?> /><label for="siteids-disable"><?php esc_html_e( 'disable', 'wp-my-admin-bar' ); ?></label></td>
-		</tr>
-		<tr>
-		<th scope="row" class="p-1"><?php esc_html_e( 'WP Icon next to Sites in Menu', 'wp-my-admin-bar' ); ?></th>
-		<td class="p-1"><input type="radio" name="wp_icon" value="enable" id="wp_icon-enable" <?php checked( $wp_icon, 'enable' ); ?> /><label for="wp_icon-enable"><?php esc_html_e( 'enable', 'wp-my-admin-bar' ); ?></label>&nbsp;&nbsp;<input type="radio" name="wp_icon" value="disable" id="wp_icon-disable" <?php checked( $wp_icon, 'disable' ); ?> /><label for="wp_icon-disable"><?php esc_html_e( 'disable', 'wp-my-admin-bar' ); ?></label></td>
 		</tr>
 		<tr>
 		<th scope="row" class="p-1"><?php esc_html_e( 'WP Icon next to Site in Menu', 'wp-my-admin-bar' ); ?></th>
@@ -101,10 +93,9 @@ wp_nonce_field(
 		<th scope="row" class="p-1"><label for="backend"><?php esc_html_e( 'Backend Admin Bar Display', 'wp-my-admin-bar' ); ?></label></th>
 		<td class="p-1"><input type="radio" name="backend" value="enable" id="backend-enable" <?php checked( $backend, 'enable' ); ?> /><label for="backend-enable"><?php esc_html_e( 'enable', 'wp-my-admin-bar' ); ?></label>&nbsp;&nbsp;<input type="radio" name="backend" value="disable" id="backend-disable" <?php checked( $backend, 'disable' ); ?> /><label for="backend-disable"><?php esc_html_e( 'disable', 'wp-my-admin-bar' ); ?></label></td>
 		</tr>
-
 		<tr>
 		<td colspan="2">
-<?php if ( true === is_multisite() ) { ?>
+<?php if ( true === is_multisite() && true === is_network_admin() ) { ?>
 			<div class="text-dark font-weight-bold p-0 mt-4 h5"><?php esc_html_e( 'WordPress My Sites Menu', 'wp-my-admin-bar' ); ?></div>
 			<p class="description"><?php esc_html_e( 'The default WordPress My Sites dropdown menu and WordPress current site menu.', 'wp-my-admin-bar' ); ?></p>
 <?php } else { ?>
@@ -113,19 +104,22 @@ wp_nonce_field(
 <?php } ?>
 		</td>
 		</tr>
+<?php if ( true === is_multisite() && true === is_network_admin() ) { ?>
 		<tr>
-<?php if ( true === is_multisite() ) { ?>
-		<th scope="row" class="p-1"><?php esc_html_e( 'My Sites Menu', 'wp-my-admin-bar' ); ?></th>
-<?php } else { ?>
-		<th scope="row" class="p-1"><?php esc_html_e( 'My Site Menu', 'wp-my-admin-bar' ); ?></th>
-<?php } ?>
-		<td class="p-1"><input type="radio" name="my_sites" value="enable" id="my_sites-enable" <?php checked( $my_sites, 'enable' ); ?> /><label for="my_sites-enable"><?php esc_html_e( 'enable', 'wp-my-admin-bar' ); ?></label>&nbsp;&nbsp;<input type="radio" name="my_sites" value="disable" id="my_sites-disable" <?php checked( $my_sites, 'disable' ); ?> /><label for="my_sites-disable"><?php esc_html_e( 'disable', 'wp-my-admin-bar' ); ?></label></td>
+		<th scope="row" class="p-1"><?php esc_html_e( 'My Sites Menu', 'wp-my-admin-bar' ); ?></th>		<td class="p-1"><input type="radio" name="my_sites" value="enable" id="my_sites-enable" <?php checked( $my_sites, 'enable' ); ?> /><label for="my_sites-enable"><?php esc_html_e( 'enable', 'wp-my-admin-bar' ); ?></label>&nbsp;&nbsp;<input type="radio" name="my_sites" value="disable" id="my_sites-disable" <?php checked( $my_sites, 'disable' ); ?> /><label for="my_sites-disable"><?php esc_html_e( 'disable', 'wp-my-admin-bar' ); ?></label></td>
 		</tr>
-<?php if ( true === is_multisite() ) { ?>
 		<tr>
 		<th scope="row" class="p-1"><?php esc_html_e( 'Current Site Menu', 'wp-my-admin-bar' ); ?></th>
 		<td class="p-1"><input type="radio" name="site_name" value="enable" id="site_name-enable" <?php checked( $site_name, 'enable' ); ?> /><label for="site_name-enable"><?php esc_html_e( 'enable', 'wp-my-admin-bar' ); ?></label>&nbsp;&nbsp;<input type="radio" name="site_name" value="disable" id="site_name-disable" <?php checked( $site_name, 'disable' ); ?> /><label for="site_name-disable"><?php esc_html_e( 'disable', 'wp-my-admin-bar' ); ?></label></td>
 		</tr>
+<?php } else { ?>
+		<tr>
+		<th scope="row" class="p-1"><?php esc_html_e( 'Current Site Menu', 'wp-my-admin-bar' ); ?></th>
+		<td class="p-1"><input type="radio" name="site_name" value="enable" id="site_name-enable" <?php checked( $site_name, 'enable' ); ?> /><label for="site_name-enable"><?php esc_html_e( 'enable', 'wp-my-admin-bar' ); ?></label>&nbsp;&nbsp;<input type="radio" name="site_name" value="disable" id="site_name-disable" <?php checked( $site_name, 'disable' ); ?> /><label for="site_name-disable"><?php esc_html_e( 'disable', 'wp-my-admin-bar' ); ?></label></td>
+		</tr>
+<?php } ?>
+
+<?php if ( true === is_multisite() && true === is_network_admin() ) { ?>
 <?php } ?>
 
 		<tr>
