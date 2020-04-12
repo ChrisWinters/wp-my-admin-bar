@@ -30,28 +30,28 @@ final class Do_Save_Settings {
 	 *
 	 * @var array
 	 */
-	public $post_object = [];
+	public $post_object = array();
 
 	/**
 	 * Post Action To Take.
 	 *
 	 * @var string
 	 */
-	public $post_action = [];
+	public $post_action = array();
 
 	/**
 	 * Option_Manager Class.
 	 *
 	 * @var object
 	 */
-	public $option_manager = [];
+	public $option_manager = array();
 
 	/**
 	 * Plugin_Admin_Notices Class
 	 *
 	 * @var object
 	 */
-	public $admin_notices = [];
+	public $admin_notices = array();
 
 
 	/**
@@ -59,7 +59,7 @@ final class Do_Save_Settings {
 	 *
 	 * @param array $post_object Cleaned Post Object.
 	 */
-	public function __construct( $post_object = [] ) {
+	public function __construct( $post_object = array() ) {
 		if ( true === empty( $post_object ) || true === empty( $post_object['action'] ) ) {
 			return;
 		}
@@ -85,10 +85,10 @@ final class Do_Save_Settings {
 		 */
 		add_action(
 			'admin_init',
-			[
+			array(
 				$this,
 				'update',
-			]
+			)
 		);
 	}//end init()
 
@@ -124,7 +124,7 @@ final class Do_Save_Settings {
 			unset( $this->post_object['action'] );
 		}
 
-		$allowed = [
+		$allowed = array(
 			'frontend'     => '',
 			'backend'      => '',
 			'mysites'      => '',
@@ -145,7 +145,7 @@ final class Do_Save_Settings {
 			'wp_logo'      => '',
 			'wp_icon'      => '',
 			'publish'      => '',
-		];
+		);
 
 		foreach ( $this->post_object as $key => $value ) {
 			if ( true !== array_key_exists( $key, $allowed ) ) {
@@ -158,8 +158,8 @@ final class Do_Save_Settings {
 		}
 
 		$maybe_publish = false;
-		if ( true !== empty( $this->post_object[ 'publish' ] ) && '1' === $this->post_object[ 'publish' ] ) {
-			unset( $this->post_object[ 'publish' ] );
+		if ( true !== empty( $this->post_object['publish'] ) && '1' === $this->post_object['publish'] ) {
+			unset( $this->post_object['publish'] );
 			$maybe_publish = true;
 		}
 
@@ -194,7 +194,7 @@ final class Do_Save_Settings {
 		$network_settings = $this->option_manager->get_site_option();
 
 		if ( true === empty( $network_settings ) ) {
-			$network_settings = [];
+			$network_settings = array();
 		}
 
 		/*
@@ -227,7 +227,7 @@ final class Do_Save_Settings {
 	 *
 	 * @return bool
 	 */
-	private function network_save( $post_object = [] ) {
+	private function network_save( $post_object = array() ) {
 		// Save No Settings.
 		if ( true === empty( $post_object ) ) {
 			$this->option_manager->delete_site_option();
@@ -266,7 +266,7 @@ final class Do_Save_Settings {
 	 *
 	 * @return bool
 	 */
-	private function website_save( $post_object = [] ) {
+	private function website_save( $post_object = array() ) {
 		// Save No Settings.
 		if ( true === empty( $post_object ) ) {
 			$this->option_manager->delete_option();

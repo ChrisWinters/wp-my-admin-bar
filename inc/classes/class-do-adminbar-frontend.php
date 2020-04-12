@@ -32,7 +32,7 @@ final class Do_Adminbar_Frontend {
 	 *
 	 * @param object $option_manager Settings Array Object.
 	 */
-	public function __construct( $option_manager = [] ) {
+	public function __construct( $option_manager = array() ) {
 		if ( true === empty( $option_manager ) ) {
 			return;
 		}
@@ -43,7 +43,7 @@ final class Do_Adminbar_Frontend {
 
 		$this->option_manager = $option_manager;
 
-		add_action( 'init', [ $this, 'maybe_disable_adminbar' ] );
+		add_action( 'init', array( $this, 'maybe_disable_adminbar' ) );
 	}//end __construct()
 
 
@@ -56,7 +56,7 @@ final class Do_Adminbar_Frontend {
 		if ( true !== empty( $display_status ) && 'disable' === $display_status ) {
 			$this->disable_adminbar();
 
-			add_action( 'wp_before_admin_bar_render', [ $this, 'disable_menu_items' ] );
+			add_action( 'wp_before_admin_bar_render', array( $this, 'disable_menu_items' ) );
 		}
 	}//end maybe_disable_adminbar()
 

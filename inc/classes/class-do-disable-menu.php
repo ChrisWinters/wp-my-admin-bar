@@ -32,15 +32,15 @@ final class Do_Disable_Menu {
 	 *
 	 * @param object $option_manager Settings Array Object.
 	 */
-	public function __construct( $option_manager = [] ) {
+	public function __construct( $option_manager = array() ) {
 		if ( true === empty( $option_manager ) ) {
 			return;
 		}
 
 		$this->option_manager = $option_manager;
 
-		add_action( 'wp_before_admin_bar_render', [ $this, 'maybe_remove_menus' ] );
-		add_action( 'wp_before_admin_bar_render', [ $this, 'maybe_remove_menu_items' ] );
+		add_action( 'wp_before_admin_bar_render', array( $this, 'maybe_remove_menus' ) );
+		add_action( 'wp_before_admin_bar_render', array( $this, 'maybe_remove_menu_items' ) );
 	}//end __construct()
 
 
@@ -99,7 +99,7 @@ final class Do_Disable_Menu {
 	 * Setting Name Keys & Menu Slug Values
 	 */
 	public function setting_names_menu_slugs() {
-		return [
+		return array(
 			'my_account'   => 'my-account',
 			'user_actions' => 'user-actions',
 			'user_info'    => 'user-info',
@@ -112,6 +112,6 @@ final class Do_Disable_Menu {
 			'customize'    => 'customize',
 			'wp_logo'      => 'wp-logo',
 			'wp_icon'      => 'wp-icon',
-		];;
+		);
 	}//end setting_names_menu_slugs()
 }//end class

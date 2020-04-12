@@ -24,7 +24,7 @@ final class Plugin_Admin_Notices {
 	 *
 	 * @var array
 	 */
-	public $message = [];
+	public $message = array();
 
 
 	/**
@@ -43,7 +43,7 @@ final class Plugin_Admin_Notices {
 	 * @param string $message Message Key To Return.
 	 */
 	private function messages( $message = '' ) {
-		$messages = [
+		$messages = array(
 			'update_success'   => __(
 				'Settings Saved.',
 				'wp-my-admin-bar'
@@ -64,7 +64,7 @@ final class Plugin_Admin_Notices {
 				'Plugin upgraded.',
 				'wp-my-admin-bar'
 			),
-		];
+		);
 
 		if ( true !== empty( $messages[ $message ] ) ) {
 			return $messages[ $message ];
@@ -107,10 +107,10 @@ final class Plugin_Admin_Notices {
 		 */
 		add_action(
 			$admin_notice_type,
-			[
+			array(
 				$this,
 				$type,
-			]
+			)
 		);
 	}//end add_notice()
 

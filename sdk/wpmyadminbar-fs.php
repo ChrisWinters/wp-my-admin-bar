@@ -30,34 +30,34 @@ if ( true === function_exists( 'wpmyadminbar_fs' ) ) {
 			require_once dirname( WPMYADMINBAR_FILE ) . '/sdk/freemius/start.php';
 
 			if ( true === is_network_admin() ) {
-				$slug = [
+				$slug = array(
 					'slug' => 'settings.php',
-				];
+				);
 			} else {
-				$slug = [
+				$slug = array(
 					'slug' => 'options-general.php',
-				];
+				);
 			}
 
-			$wpmyadminbar_fs = fs_dynamic_init( 
-				[
-					'id'                  => '4231',
-					'slug'                => 'wp-my-admin-bar',
-					'type'                => 'plugin',
-					'public_key'          => 'pk_0b2af908e967339854ed6bc8012d8',
-					'is_premium'          => false,
-					'has_addons'          => false,
-					'has_paid_plans'      => false,
-					'is_live'             => true,
-					'menu'                => [
-						'slug'        => 'wp-my-admin-bar',
-						'account'     => true,
-						'contact'     => false,
-						'support'     => false,
-						'network'     => true,
-						'parent'      => $slug,
-					],
-				]
+			$wpmyadminbar_fs = fs_dynamic_init(
+				array(
+					'id'             => '4231',
+					'slug'           => 'wp-my-admin-bar',
+					'type'           => 'plugin',
+					'public_key'     => 'pk_0b2af908e967339854ed6bc8012d8',
+					'is_premium'     => false,
+					'has_addons'     => false,
+					'has_paid_plans' => false,
+					'is_live'        => true,
+					'menu'           => array(
+						'slug'    => 'wp-my-admin-bar',
+						'account' => true,
+						'contact' => false,
+						'support' => false,
+						'network' => true,
+						'parent'  => $slug,
+					),
+				)
 			);
 		}
 

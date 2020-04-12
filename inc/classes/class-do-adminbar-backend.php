@@ -32,14 +32,14 @@ final class Do_Adminbar_Backend {
 	 *
 	 * @param object $option_manager Settings Array Object.
 	 */
-	public function __construct( $option_manager = [] ) {
+	public function __construct( $option_manager = array() ) {
 		if ( true === empty( $option_manager ) ) {
 			return;
 		}
 
 		$this->option_manager = $option_manager;
 
-		add_action( 'admin_init', [ $this, 'maybe_disable_adminbar' ] );
+		add_action( 'admin_init', array( $this, 'maybe_disable_adminbar' ) );
 	}//end __construct()
 
 
@@ -62,7 +62,7 @@ final class Do_Adminbar_Backend {
 		if ( true !== empty( $display_status ) && 'disable' === $display_status ) {
 			$this->disable_adminbar();
 
-			add_action( 'wp_before_admin_bar_render', [ $this, 'disable_menu_items' ] );
+			add_action( 'wp_before_admin_bar_render', array( $this, 'disable_menu_items' ) );
 		}
 	}//end maybe_disable_adminbar()
 
@@ -71,13 +71,13 @@ final class Do_Adminbar_Backend {
 	 * Disable Backend Adminbar
 	 */
 	private function disable_adminbar() {
-		add_action( 'admin_enqueue_scripts', [ $this, 'deregister' ] );
+		add_action( 'admin_enqueue_scripts', array( $this, 'deregister' ) );
 
 		remove_action( 'init', '_wp_admin_bar_init' );
 		remove_action( 'wp_footer', 'wp_admin_bar_render', 1000 );
 		remove_action( 'admin_footer', 'wp_admin_bar_render', 1000 );
 
-		add_filter( 'admin_print_scripts', [ $this, 'styles' ] );
+		add_filter( 'admin_print_scripts', array( $this, 'styles' ) );
 	}//end disable_adminbar()
 
 

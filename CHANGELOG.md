@@ -1,5 +1,10 @@
 # Changelog
 
+# 3.1.0
+**2020-04-12 - WordPress**
+* Wordpress Version 5.4
+* Freemius SDK Upgrade
+
 # 3.0.1
 **2019-08-08 - Hotfix**
 

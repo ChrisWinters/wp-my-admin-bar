@@ -38,15 +38,15 @@ final class Do_Menu_Site_Name {
 	 *
 	 * @param object $option_manager Settings Array Object.
 	 */
-	public function __construct( $option_manager = [] ) {
+	public function __construct( $option_manager = array() ) {
 		if ( true === empty( $option_manager ) ) {
 			return;
 		}
 
 		$this->option_manager = $option_manager;
 
-		add_action( 'admin_bar_menu', [ $this, 'maybe_render_menu' ], 999, 0 );
-		add_action( 'wp_before_admin_bar_render', [ $this, 'remove_nodes' ] );
+		add_action( 'admin_bar_menu', array( $this, 'maybe_render_menu' ), 999, 0 );
+		add_action( 'wp_before_admin_bar_render', array( $this, 'remove_nodes' ) );
 	}//end __construct()
 
 
@@ -109,29 +109,29 @@ final class Do_Menu_Site_Name {
 		$siteids = $this->option_manager->get_setting( 'siteids' );
 
 		$wp_admin_bar->add_menu(
-			[
+			array(
 				'id'    => 'site-name',
 				'title' => $this->blogname(),
 				'href'  => ( is_admin() || ! current_user_can( 'read' ) ) ? home_url( '/' ) : admin_url(),
-			]
+			)
 		);
 
 		$wp_admin_bar->add_group(
-			[
+			array(
 				'parent' => 'site-name',
 				'id'     => 'sitename',
-				'meta'   => [ 'class' => 'ab-sub-secondary' ],
-			]
+				'meta'   => array( 'class' => 'ab-sub-secondary' ),
+			)
 		);
 
 		foreach ( (array) $this->menu_arrays() as $array ) {
 			$wp_admin_bar->add_menu(
-				[
+				array(
 					'parent' => 'sitename',
 					'id'     => $array['menu_id'],
 					'title'  => $array['title'],
 					'href'   => $array['href'],
-				]
+				)
 			);
 		}
 	}//end add_menu()

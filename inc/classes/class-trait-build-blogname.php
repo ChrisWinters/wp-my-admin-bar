@@ -36,7 +36,7 @@ trait Trait_Build_Blogname {
 
 		if ( true === is_super_admin() ) {
 			if ( ( true !== empty( $siteids ) && 'enable' === $siteids ) && ( true !== empty( $wp_icon ) && 'enable' === $wp_icon ) ) {
-				$title = '<div class="blavatar"></div>' . '(' . $blogid . ') ' . $this->truncate( $blogname, 17 );
+				$title = '<div class="blavatar"></div>(' . $blogid . ') ' . $this->truncate( $blogname, 17 );
 			}
 
 			if ( ( true !== empty( $siteids ) && 'disable' === $siteids ) && ( true !== empty( $wp_icon ) && 'enable' === $wp_icon ) ) {

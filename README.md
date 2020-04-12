@@ -9,10 +9,10 @@ Add a new plugin and search for **Wp My Admin Bar** or [Download from WordPress.
 
 ## Changelog
 
-# 3.0.1
-**Released: 2019-08-07**
+# 3.1.0
+**Released: 2020-04-12**
 
-* Changelog: https://github.com/ChrisWinters/wp-my-admin-bar/blob/master/CHANGELOG.md#301
+* Changelog: https://github.com/ChrisWinters/wp-my-admin-bar/blob/master/CHANGELOG.md#310
 
 --
 

@@ -29,7 +29,7 @@ class Plugin_Admin_Post {
 	 *
 	 * @var array
 	 */
-	public $post_object = [];
+	public $post_object = array();
 
 
 	/**

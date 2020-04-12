@@ -38,15 +38,15 @@ final class Do_Menu_My_Sites_Network {
 	 *
 	 * @param object $option_manager Settings Array Object.
 	 */
-	public function __construct( $option_manager = [] ) {
+	public function __construct( $option_manager = array() ) {
 		if ( true === empty( $option_manager ) ) {
 			return;
 		}
 
 		$this->option_manager = $option_manager;
 
-		add_action( 'admin_bar_menu', [ $this, 'add_menu' ], 25, 0 );
-		add_action( 'wp_before_admin_bar_render', [ $this, 'remove_nodes' ] );
+		add_action( 'admin_bar_menu', array( $this, 'add_menu' ), 25, 0 );
+		add_action( 'wp_before_admin_bar_render', array( $this, 'remove_nodes' ) );
 	}//end __construct()
 
 
@@ -87,57 +87,57 @@ final class Do_Menu_My_Sites_Network {
 		global $wp_admin_bar;
 
 		$wp_admin_bar->add_menu(
-			[
+			array(
 				'id'    => 'my-sites',
 				'title' => __( 'My Sites', 'wp-my-admin-bar' ),
 				'href'  => admin_url( 'my-sites.php' ),
-			]
+			)
 		);
 
 		$wp_admin_bar->add_group(
-			[
+			array(
 				'parent' => 'my-sites',
 				'id'     => 'superadmin',
-			]
+			)
 		);
 
 		if ( true === is_super_admin() ) {
 			$wp_admin_bar->add_menu(
-				[
+				array(
 					'parent' => 'superadmin',
 					'id'     => 'networkadmin',
 					'title'  => __( 'Network Admin', 'wp-my-admin-bar' ),
 					'href'   => network_admin_url(),
-				]
+				)
 			);
 
 			$wp_admin_bar->add_menu(
-				[
+				array(
 					'parent' => 'networkadmin',
 					'id'     => 'networkdash',
 					'title'  => '&bull; ' . __( 'Dashboard', 'wp-my-admin-bar' ),
 					'href'   => network_admin_url(),
-				]
+				)
 			);
 
 			foreach ( $this->menu_network_array() as $array ) {
 				$wp_admin_bar->add_menu(
-					[
+					array(
 						'parent' => 'networkadmin',
 						'id'     => $array['menu_id'],
 						'title'  => $array['title'],
 						'href'   => $array['href'],
-					]
+					)
 				);
 			}
 		}
 
 		$wp_admin_bar->add_group(
-			[
+			array(
 				'parent' => 'my-sites',
 				'id'     => 'mysites-group',
-				'meta'   => [ 'class' => 'ab-sub-secondary' ],
-			]
+				'meta'   => array( 'class' => 'ab-sub-secondary' ),
+			)
 		);
 
 		$wp_icon = $this->option_manager->get_site_setting( 'wp_icon' );
@@ -147,22 +147,22 @@ final class Do_Menu_My_Sites_Network {
 			switch_to_blog( $blog->userblog_id );
 
 			$wp_admin_bar->add_menu(
-				[
+				array(
 					'parent' => 'mysites-group',
 					'id'     => 'mysites' . $blog->userblog_id,
 					'title'  => $this->menu_title( $blog->blogname, $blog->userblog_id, $siteids, $wp_icon ),
 					'href'   => admin_url(),
-				]
+				)
 			);
 
 			foreach ( (array) $this->menu_arrays() as $array ) {
 				$wp_admin_bar->add_menu(
-					[
+					array(
 						'parent' => 'mysites' . $blog->userblog_id,
 						'id'     => $array['menu_id'] . $blog->userblog_id,
 						'title'  => $array['title'],
 						'href'   => $array['href'],
-					]
+					)
 				);
 			}
 

@@ -34,10 +34,10 @@ final class Plugin_Admin {
 		 */
 		add_action(
 			'admin_menu',
-			[
+			array(
 				$this,
 				'menu',
-			]
+			)
 		);
 
 		/*
@@ -46,10 +46,10 @@ final class Plugin_Admin {
 		 */
 		add_action(
 			'network_admin_menu',
-			[
+			array(
 				$this,
 				'menu',
-			]
+			)
 		);
 
 		if ( $this->query_string( 'page' ) === WPMYADMINBAR_PLUGIN_NAME ) {
@@ -59,10 +59,10 @@ final class Plugin_Admin {
 			 */
 			add_action(
 				'admin_enqueue_scripts',
-				[
+				array(
 					$this,
 					'enqueue',
-				]
+				)
 			);
 		}
 	}//end __construct()
@@ -82,10 +82,10 @@ final class Plugin_Admin {
 			__( 'WP My Admin Bar', 'wp-my-admin-bar' ),
 			'manage_options',
 			WPMYADMINBAR_PLUGIN_NAME,
-			[
+			array(
 				$this,
 				'templates',
-			]
+			)
 		);
 
 		/*
@@ -98,10 +98,10 @@ final class Plugin_Admin {
 			__( 'WP My Admin Bar', 'wp-my-admin-bar' ),
 			'manage_options',
 			WPMYADMINBAR_PLUGIN_NAME,
-			[
+			array(
 				$this,
 				'templates',
-			]
+			)
 		);
 	}//end menu()
 
@@ -121,7 +121,7 @@ final class Plugin_Admin {
 			WPMYADMINBAR_PLUGIN_NAME,
 			plugins_url( '/assets/css/style.min.css', WPMYADMINBAR_FILE ),
 			'',
-			date( 'YmdHis', time() ),
+			gmdate( 'YmdHis', time() ),
 			'all'
 		);
 	}//end enqueue()
@@ -198,9 +198,9 @@ final class Plugin_Admin {
 		 * Escaping for HTML blocks.
 		 * https://developer.wordpress.org/reference/functions/esc_html__/
 		 */
-		$admin_tabs = [
+		$admin_tabs = array(
 			'settings' => esc_html__( 'Settings', 'wp-my-admin-bar' ),
-		];
+		);
 
 		$html = '<h2 class="nav-tab-wrapper">';
 

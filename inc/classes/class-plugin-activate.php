@@ -47,7 +47,7 @@ final class Plugin_Activate {
 	 * Default Plugin Settings
 	 */
 	private static function settings() {
-		return [
+		return array(
 			'frontend'     => 'enable',
 			'backend'      => 'enable',
 			'mysites'      => 'enable',
@@ -67,7 +67,7 @@ final class Plugin_Activate {
 			'comments'     => 'enable',
 			'search'       => 'enable',
 			'customize'    => 'enable',
-		];
+		);
 	}
 
 	/**

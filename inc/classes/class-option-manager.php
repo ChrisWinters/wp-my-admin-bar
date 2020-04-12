@@ -107,7 +107,7 @@ class Option_Manager {
 	 * @param mixed  $option_array Prepared Option Array.
 	 * @param string $str          Option Name.
 	 */
-	public function update_option( $option_array = [], $str = '' ) {
+	public function update_option( $option_array = array(), $str = '' ) {
 		if ( true === empty( $option_array ) ) {
 			return;
 		}
@@ -129,7 +129,7 @@ class Option_Manager {
 	 * @param array  $option_value Data To Save.
 	 * @param string $str          Option Name.
 	 */
-	public function update_site_option( $option_value = [], $str = '' ) {
+	public function update_site_option( $option_value = array(), $str = '' ) {
 		if ( true === empty( $option_value ) ) {
 			return;
 		}
@@ -160,7 +160,7 @@ class Option_Manager {
 		}
 
 		if ( true === empty( $get_option ) ) {
-			$get_option = [];
+			$get_option = array();
 		}
 
 		$get_option[ $setting_name ] = $setting_value;
@@ -184,7 +184,7 @@ class Option_Manager {
 		}
 
 		if ( true === empty( $get_option ) ) {
-			$get_option = [];
+			$get_option = array();
 		}
 
 		$get_option[ $setting_name ] = $setting_value;
